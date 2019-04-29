@@ -12,7 +12,7 @@ namespace TicketSystem.Controllers
         {
             var information = new Models.Event()
             {
-                EventName = "BAIT/INF beerpong smashdown",
+                EventName = "BAIT/INF Beerpong Tournament",
                 Price = "200 kr",
                 Location = "Heidi's",
                 EventID = 1233291,
