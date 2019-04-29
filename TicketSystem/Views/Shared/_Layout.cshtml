@@ -1,21 +1,26 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - TicketSystem P4</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TicketSystem P4</title>
 
-        <environment include="Development">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css" />
-            <link rel="stylesheet" href="~/css/site.css" />
-        </environment>
-        <environment exclude="Development">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css"
-                  asp-fallback-href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css"
-                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        </environment>
-    </head>
+    <environment include="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css"
+              asp-fallback-href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+
+
+
+</head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <a class="navbar-brand" href="#">Navbar</a>
@@ -27,8 +32,8 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="mr-1"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li class="mr-1"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li class="mr-1"><a asp-area="" asp-controller="Home" asp-action="Contact"><i class="fab fa-accessible-icon"></i> Contact</a></li>
-                    <li class="mr-1"><a asp-area="" asp-controller="Event" asp-action="Index">Event</a></li>
+                    <li class="mr-1"><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li class="mr-1"><a asp-area="" asp-controller="Event" asp-action="Index"><i class="fas fa-calendar-alt"></i> Event</a></li>
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
