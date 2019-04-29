@@ -2,6 +2,7 @@
 for details on configuring this project to bundle and minify static web assets. */
 body {
     padding-bottom: 20px;
+
 }
 
 /* Wrapping element */
@@ -9,6 +10,7 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 20px;
 }
 
 /* Carousel */
