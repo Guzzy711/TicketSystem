@@ -10,15 +10,7 @@ namespace TicketSystem.Controllers
     {
         public IActionResult Index()
         {
-            var information = new Models.Event()
-            {
-                EventName = "BAIT/INF Beerpong Tournament",
-                Price = "200 kr",
-                Location = "Heidi's",
-                EventID = 1233291,
-            };
-
-            ViewData["Event"] = information;
+           
 
             return View();
         }

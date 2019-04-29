@@ -5,6 +5,7 @@ namespace TicketSystem.Models
     {
         public Organizer()
         {
+
         }
     }
 }
