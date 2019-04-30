@@ -1,0 +1,38 @@
+﻿@{
+    var Event = ViewBag.Event;
+}
+
+<h3 class="text-center mb-3">Create Event</h3>
+<form>
+    <div class="form-row">
+
+        <div class="form-group col-md-6">
+            <label for="inputFirstName4">First Name</label>
+            <input type="text" class="form-control" id="inputFirstName4" placeholder="First Name">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputSurname4">Surname</label>
+            <input type="text" class="form-control" id="inputSurname4" placeholder="Surname">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="example@gmail.com">
+    </div>
+    <div class="form-group">
+        <label for="inputConfirmEmail">Confirm Email</label>
+        <input type="email" class="form-control" id="inputConfirmEmail" placeholder="example@gmail.com">
+    </div>
+    <div class="form-group">
+        <label for="inputPhoneNumber">Phone Number</label>
+        <input type="number" class="form-control" id="inputPhoneNumber" placeholder="12345678">
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <button type="button" class="btn btn-primary">Back</button>
+        </div>
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary">Proceed to payment</button>
+        </div>
+    </div>
+</form>
