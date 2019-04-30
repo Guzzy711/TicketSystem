@@ -11,7 +11,7 @@ namespace TicketSystem.Controllers
 {
     public class OrganizerController : Controller
     {
-
+        Organizer organizer = new Organizer();
         DBhelper dbhelper = new DBhelper();
 
         public IActionResult Index()
@@ -37,13 +37,16 @@ namespace TicketSystem.Controllers
         }
 
         [HttpPost]                                   //route
-        public IActionResult Index(string name, string password)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+        public IActionResult CreateOrganizer(string name, string password)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
         {
             if (ModelState.IsValid)
             {
-               //InsertLogin(model.Name, model.Password);         //Mangler database
-
-                return RedirectToAction("Index", "Home");           //skal laves om til organizer home
+                //InsertLogin(model.Name, model.Password);         //Mangler database
+                organizer.Name = name;
+                organizer.Password = password;
+                ViewBag.Message = organizer.Name;
+                dbhelper.InsertQueryToDB($"INSERT INTO Organizers(ContactPerson, Password) VALUES ('{organizer.Name}','{organizer.Password}')");
+                return RedirectToAction("Index", "Organizer");           //skal laves om til organizer home
             }
 
             return View();

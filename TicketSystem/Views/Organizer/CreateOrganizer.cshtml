@@ -1,16 +1,31 @@
 ﻿
 @{
-
+    var organizer = ViewBag.Organizer;
 }
 
-<h2>Create Organizer account</h2>
 
-<form>
-<label>Email Address </label>
-<input type="text" />
+<p>
+    @ViewBag.Message
 
-<label>Password</label>
-<input type="password" />
+</p>
+<h2>Create Organizer</h2>
 
-<input type="submit" value="Create User" />
-</form>
+@using (Html.BeginForm())
+{
+    @Html.Label("Contact person name") <br />
+    @Html.TextBox("Name", null, new { required = true, placeholder = "Contact Person name" })<br />
+
+    <Br>
+
+    @Html.Label("Password") <br />
+    @Html.Password("Password", null, new { required = true, placeholder = "Password" })<br />
+
+
+    <button type="submit"> Submit </button>
+}
+
+
+
+
+
+
