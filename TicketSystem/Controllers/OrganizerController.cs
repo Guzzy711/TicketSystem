@@ -22,6 +22,12 @@ namespace TicketSystem.Controllers
 
             return View();
         }
+        public IActionResult OrganizerLandingPage()
+        {
+
+
+            return View();
+        }
     }
 
 }
