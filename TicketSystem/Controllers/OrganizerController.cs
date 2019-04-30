@@ -37,15 +37,19 @@ namespace TicketSystem.Controllers
         }
 
         [HttpPost]                                   //route
-        public IActionResult CreateOrganizer(string name, string password)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+        public IActionResult CreateOrganizer(string name, string password, string email, int phonenumber, string organizationName)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
         {
             if (ModelState.IsValid)
             {
                 //InsertLogin(model.Name, model.Password);         //Mangler database
                 organizer.Name = name;
                 organizer.Password = password;
+                organizer.Email = email;
+                organizer.Phonenumber = phonenumber;
+                organizer.OrganizationName = organizationName;
+
                 ViewBag.Message = organizer.Name;
-                dbhelper.InsertQueryToDB($"INSERT INTO Organizers(ContactPerson, Password) VALUES ('{organizer.Name}','{organizer.Password}')");
+                dbhelper.InsertQueryToDB($"INSERT INTO Organizers(ContactPerson, Password, PhoneNumber, EmailAddress, OrganizationName) VALUES ('{organizer.Name}','{organizer.Password}','{organizer.Phonenumber}','{organizer.Email}','{organizer.OrganizationName}')");
                 return RedirectToAction("Index", "Organizer");           //skal laves om til organizer home
             }
 

@@ -17,8 +17,28 @@
 
     <Br>
 
+    @Html.Label("Organization name") <br />
+    @Html.TextBox("OrganizationName", null, new { required = true, placeholder = "Organization Name" })<br />
+
+    <Br>
+
+    @Html.Label("Phonenumber") <br />
+    @Html.TextBox("Phonenumber", null, new { required = true, placeholder = "Phonenumber" })<br />
+
+    <Br>
+
+    @Html.Label("Email Address") <br />
+    @Html.TextBox("Email", null, new { required = true, placeholder = "Email Address" })<br />
+
+    <Br>
+
     @Html.Label("Password") <br />
     @Html.Password("Password", null, new { required = true, placeholder = "Password" })<br />
+
+    <Br>
+
+
+
 
 
     <button type="submit"> Submit </button>
