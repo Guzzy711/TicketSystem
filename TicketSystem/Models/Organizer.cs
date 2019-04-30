@@ -3,10 +3,11 @@ namespace TicketSystem.Models
 {
     public class Organizer
     {
+        [Required]
         public string Name { get; set; }
-        public Organizer()
-        {
 
-        }
+        [Required]
+        public string Password { get; set; }
+    
     }
 }
