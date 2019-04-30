@@ -14,5 +14,10 @@ namespace TicketSystem.Controllers
 
             return View();
         }
+
+        public IActionResult CreateEvent()
+        {
+            return View();
+        }
     }
 }
