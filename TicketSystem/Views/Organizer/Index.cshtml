@@ -10,17 +10,22 @@
 </p>
 <h2>Organizer Login-page</h2>
 
-<form>
-    <label>Email Address </label>
-    <input type ="text"/>
+@using (Html.BeginForm())
+{
+    @Html.Label("Name") <br />
+    @Html.TextBox("Name")<br />
 
-    <label>Password</label>
-    <input type="password" />
+    <Br>
 
-    <input type="submit" />
+    @Html.Label("Password") <br />
+    @Html.TextBox("Password")<br />
 
 
-    <p>Click here to register as new user</p>
-    <button>Click Me</button>
-</form>
+    <button type="submit"> Submit </button>
+}
+
+
+
+
+
 
