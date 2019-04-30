@@ -12,37 +12,38 @@
 
 @using (Html.BeginForm())
 {
-    @Html.Label("Contact person name") <br />
-    @Html.TextBox("Name", null, new { required = true, placeholder = "Contact Person name" })<br />
+    <div class="form-group">
+        @Html.Label("Contact person name") <br />
+        @Html.TextBox("Name", null, new { required = true, placeholder = "Contact Person name", @class="form-control" })<br />
+        </div>
+        <Br>
 
-    <Br>
+        @Html.Label("Organization name") <br />
+        @Html.TextBox("OrganizationName", null, new { required = true, placeholder = "Organization Name" })<br />
 
-    @Html.Label("Organization name") <br />
-    @Html.TextBox("OrganizationName", null, new { required = true, placeholder = "Organization Name" })<br />
+        <Br>
 
-    <Br>
+        @Html.Label("Phonenumber") <br />
+        @Html.TextBox("Phonenumber", null, new { required = true, placeholder = "Phonenumber" })<br />
 
-    @Html.Label("Phonenumber") <br />
-    @Html.TextBox("Phonenumber", null, new { required = true, placeholder = "Phonenumber" })<br />
+        <Br>
 
-    <Br>
+        @Html.Label("Email Address") <br />
+        @Html.TextBox("Email", null, new { required = true, placeholder = "Email Address" })<br />
 
-    @Html.Label("Email Address") <br />
-    @Html.TextBox("Email", null, new { required = true, placeholder = "Email Address" })<br />
+        <Br>
 
-    <Br>
+        @Html.Label("Password") <br />
+        @Html.Password("Password", null, new { required = true, placeholder = "Password" })<br />
 
-    @Html.Label("Password") <br />
-    @Html.Password("Password", null, new { required = true, placeholder = "Password" })<br />
-
-    <Br>
-
-
-
+        <Br>
 
 
-    <button type="submit"> Submit </button>
-}
+
+
+
+        <button type="submit"> Submit </button>
+        }
 
 
 
