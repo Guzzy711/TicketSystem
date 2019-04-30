@@ -10,22 +10,21 @@ namespace TicketSystem.Controllers
     {
         public IActionResult Index()
         {
-
-
-            return View();
+         return View();
         }
-
 
         public IActionResult CreateOrganizer()
         {
-
-
             return View();
         }
+
         public IActionResult OrganizerLandingPage()
         {
+            return View();
+        }
 
-
+        public IActionResult OrganizerViewEvent()
+        {
             return View();
         }
     }
