@@ -2,7 +2,7 @@
 using System.Data; 
 using MySql.Data.MySqlClient;
 
-namespace TicketSystem.Models
+namespace TicketSystem.Helpers
 {
     public class DBhelper
     {
@@ -10,7 +10,14 @@ namespace TicketSystem.Models
 
         public DBhelper()
         {
-            string connectionString = "";
+            string server = "mysql6.unoeuro.com";
+            string dataBase = "guzzy_dk_db2";
+            string username = "guzzy_dk";
+            string password = "pvnzxc123456";
+
+
+
+            string connectionString = $"SERVER={server};DATABASE={dataBase};UID={username};PASSWORD={password}";
             dbConnection = new MySqlConnection(connectionString); 
         }
 
