@@ -19,25 +19,7 @@ namespace TicketSystem.Controllers
          return View();
         }
 
-            var query = dbhelper.SelectQuery("SELECT * FROM Organizers");
-
-            string s = ""; 
-
-            foreach (DataRow row in query.Rows)
-            {
-                s += row["OrganizationName"]; 
-            }
-
-            Organizer organizer = new Organizer
-            {
-                Name = s
-            };
-
-
-            ViewBag.Message = organizer.Name; 
-
-            return View();
-        }
+            
 
         [HttpPost]                                   //route
         public IActionResult CreateOrganizer(string name, string password, string email, int phonenumber, string organizationName)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
