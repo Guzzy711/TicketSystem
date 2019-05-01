@@ -12,32 +12,31 @@
     </form>
 </div>
 
-<form>
-    <div class="form-group col-md-6">
-        <label for="eventname">Event name *</label>
-        <input type="text" class="form-control" id="eventname" placeholder="Event Name" required>
-    </div>
-    <div class="form-group col-md-6">
-        <label for="location">Location *</label>
-        <input type="text" class="form-control" id="location" placeholder="Aalborg Universitet" required>
-    </div>
-    <div class="form-group col-md-6">
-        <label for="date">Date *</label>
-        <input type="date" class="form-control" id="Date" placeholder="13/10/2019" required>
-    </div>
-    <div class="form-group col-md-6">
-        <label for="time">Time *</label>
-        <input type="time" class="form-control" id="Time" placeholder="20:30" required>
-    </div>
-    <div class="form-group col-md-6">
-        <label for="totaltickets">Total amount of tickets *</label>
-        <input type="number" class="form-control" id="TotalTickets" placeholder="100" required>
-    </div>
-    <div class="form-group col-md-6">
-        <label for="price">Price *</label>
-        <input type="number" class="form-control" id="Price" placeholder="12 kr." required>
-    </div>
-</form>
+<div class="col-md-6">
+    @using (Html.BeginForm())
+    {
+        <div class="form-group mb-0">
+            @Html.Label("Event name *") <br />
+            @Html.TextBox("Event name", null, new { required = true, placeholder = "Event name", @class = "form-control" })<br />
+        </div>
+        <div class="form-group mb-0">
+            @Html.Label("Location *") <br />
+            @Html.TextBox("Location", null, new { required = true, placeholder = "Location", @class = "form-control" })<br />
+        </div>
+        <div class="form-group mb-0">
+            @Html.Label("Date and time *") <br />
+            @Html.TextBox("Date and time", null, new { required = true, placeholder = "Date and time", @class = "form-control" })<br />
+        </div>
+        <div class="form-group mb-0">
+            @Html.Label("Total amount of tickets *") <br />
+            @Html.TextBox("Total amount of tickets", null, new { required = true, placeholder = "Total amount of tickets", @class = "form-control" })<br />
+        </div>
+        <div class="form-group mb-0">
+            @Html.Label("Price *") <br />
+            @Html.TextBox("Price", null, new { required = true, placeholder = "Price", @class = "form-control" })<br />
+        </div>
+    }
+</div>
 <div class="form-group col-md-4">
     <form action="upload.php" method="post">
         <label for="image">Image</label>
