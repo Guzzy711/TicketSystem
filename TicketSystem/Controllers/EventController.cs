@@ -22,7 +22,7 @@ namespace TicketSystem.Controllers
         }
 
         [HttpPost]                                   //route
-        public IActionResult CreateEvent(string name, string location, DateTime date, DateTime time, int amount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+        public IActionResult CreateEvent(string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
         {
             if (ModelState.IsValid)
             {
@@ -31,7 +31,7 @@ namespace TicketSystem.Controllers
                 events.Location = location;
                 events.Date = date;
                 events.Time = time;
-                events.TicketAmount = amount;
+                events.TicketAmount = ticketamount;
                 events.Price = price;
                 events.Image = image;
                 events.Description = description;
