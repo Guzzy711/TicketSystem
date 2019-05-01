@@ -21,8 +21,6 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-
-
         [HttpPost]                                   //route
         public IActionResult CreateEvent(string name, string location, DateTime date, DateTime time, int amount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
         {
@@ -37,24 +35,19 @@ namespace TicketSystem.Controllers
                 events.Price = price;
                 events.Image = image;
                 events.Description = description;
-           
-               
-                
 
                 ViewBag.Message = events.Name;
-                dbhelper.InsertQueryToDB($"INSERT INTO Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{events.Name}','{events.Location}','{events.Date}','{events.Time}''{events.TicketAmount}','{events.Price}','{events.Image}','{events.Description}'");
-                return RedirectToAction("Index", "Evemt");           //skal laves om til organizer home
+                dbhelper.InsertQueryToDB($"INSERT INTO Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{events.Name}','{events.Location}','{events.Date}','{events.Time}','{events.TicketAmount}','{events.Price}','{events.Image}','{events.Description}')");
+                return RedirectToAction("Index", "Event");           //skal laves om til organizer home
             }
 
             return View();
         }
 
-
-
-
-
-
-
+        public IActionResult CreateEvent()
+        {
+            return View();
+        }
 
         public IActionResult EditEvent()
         {
