@@ -14,6 +14,7 @@ namespace TicketSystem.Controllers
         Organizer organizer = new Organizer();
         DBhelper dbhelper = new DBhelper();
 
+
         public IActionResult Index()
         {
          return View();
