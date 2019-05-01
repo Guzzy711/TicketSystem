@@ -26,7 +26,6 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                //InsertLogin(model.Name, model.Password);         //Mangler database
                 organizer.Name = name;
                 organizer.Password = password;
                 organizer.Email = email;
@@ -44,8 +43,6 @@ namespace TicketSystem.Controllers
 
 
  
-
-
 
         public IActionResult CreateOrganizer()
         {
