@@ -34,7 +34,6 @@ namespace TicketSystem.Controllers
                 } else
                 {
                     ViewBag.error = "Wrong username or password";
-                    ViewBag.alert = true;
                 }
                
                    
