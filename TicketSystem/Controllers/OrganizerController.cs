@@ -14,8 +14,31 @@ namespace TicketSystem.Controllers
         Organizer organizer = new Organizer();
         DBhelper dbhelper = new DBhelper();
 
+
         public IActionResult Index()
         {
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Index(string email, string password)
+        {
+            if (ModelState.IsValid)
+            {
+                string queryString = $"SELECT * FROM Organizers WHERE EmailAddress='{email}' AND Password='{password}'";
+                var result = dbhelper.SelectQuery(queryString);
+                if (result.Rows.Count == 1)
+                {
+                    return RedirectToAction("OrganizerLandingPage", "Organizer");          
+                } else
+                {
+                    ViewBag.error = "Wrong username or password";
+                    ViewBag.alert = true;
+                }
+               
+                   
+            }
          return View();
         }
 

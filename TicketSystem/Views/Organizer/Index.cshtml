@@ -1,11 +1,12 @@
 ﻿
 @{
-    var organizer = ViewBag.Organizer;
+
 }
 
 
 <p>
     @ViewBag.Message
+
 
 </p>
 ﻿
@@ -14,26 +15,37 @@
 }
 
 <h2 class="mt-3 mb-3">Organizer Login-page</h2>
-
-<form>
-    <div class="col-12">
+<div class="row">
+    <div class="col-12 ">
         <div class="card w-50">
             <div class="card-body">
+                @if(ViewBag.error != null){
+                <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-circle"></i> @ViewBag.error
+                </div>
+                }
+
+
+                @using (Html.BeginForm())
+              {
                 <div class="form-group">
-                    <label for="loginemail">Email address *</label>
-                    <input type="email" class="form-control" id="loginemail" aria-describedby="emailHelp" placeholder="Enter email" required>
+                    @Html.Label("Email Address *") 
+                    @Html.TextBox("Email", null, new { required = true, placeholder = "Email Address", @class = "form-control",type="email", id="loginemail" })<br />
                     <small id="emailHelp" class="form-text text-muted">Enter your email to login.</small>
                 </div>
 
                 <div class="form-group">
-                    <label for="loginpassword">Password *</label>
-                    <input type="password" class="form-control" id="loginpassword" placeholder="Password" required>
+                    @Html.Label("Password *") <br />
+                    @Html.Password("Password", null, new { required = true, placeholder = "Password", @class = "form-control", id="loginpassword" })<br />
+
                 </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+            }
+            </div>
             </div>
         </div>
     </div>
-</form>
+
 
 
 
