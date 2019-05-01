@@ -14,34 +14,41 @@ namespace TicketSystem.Controllers
         Organizer organizer = new Organizer();
         DBhelper dbhelper = new DBhelper();
 
+
         public IActionResult Index()
         {
-            var query = dbhelper.SelectQuery("SELECT * FROM Organizers");
-
-            string s = ""; 
-
-            foreach (DataRow row in query.Rows)
-            {
-                s += row["OrganizationName"]; 
-            }
-
-            Organizer organizer = new Organizer
-            {
-                Name = s
-            };
-
-
-            ViewBag.Message = organizer.Name; 
 
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Index(string email, string password)
+        {
+            if (ModelState.IsValid)
+            {
+                string queryString = $"SELECT * FROM Organizers WHERE EmailAddress='{email}' AND Password='{password}'";
+                var result = dbhelper.SelectQuery(queryString);
+                if (result.Rows.Count == 1)
+                {
+                    return RedirectToAction("OrganizerLandingPage", "Organizer");          
+                } else
+                {
+                    ViewBag.error = "Wrong username or password";
+                    ViewBag.alert = true;
+                }
+               
+                   
+            }
+         return View();
+        }
+
+            
 
         [HttpPost]                                   //route
         public IActionResult CreateOrganizer(string name, string password, string email, int phonenumber, string organizationName)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
         {
             if (ModelState.IsValid)
             {
-                //InsertLogin(model.Name, model.Password);         //Mangler database
                 organizer.Name = name;
                 organizer.Password = password;
                 organizer.Email = email;
@@ -57,19 +64,22 @@ namespace TicketSystem.Controllers
         }
 
 
-
-        private void InsertLoginInformatin(string name, string password)
-        {
-
-        }
-
-
-
-
         public IActionResult CreateOrganizer()
         {
+            return View();
+        }
 
+        public IActionResult OrganizerLandingPage()
+        {
+            return View();
+        }
 
+        public IActionResult OrganizerViewEvent()
+        {
+            return View();
+        }
+        public IActionResult ChangeLoginInfo()
+        {
             return View();
         }
     }

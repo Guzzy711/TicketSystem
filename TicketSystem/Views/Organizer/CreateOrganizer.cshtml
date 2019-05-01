@@ -1,8 +1,7 @@
 ﻿
 @{
-    var organizer = ViewBag.Organizer;
-}
 
+}
 
 <p>
     @ViewBag.Message
@@ -43,13 +42,19 @@
     </div>
         <Br>
 
+        <div class="form-group mb-0">
+            @Html.Label("Password") <br />
+            @Html.Password("Password", null, new { required = true, placeholder = "Password", @class = "form-control" })<br />
+        </div>
 
 
 
 
-        <button type="submit"> Submit </button>
-        }
 
+        <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Submit </button>
+}
+        </div>
+    </div>
 
 
 
