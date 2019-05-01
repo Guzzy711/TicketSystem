@@ -21,7 +21,7 @@
             @Html.Label("Location *") <br />
             @Html.TextBox("Location", null, new { required = true, placeholder = "Location", @class = "form-control" })<br />
         </div>
-        <div class="form-group mb-0">1
+        <div class="form-group mb-0">
             @Html.Label("Date *") <br />
             @Html.TextBox("Date", null, new { required = true, placeholder = "Date and time", @class = "form-control", @type = "date" })<br />
         </div>
@@ -42,6 +42,9 @@
             @Html.TextBox("Image", null, new { placeholder = "Image", @class = "form-control", @type = "file" })<br />
         </div>
     </div>
+
+
+
     <div class="row mt-5">
         <div class="col-8">
             <button type="button" class="btn btn-primary">Back</button>
