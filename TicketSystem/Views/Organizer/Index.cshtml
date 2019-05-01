@@ -1,21 +1,39 @@
 ﻿
 @{
+    var organizer = ViewBag.Organizer;
+}
+
+
+<p>
+    @ViewBag.Message
+
+</p>
+﻿
+@{
 
 }
 
-<h2>Organizer Login-page</h2>
+<h2 class="mt-3 mb-3">Organizer Login-page</h2>
 
 <form>
-    <label>Email Address </label>
-    <input type ="text"/>
+    <div class="col-12">
+        <div class="card w-50">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="loginemail">Email address *</label>
+                    <input type="email" class="form-control" id="loginemail" aria-describedby="emailHelp" placeholder="Enter email" required>
+                    <small id="emailHelp" class="form-text text-muted">Enter your email to login.</small>
+                </div>
 
-    <label>Password</label>
-    <input type="password" />
-
-    <input type="submit" />
-
-
-    <p>Click here to register as new user</p>
-    <button>Click Me</button>
+                <div class="form-group">
+                    <label for="loginpassword">Password *</label>
+                    <input type="password" class="form-control" id="loginpassword" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
+        </div>
+    </div>
 </form>
+
+
 
