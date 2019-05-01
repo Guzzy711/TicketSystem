@@ -43,11 +43,7 @@ namespace TicketSystem.Controllers
 
 
 
-        private void InsertLoginInformatin(string name, string password)
-        {
-
-        }
-
+ 
 
 
 
