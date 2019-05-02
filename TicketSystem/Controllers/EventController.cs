@@ -15,33 +15,11 @@ namespace TicketSystem.Controllers
 
         public IActionResult Index()
         {
-            string columns = "EventName, Location, Description"; 
-            DataTable queryResult = dBhelper.SelectQuery($"SELECT {columns} FROM Events");
-
-            string[,] events = new string[queryResult.Rows.Count,queryResult.Columns.Count];
-
-            int rowCounter = 0;
-            int columnCounter=0;
-
-            foreach (DataRow row in queryResult.Rows)
-            {
-                columnCounter = 0; 
-                foreach (DataColumn column in queryResult.Columns)
-                {
-                    events[rowCounter, columnCounter] = (string)row[column.ColumnName];
-                    columnCounter++;
-                }
-                rowCounter++;
-            }
-
-          
-            ViewBag.rows = rowCounter;
-            ViewBag.cols = columnCounter;
-           
-            ViewBag.events = events;
+            ViewBag.Events = dBhelper.CreateEventObjectsFromQuery(); 
 
             return View();
         }
+
         public IActionResult ViewEvent()
         {
             return View();

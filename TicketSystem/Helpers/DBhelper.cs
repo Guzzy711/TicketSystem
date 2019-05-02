@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data; 
 using MySql.Data.MySqlClient;
+using TicketSystem.Models;
 
 namespace TicketSystem.Helpers
 {
@@ -122,6 +123,35 @@ namespace TicketSystem.Helpers
                 Console.WriteLine("Could not delete from database");
                 throw error; 
             }
+        }
+
+        public Event[] CreateEventObjectsFromQuery()
+        {
+            string query = "SELECT * FROM Events"; 
+            DataTable queryResult = SelectQuery(query);
+
+            Event[] events = new Event[queryResult.Rows.Count];
+
+            int counter = 0;
+
+            foreach (DataRow row in queryResult.Rows)
+            {
+                var EventID = (int)row["EventID"];
+                var EventName = (string)row["EventName"];
+                var Location = (string)row["Location"];
+                var Date = (DateTime)row["Date"];
+                var Time = (TimeSpan)row["Time"];
+                var TicketAmount = (int)row["TicketAmount"];
+                var Price = (float)row["Price"];
+                var Description = (string)row["Description"];
+                var ActiveState = (bool)row["ActiveState"];
+
+                events[counter] = new Event(EventID,EventName,Location,Date, Time,TicketAmount,Price,Description,ActiveState);
+                counter++; 
+            }
+
+            return events; 
+
         }
 
     }

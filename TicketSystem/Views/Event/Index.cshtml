@@ -1,25 +1,14 @@
 ﻿@{
 
-    var rows = ViewBag.rows;
-    var cols = ViewBag.cols; 
-    var events = ViewBag.events;
+    Event[] events = ViewBag.events;
 }
-<table>
 
-    @for (int i = 0; i < rows; i++)
-    {
-        <tr>
-            @for (int j = 0; j < cols; j++)
-            {
-                <td>
-                    @events[i, j]
-                </td>
+@foreach(var e in events){
+    <p>@e.EventName</p>
+    <p>@e.Price</p>
+    <p>@e.Time</p>
+    <p>@e.Date</p>
+    <hr />
+}
 
-            }
-
-        </tr>
-
-    }
-
-</table>
 
