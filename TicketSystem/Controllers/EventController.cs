@@ -76,8 +76,27 @@ namespace TicketSystem.Controllers
         }
 
 
-        public IActionResult EditEvent()
+     
+              [HttpPost]                                   //route
+        public IActionResult EditEvent(string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
         {
+            if (ModelState.IsValid)
+            {
+                //InsertLogin(model.Name, model.Password);         //Mangler database
+                events.Name = name;
+                events.Location = location;
+                events.Date = date;
+                events.Time = time;
+                events.TicketAmount = ticketamount;
+                events.Price = price;
+                events.Image = image;
+                events.Description = description;
+
+                ViewBag.Message = events.Name;
+                dbhelper.InsertQueryToDB($"UPDATE Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{events.Name}','{events.Location}','{events.Date}','{events.Time}','{events.TicketAmount}','{events.Price}','{events.Image}','{events.Description}')");
+                return RedirectToAction("Index", "Event");           //skal laves om til organizer home
+            }
+
             return View();
         }
     }
