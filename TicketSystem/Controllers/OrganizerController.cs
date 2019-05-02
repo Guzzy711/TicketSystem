@@ -64,6 +64,9 @@ namespace TicketSystem.Controllers
         }
 
 
+
+ 
+
         public IActionResult CreateOrganizer()
         {
             return View();

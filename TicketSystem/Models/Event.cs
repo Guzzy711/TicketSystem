@@ -7,13 +7,18 @@ namespace TicketSystem.Models
 {
     public class Event
     {
-        public string EventName { get; set; }
-        public string Price { get; set; }
-        //public DateTime (date)
-        //public ??? (time)
+
+        public string Name { get; set; }
         public string Location { get; set; }
-        //public DateTime (deadline)
-        public int EventID { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
+        public int TicketAmount { get; set; }
+        public int Price { get; set; }
+        public string Image { get; set; }
+        public string Description { get; set; }
+
+
+
 
 
     }
