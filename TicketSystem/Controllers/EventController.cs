@@ -50,9 +50,6 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-       
-
-
      
               [HttpPost]                                   //route
         public IActionResult EditEvent(string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
@@ -74,6 +71,10 @@ namespace TicketSystem.Controllers
                 return RedirectToAction("Index", "Event");           //skal laves om til organizer home
             }
 
+            return View();
+        }
+        public IActionResult EditEvent()
+        {
             return View();
         }
     }
