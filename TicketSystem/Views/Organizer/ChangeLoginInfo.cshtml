@@ -3,52 +3,46 @@
     ViewData["Title"] = "ChangeLoginInfo";
 }
 
-<h3 id="ChangeLoginInfo" class="text-left mb-2 mt-2">Change login information</h3>
+<h2>Change login information</h2>
 
-<div class="row">
-    <div class="col-10 mb-3 float-right">
-        <button type="button" class="btn btn-primary float-right">Delete account</button>
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-10 mb-3 float-right">
+            <button type="button" class="btn btn-primary float-right">Delete account</button>
+        </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group mb-0">
+                @Html.Label("Contact Person name") <br />
+                @Html.TextBox("Name", null, new { required = true, placeholder = "Contact Person name", @class = "form-control" })<br />
+            </div>
 
-<form>
-    <div class="form-group col-md-6">
-        <label for="email">Email *</label>
-        <input type="text" class="form-control" id="email" placeholder="Email" required>
-    </div>
-    <div class="form-group col-md-6">
-        <label for="confirmemail">Confirm email *</label>
-        <input type="text" class="form-control" id="confirmemail" placeholder="Confirm email" required>
-    </div>
-    <div class="form-group col-md-6">
-        <label for="firstname">First name *</label>
-        <input type="text" class="form-control" id="firstname" placeholder="First name" required>
-    </div>
-    <div class="form-group col-md-6">
-        <label for="organizationname">Organization name *</label>
-        <input type="text" class="form-control" id="OrganizationName" placeholder="Organization name" required>
-    </div>
-    <div class="form-group col-md-6">
-        <label for="phonenumber">Phone number *</label>
-        <input type="number" class="form-control" id="PhoneNumber" placeholder="12345678" required>
-    </div>
-    <div class="form-group col-md-6">
-        <label for="password">Password *</label>
-        <input type="password" class="form-control" id="Password" placeholder="Password" required>
-    </div>
-</form>
-<div class="form-group col-md-4">
-    <form action="upload.php" method="post">
-        <label for="profilepicture">Profile picture</label>
-        <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" placeholder="Image.png">
-    </form>
-</div>
+            <div class="form-group mb-0">
+                @Html.Label("Organization name") <br />
+                @Html.TextBox("OrganizationName", null, new { required = true, placeholder = "Organization Name", @class = "form-control" })<br />
+            </div>
 
-<div class="row">
-    <div class="col-8">
-        <button type="button" class="btn btn-primary">Back</button>
+            <div class="form-group mb-0">
+                @Html.Label("Phonenumber") <br />
+                @Html.TextBox("Phonenumber", null, new { required = true, placeholder = "Phone number", @class = "form-control", @type = "number" })<br />
+
+            </div>
+
+            <div class="form-group mb-0">
+                @Html.Label("Email Address") <br />
+                @Html.TextBox("Email", null, new { required = true, placeholder = "Email Address", @class = "form-control" })<br />
+
+            </div>
+
+            <div class="form-group mb-0">
+                @Html.Label("Password") <br />
+                @Html.Password("Password", null, new { required = true, placeholder = "Password", @class = "form-control", @type = "password" })<br />
+            </div>
+
+            <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Save changes </button>
+            
+        </div>
     </div>
-    <div class="col-4">
-        <button type="submit" class="btn btn-primary">Register</button>
-    </div>
-</div>
+}
