@@ -50,30 +50,7 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-        [HttpPost]                                   //route
-        public IActionResult OrderTicket(string CustomerFirstname, string CustomerSurname, string CustomerEmail, int CustomerPhonenumber)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
-        {
-            if (ModelState.IsValid)
-            {
-                ticket.CustomerFirstname = CustomerFirstname;
-                ticket.CustomerSurname = CustomerSurname;
-                ticket.CustomerEmail = CustomerEmail;
-                ticket.CustomerPhonenumber = CustomerPhonenumber;
-
-
-
-                ViewBag.Message = ticket.CustomerFirstname;
-                dbhelper.InsertQueryToDB($"INSERT INTO Tickets(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhonenumber) VALUES ('{ticket.CustomerFirstname}','{ticket.CustomerSurname}','{ticket.CustomerEmail}','{ticket.CustomerPhonenumber}')");
-                return RedirectToAction("OrganizerLandingPage", "Organizer");           //skal laves om til organizer home
-            }
-
-            return View();
-        }
-
-        public IActionResult OrderTicket()
-        {
-            return View();
-        }
+       
 
 
         public IActionResult EditEvent()
