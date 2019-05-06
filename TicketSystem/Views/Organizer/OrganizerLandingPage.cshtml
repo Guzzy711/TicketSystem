@@ -1,15 +1,25 @@
 ﻿
 @{
     ViewData["Title"] = "Organizer LandingPage";
+    var login = (string)ViewBag.login;
 }
+<h3>@ViewBag.Login</h3>
 
+@if (login == "loggedin")
+{
+    <p> Du er logget ind</p>
+}
+else
+{
+    <p>Du er logget ud</p>
+}
 <div class="row">
     <div class="col-12">
         <h2>@ViewData["Title"]</h2>
     </div>
 
     <div class="row">
-            <a href="#" class="btn btn-primary w-100 mt-2">+ Create event</a>
+        <a href="#" class="btn btn-primary w-100 mt-2">+ Create event</a>
     </div>
     <div class="card w-100 mt-3">
         <div class="card-body">

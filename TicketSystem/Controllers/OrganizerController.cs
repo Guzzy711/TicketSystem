@@ -5,24 +5,29 @@ using System.Threading.Tasks;
 using System.Data; 
 using Microsoft.AspNetCore.Mvc;
 using TicketSystem.Helpers;
-using TicketSystem.Models; 
+using TicketSystem.Models;
+using System.Web;
+
+
 
 namespace TicketSystem.Controllers
 {
+
     public class OrganizerController : Controller
     {
         Organizer organizer = new Organizer();
         DBhelper dbhelper = new DBhelper();
 
 
-        public IActionResult Index()
-        {
 
+        public IActionResult Login()
+        {
+          
             return View();
         }
 
         [HttpPost]
-        public IActionResult Index(string email, string password)
+        public IActionResult Login(string email, string password)
         {
             if (ModelState.IsValid)
             {
@@ -30,7 +35,9 @@ namespace TicketSystem.Controllers
                 var result = dbhelper.SelectQuery(queryString);
                 if (result.Rows.Count == 1)
                 {
-                    return RedirectToAction("OrganizerLandingPage", "Organizer");          
+                    Session["login"] = "1";
+                    return RedirectToAction("OrganizerLandingPage", "Organizer");
+                              
                 } else
                 {
                     ViewBag.error = "Wrong username or password";
@@ -74,6 +81,10 @@ namespace TicketSystem.Controllers
 
         public IActionResult OrganizerLandingPage()
         {
+            if(Session["login"] == "loggedin")
+            {
+
+            }
             return View();
         }
 
