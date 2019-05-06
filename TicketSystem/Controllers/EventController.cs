@@ -70,10 +70,14 @@ namespace TicketSystem.Controllers
                 events.Description = description;
 
                 ViewBag.Message = events.Name;
-                dbhelper.InsertQueryToDB($"UPDATE Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{events.Name}','{events.Location}','{events.Date}','{events.Time}','{events.TicketAmount}','{events.Price}','{events.Image}','{events.Description}')");
+                dbhelper.InsertQueryToDB($"UPDATE Events (EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{events.Name}','{events.Location}','{events.Date}','{events.Time}','{events.TicketAmount}','{events.Price}','{events.Image}','{events.Description}')");
                 return RedirectToAction("Index", "Event");           //skal laves om til organizer home
             }
 
+            return View();
+        }
+        public IActionResult EditEvent()
+        {
             return View();
         }
     }
