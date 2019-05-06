@@ -125,9 +125,9 @@ namespace TicketSystem.Helpers
             }
         }
 
-        public Event[] CreateEventObjectsFromQuery()
+        public Event[] CreateEventObjectsFromQuery(string query)
         {
-            string query = "SELECT * FROM Events"; 
+
             DataTable queryResult = SelectQuery(query);
 
             Event[] events = new Event[queryResult.Rows.Count];

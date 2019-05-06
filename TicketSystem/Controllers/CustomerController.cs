@@ -21,13 +21,13 @@ namespace TicketSystem.Controllers
 
         public IActionResult LandingPage()
         {
-            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery(); 
+            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery("SELECT * FROM Events"); 
 
             return View();
         }
 
          [HttpPost]                                   //route
-        public IActionResult OrderTicket(string CustomerFirstname, string CustomerSurname, string CustomerEmail, int CustomerPhonenumber)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+        public IActionResult OrderTicket(string CustomerFirstname, string CustomerSurname, string CustomerEmail, int CustomerPhonenumber)      
         {
             if (ModelState.IsValid)
             {
@@ -39,8 +39,14 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-        public IActionResult OrderTicket()
+        public IActionResult OrderTicket(int id)
         {
+
+
+            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM Events WHERE EventID={id}");
+
+
+
             return View();
         }
 
