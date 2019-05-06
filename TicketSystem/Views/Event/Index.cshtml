@@ -6,8 +6,9 @@
 @foreach(var e in events){
     <p>@e.EventName</p>
     <p>@e.Price</p>
-    <p>@e.Time</p>
-    <p>@e.Date</p>
+    <p>@e.Time.Hours:@e.Time.Minutes</p>
+    <p>@e.Date.Day/@e.Date.Month/@e.Date.Year</p>
+
     <hr />
 }
 
