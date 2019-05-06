@@ -11,9 +11,6 @@ namespace TicketSystem.Controllers
 {
     public class EventController : Controller
     {
-
-        Event events = new Event();
-        Ticket ticket = new Ticket();
         DBhelper dbhelper = new DBhelper();
 
 
@@ -27,18 +24,8 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                //InsertLogin(model.Name, model.Password);         //Mangler database
-                events.Name = name;
-                events.Location = location;
-                events.Date = date;
-                events.Time = time;
-                events.TicketAmount = ticketamount;
-                events.Price = price;
-                events.Image = image;
-                events.Description = description;
-
-                ViewBag.Message = events.Name;
-                dbhelper.InsertQueryToDB($"INSERT INTO Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{events.Name}','{events.Location}','{events.Date}','{events.Time}','{events.TicketAmount}','{events.Price}','{events.Image}','{events.Description}')");
+               
+                dbhelper.InsertQueryToDB($"INSERT INTO Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
                 return RedirectToAction("Index", "Event");           //skal laves om til organizer home
             }
 
@@ -56,18 +43,8 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                //InsertLogin(model.Name, model.Password);         //Mangler database
-                events.Name = name;
-                events.Location = location;
-                events.Date = date;
-                events.Time = time;
-                events.TicketAmount = ticketamount;
-                events.Price = price;
-                events.Image = image;
-                events.Description = description;
-
-                ViewBag.Message = events.Name;
-                dbhelper.InsertQueryToDB($"UPDATE Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{events.Name}','{events.Location}','{events.Date}','{events.Time}','{events.TicketAmount}','{events.Price}','{events.Image}','{events.Description}')");
+               
+                dbhelper.InsertQueryToDB($"UPDATE Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
                 return RedirectToAction("Index", "Event");           //skal laves om til organizer home
             }
 
