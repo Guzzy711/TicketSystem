@@ -2,6 +2,8 @@
 using System.Data; 
 using MySql.Data.MySqlClient;
 using TicketSystem.Models;
+using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace TicketSystem.Helpers
 {
