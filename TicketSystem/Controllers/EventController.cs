@@ -25,7 +25,7 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid)
             {
                
-                dbhelper.InsertQueryToDB($"INSERT INTO Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
+                dbhelper.InsertQueryToDB($"INSERT INTO Events WHERE ActiveState = 1 (EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
                 return RedirectToAction("OrganizerLandingPage", "Organizer");           //skal laves om til organizer home
             }
 
