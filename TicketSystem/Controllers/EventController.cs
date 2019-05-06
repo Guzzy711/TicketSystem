@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data; 
+using System.Data;
+using System.Collections.Specialized;
 using Microsoft.AspNetCore.Mvc;
 using TicketSystem.Helpers;
 using TicketSystem.Models;
@@ -42,6 +43,8 @@ namespace TicketSystem.Controllers
                 return RedirectToAction("Index", "Event");           //skal laves om til organizer home
             }
 
+        public IActionResult ViewEvent()
+        {
             return View();
         }
 

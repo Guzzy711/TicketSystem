@@ -1,3 +1,4 @@
+<<<<<<< HEAD:TicketSystem/Views/Customer/OrderTicket.cshtml
 ﻿
 @{
     var Ticket = ViewBag.Ticket;
@@ -70,5 +71,20 @@
 
 
 
+=======
+﻿@{
+
+    Event[] events = ViewBag.events;
+}
+
+@foreach(var e in events){
+    <p>@e.EventName</p>
+    <p>@e.Price</p>
+    <p>@e.Time.Hours:@e.Time.Minutes</p>
+    <p>@e.Date.Day/@e.Date.Month/@e.Date.Year</p>
+
+    <hr />
+}
+>>>>>>> Database:TicketSystem/Views/Event/Index.cshtml
 
 
