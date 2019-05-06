@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data; 
 using MySql.Data.MySqlClient;
 using TicketSystem.Models;
@@ -154,6 +154,29 @@ namespace TicketSystem.Helpers
 
         }
 
+        public Organizer CreateOrganizerObject(int ID)
+        {
+            string query = $"SELECT * FROM Events WHERE Organizer_ID = {ID}";
+            var queryResult = SelectQuery(query);
+
+            Organizer organizer = new Organizer();
+
+            foreach (DataRow row in queryResult.Rows)
+            {
+                string organizationName = (string)row["OrganizationName"];
+                string contactPerson = (string)row["ContactPerson"];
+                string phoneNumber = (string)row["PhoneNumber"];
+                string emailAddress = (string)row["EmailAddress"];
+                string passWord = (string)row["Password"];
+                int organizerID = (int)row["Organizer_ID"];
+
+                organizer = new Organizer(contactPerson, passWord, phoneNumber, emailAddress, organizationName, organizerID);
+
+
+            }
+
+            return organizer;
+        }
 
     }
 }

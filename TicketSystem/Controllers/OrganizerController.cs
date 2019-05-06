@@ -15,7 +15,7 @@ namespace TicketSystem.Controllers
 
     public class OrganizerController : Controller
     {
-        Organizer organizer = new Organizer();
+
         DBhelper dbhelper = new DBhelper();
 
 
@@ -35,7 +35,6 @@ namespace TicketSystem.Controllers
                 var result = dbhelper.SelectQuery(queryString);
                 if (result.Rows.Count == 1)
                 {
-                   
                     return RedirectToAction("OrganizerLandingPage", "Organizer");
                               
                 } else
@@ -114,9 +113,13 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-        public IActionResult OrganizerLandingPage()
+        public IActionResult OrganizerLandingPage(int ID)
         {
-           
+
+
+
+            ViewBag.Organizer = dbhelper.CreateOrganizerObject(14); 
+
             return View();
         }
 

@@ -1,9 +1,13 @@
-﻿
+﻿@using TicketSystem.Helpers;
+
 @{
+
     ViewData["Title"] = "Organizer LandingPage";
     var login = (string)ViewBag.login;
+    var dbHelper = new DBhelper();
 }
 <h3>@ViewBag.Login</h3>
+
 
 @if (login == "loggedin")
 {
@@ -13,7 +17,11 @@ else
 {
     <p>Du er logget ud</p>
 }
+
+
+
 <div class="row">
+
     <div class="col-12">
         <h2>@ViewData["Title"]</h2>
     </div>
