@@ -10,8 +10,7 @@ namespace TicketSystem.Controllers
 {
    public class CustomerController : Controller
     {
-          Event events = new Event();
-          Ticket ticket = new Ticket();
+         
           DBhelper dbhelper = new DBhelper();
 
    
@@ -30,15 +29,8 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                ticket.CustomerFirstname = CustomerFirstname;
-                ticket.CustomerSurname = CustomerSurname;
-                ticket.CustomerEmail = CustomerEmail;
-                ticket.CustomerPhonenumber = CustomerPhonenumber;
 
-
-
-                ViewBag.Message = ticket.CustomerFirstname;
-                dbhelper.InsertQueryToDB($"INSERT INTO Tickets(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhonenumber) VALUES ('{ticket.CustomerFirstname}','{ticket.CustomerSurname}','{ticket.CustomerEmail}','{ticket.CustomerPhonenumber}')");
+                dbhelper.InsertQueryToDB($"INSERT INTO Tickets(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhonenumber) VALUES ('{CustomerFirstname}','{CustomerSurname}','{CustomerEmail}','{CustomerPhonenumber}')");
                 return RedirectToAction("LandingPage", "Customer");           //skal laves om til organizer home
             }
 
