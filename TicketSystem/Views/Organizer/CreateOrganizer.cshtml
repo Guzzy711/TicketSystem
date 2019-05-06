@@ -9,7 +9,7 @@
 </p>
 <h2>Create Organizer</h2>
 
-<<<<<<< HEAD
+
 <div class="row">
     <div class="col-6">
         @using (Html.BeginForm())
@@ -36,53 +36,8 @@
             </div>
             <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Submit </button>
         }
-=======
-@using (Html.BeginForm())
-{
-    <div class="form-group">
-        @Html.Label("Contact person name") <br />
-        @Html.TextBox("Name", null, new { required = true, placeholder = "Contact Person name", @class = "form-control" })<br />
-    </div>
-    <Br>
-    <div class="form-group">
-        @Html.Label("Organization name") <br />
-        @Html.TextBox("OrganizationName", null, new { required = true, placeholder = "Organization Name", @class = "form-control" })<br />
-    </div>
-    <Br>
-
-    <div class="form-group">
-        @Html.Label("Phonenumber") <br />
-        @Html.TextBox("Phonenumber", null, new { required = true, placeholder = "Phonenumber", @class = "form-control" })<br />
-
-    </div>
-
-    <Br>
-    <div class="form-group">
-        @Html.Label("Email Address") <br />
-        @Html.TextBox("Email", null, new { required = true, placeholder = "Email Address", @class = "form-control" })<br />
-
-    </div>
-
-    <Br>
-    <div class="form-group">
-        @Html.Label("Password") <br />
-        @Html.Password("Password", null, new { required = true, placeholder = "Password", @class = "form-control" })<br />
-    </div>
-        <Br>
-
-        <div class="form-group mb-0">
-            @Html.Label("Password") <br />
-            @Html.Password("Password", null, new { required = true, placeholder = "Password", @class = "form-control" })<br />
-        </div>
 
 
-
-
-
-        <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Submit </button>
-}
-        </div>
->>>>>>> Database
     </div>
 </div>
 
