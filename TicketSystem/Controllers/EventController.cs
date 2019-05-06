@@ -19,6 +19,15 @@ namespace TicketSystem.Controllers
             return View();
         }
 
+        [HttpPost]                                   //route
+        public IActionResult CreateEvent(string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive det på men fungere ikke:Index(OrganizerModel model
+        {
+            if (ModelState.IsValid)
+            {
+               
+                dbhelper.InsertQueryToDB($"INSERT INTO Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
+                return RedirectToAction("OrganizerLandingPage", "Organizer");           //skal laves om til organizer home
+            }
 
         public IActionResult ViewEvent()
         {
