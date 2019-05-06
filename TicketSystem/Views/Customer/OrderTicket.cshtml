@@ -39,7 +39,7 @@
 <h3 class="text-center mb-3">Order Ticket to @eventt.EventName</h3>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("OrderTicket","Customer",new {id = eventt.EventID},FormMethod.Post))
 {
     <div class="col-1g-4 col-lg-offset-4">
         <div class="form-group mb-0">
