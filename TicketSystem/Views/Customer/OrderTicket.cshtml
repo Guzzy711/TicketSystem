@@ -26,7 +26,7 @@
                         <li><b>@eventt.Location</b></li>
                         <li>@eventt.Date</li>
                         <li>@eventt.Time</li>
-                        <li>@eventt.Price</li>
+                        <li>@eventt.Price,-</li>
 
                     </ul>
                 </div>
@@ -34,9 +34,9 @@
         </div>
     </div>
 </div>
-}
+
 <hr>
-<h3 class="text-center mb-3">Order Ticket @ViewBag.Message</h3>
+<h3 class="text-center mb-3">Order Ticket to @eventt.EventName</h3>
 
 
 @using (Html.BeginForm())
@@ -69,11 +69,11 @@
             <button type="button" class="btn btn-primary">Back</button>
         </div>
         <div class="col-4">
-            <button type="submit" class="btn btn-primary">Proceed to payment</button>
+            <button type="submit" class="btn btn-primary" >Proceed to payment</button>
         </div>
     </div>
 }
-
+}
 
 
 
