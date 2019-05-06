@@ -20,14 +20,14 @@ namespace TicketSystem.Controllers
 
 
 
-        public IActionResult Login()
+        public IActionResult Index()
         {
           
             return View();
         }
 
         [HttpPost]
-        public IActionResult Login(string email, string password)
+        public IActionResult Index(string email, string password)
         {
             if (ModelState.IsValid)
             {
