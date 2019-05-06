@@ -55,14 +55,7 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                organizer.Name = name;
-                organizer.Password = password;
-                organizer.Email = email;
-                organizer.Phonenumber = phonenumber;
-                organizer.OrganizationName = organizationName;
-
-                ViewBag.Message = organizer.Name;
-                dbhelper.InsertQueryToDB($"INSERT INTO Organizers(ContactPerson, Password, PhoneNumber, EmailAddress, OrganizationName) VALUES ('{organizer.Name}','{organizer.Password}','{organizer.Phonenumber}','{organizer.Email}','{organizer.OrganizationName}')");
+                dbhelper.InsertQueryToDB($"INSERT INTO Organizers(ContactPerson, Password, PhoneNumber, EmailAddress, OrganizationName) VALUES ('{name}','{password}','{phonenumber}','{email}','{organizationName}')");
                 return RedirectToAction("Index", "Organizer");           //skal laves om til organizer home
             }
 
