@@ -21,6 +21,8 @@ namespace TicketSystem.Controllers
 
         public IActionResult LandingPage()
         {
+            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery(); 
+
             return View();
         }
 

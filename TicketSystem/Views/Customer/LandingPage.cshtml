@@ -1,7 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Ticket System";
+    var events = ViewBag.Events; 
 }
 
+@foreach (var eventt in events){
+    <p>@eventt.EventName</p>
+}
 
 <div class="row">
     <div class="col-12">
