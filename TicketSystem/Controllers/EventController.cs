@@ -26,7 +26,7 @@ namespace TicketSystem.Controllers
             {
                
                 dbhelper.InsertQueryToDB($"INSERT INTO Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
-                return RedirectToAction("Index", "Event");           //skal laves om til organizer home
+                return RedirectToAction("OrganizerLandingPage", "Organizer");           //skal laves om til organizer home
             }
 
             return View();
@@ -45,7 +45,7 @@ namespace TicketSystem.Controllers
             {
                
                 dbhelper.InsertQueryToDB($"UPDATE Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
-                return RedirectToAction("Index", "Event");           //skal laves om til organizer home
+                return RedirectToAction("OrganizerLandingPage", "Organizer");           //skal laves om til organizer home
             }
 
             return View();
