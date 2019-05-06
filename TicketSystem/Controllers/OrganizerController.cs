@@ -35,7 +35,7 @@ namespace TicketSystem.Controllers
                 var result = dbhelper.SelectQuery(queryString);
                 if (result.Rows.Count == 1)
                 {
-                    Session["login"] = "1";
+                   
                     return RedirectToAction("OrganizerLandingPage", "Organizer");
                               
                 } else
@@ -81,10 +81,7 @@ namespace TicketSystem.Controllers
 
         public IActionResult OrganizerLandingPage()
         {
-            if(Session["login"] == "loggedin")
-            {
-
-            }
+           
             return View();
         }
 
