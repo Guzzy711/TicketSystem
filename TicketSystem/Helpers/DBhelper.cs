@@ -136,15 +136,15 @@ namespace TicketSystem.Helpers
 
             foreach (DataRow row in queryResult.Rows)
             {
-                var EventID = (int)row["EventID"];
-                var EventName = (string)row["EventName"];
-                var Location = (string)row["Location"];
-                var Date = (DateTime)row["Date"];
-                var Time = (TimeSpan)row["Time"];
-                var TicketAmount = (int)row["TicketAmount"];
-                var Price = (float)row["Price"];
-                var Description = (string)row["Description"];
-                var ActiveState = (bool)row["ActiveState"];
+                var EventID = (int)row["id"];
+                var EventName = (string)row["event_name"];
+                var Location = (string)row["location"];
+                var Date = (DateTime)row["date"];
+                var Time = (TimeSpan)row["time"];
+                var TicketAmount = (int)row["ticket_amount"];
+                var Price = (float)row["price"];
+                var Description = (string)row["description"];
+                var ActiveState = (bool)row["active_state"];
 
                 events[counter] = new Event(EventID,EventName,Location,Date, Time,TicketAmount,Price,Description,ActiveState);
                 counter++; 
@@ -156,19 +156,19 @@ namespace TicketSystem.Helpers
 
         public Organizer CreateOrganizerObject(int ID)
         {
-            string query = $"SELECT * FROM Events WHERE Organizer_ID = {ID}";
+            string query = $"SELECT * FROM events WHERE id = {ID}";
             var queryResult = SelectQuery(query);
 
             Organizer organizer = new Organizer();
 
             foreach (DataRow row in queryResult.Rows)
             {
-                string organizationName = (string)row["OrganizationName"];
-                string contactPerson = (string)row["ContactPerson"];
-                string phoneNumber = (string)row["PhoneNumber"];
-                string emailAddress = (string)row["EmailAddress"];
-                string passWord = (string)row["Password"];
-                int organizerID = (int)row["Organizer_ID"];
+                string organizationName = (string)row["organization_name"];
+                string contactPerson = (string)row["contact_person"];
+                string phoneNumber = (string)row["phone_number"];
+                string emailAddress = (string)row["email_address"];
+                string passWord = (string)row["password"];
+                int organizerID = (int)row["id"];
 
                 organizer = new Organizer(contactPerson, passWord, phoneNumber, emailAddress, organizationName, organizerID);
 
