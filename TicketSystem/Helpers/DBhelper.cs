@@ -148,7 +148,7 @@ namespace TicketSystem.Helpers
                 var ActiveState = (bool)row["active_state"];
                 var TicketsSold = TicketCounter(EventID); 
 
-                events[counter] = new Event(EventID,EventName,Location,Date, Time,TicketAmount,Price,Description,ActiveState, TicketsSold);
+                events[counter] = new Event(EventID,EventName,Location,Date,Time,TicketAmount,Price,Image,Description,ActiveState,TicketsSold);
                 counter++; 
             }
 
