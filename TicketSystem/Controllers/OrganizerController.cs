@@ -35,7 +35,12 @@ namespace TicketSystem.Controllers
                 var result = dbhelper.SelectQuery(queryString);
                 if (result.Rows.Count == 1)
                 {
-                    return RedirectToAction("OrganizerLandingPage", "Organizer");
+                    foreach(DataRow row in result.Rows)
+                    {
+                        return RedirectToAction("OrganizerLandingPage", new { id = (int)row["id"] });
+                    }
+
+                
 
                 } else
                 {
@@ -63,16 +68,20 @@ namespace TicketSystem.Controllers
 
 
 
-        [HttpPost]                                   //route
-        public IActionResult EditEvent(string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+        [HttpGet]                                   //route
+        public IActionResult EditEvent(int id)// string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
         {
             if (ModelState.IsValid)
             {
 
+                ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
+
+                // dbhelper.InsertQueryToDB($" UPDATE events SET event_name='Nicolaaaaj', location='Aalborg', ticket_amount=5, price=5, description='description' WHERE id=43;");
+
+                // dbhelper.InsertQueryToDB($"UPDATE events SET event_name='{name}', location='{location}', date='{date}', time='{time}', ticket_amount={ticketamount}, price={price}, image='{image}', description='{description}' WHERE id={id}");
 
 
-                dbhelper.InsertQueryToDB($"UPDATE events (event_name, location, date, time, ticket_amount, price, image, description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
-                return RedirectToAction("Index", "Event");           //skal laves om til organizer home
+                //skal laves om til organizer home
             }
 
             return View();
@@ -113,14 +122,17 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-        public IActionResult OrganizerLandingPage(int ID)
+        public IActionResult OrganizerLandingPage()
         {
-
+            ViewBag.Organizer =  dbhelper.CreateOrganizerObject(1); 
             return View();
         }
-        [HttpPost]
-        public IActionResult O(int orgID)
+
+        [HttpGet]
+        public IActionResult OrganizerLandingPage(int ID)
         {
+            ViewBag.Organizer = dbhelper.CreateOrganizerObject(ID);
+            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE organizer_id = {ID}");
 
             return View();
         }

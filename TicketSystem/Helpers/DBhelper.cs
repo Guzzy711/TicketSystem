@@ -157,7 +157,7 @@ namespace TicketSystem.Helpers
 
         public Organizer CreateOrganizerObject(int ID)
         {
-            string query = $"SELECT * FROM events WHERE id = {ID}";
+            string query = $"SELECT * FROM organizers WHERE id = {ID}";
             var queryResult = SelectQuery(query);
 
             Organizer organizer = new Organizer();
