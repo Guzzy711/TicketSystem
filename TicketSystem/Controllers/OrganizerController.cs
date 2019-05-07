@@ -20,14 +20,14 @@ namespace TicketSystem.Controllers
 
 
 
-        public IActionResult Login()
+        public IActionResult Index()
         {
-          
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult Login(string email, string password)
+        public IActionResult Index(string email, string password)
         {
             if (ModelState.IsValid)
             {
@@ -36,18 +36,18 @@ namespace TicketSystem.Controllers
                 if (result.Rows.Count == 1)
                 {
                     return RedirectToAction("OrganizerLandingPage", "Organizer");
-                              
+
                 } else
                 {
                     ViewBag.error = "Wrong username or password";
                 }
-               
-                   
+
+
             }
-         return View();
+            return View();
         }
 
-            
+
 
         [HttpPost]                                   //route
         public IActionResult CreateOrganizer(string name, string password, string email, int phonenumber, string organizationName)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
@@ -116,9 +116,11 @@ namespace TicketSystem.Controllers
         public IActionResult OrganizerLandingPage(int ID)
         {
 
-
-
-            ViewBag.Organizer = dbhelper.CreateOrganizerObject(14); 
+            return View();
+        }
+        [HttpPost]
+        public IActionResult O(int orgID)
+        {
 
             return View();
         }

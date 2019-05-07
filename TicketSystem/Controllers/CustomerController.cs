@@ -33,7 +33,7 @@ namespace TicketSystem.Controllers
             {
 
                 dbhelper.InsertQueryToDB($"INSERT INTO Tickets(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhonenumber, EventID) VALUES ('{CustomerFirstname}','{CustomerSurname}','{CustomerEmail}','{CustomerPhonenumber}',{EventID})");
-                return RedirectToAction("LandingPage", "Customer");           //skal laves om til organizer home
+                return RedirectToAction("LandingPage", "Customer");         
             }
 
             return View();
