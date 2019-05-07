@@ -7,7 +7,7 @@ namespace TicketSystem.Models
 {
     public class Event
     {
-        public int event_id { get; set; }
+        public int id { get; set; }
         public string event_name { get; set; }
         public string location { get; set; }
         public DateTime date { get; set; }
@@ -22,7 +22,7 @@ namespace TicketSystem.Models
 
         public Event(int event_id, string event_name, string location, DateTime date, TimeSpan time, int ticket_amount, float price, string description, bool active_state)
         {
-            this.event_id = event_id;
+            this.id = id;
             this.event_name = event_name;
             this.location = location;
             this.date = date;
