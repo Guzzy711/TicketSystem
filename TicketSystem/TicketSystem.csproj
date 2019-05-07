@@ -15,5 +15,14 @@
   <ItemGroup>
     <Folder Include="Helpers\" />
     <Folder Include="Views\Event\" />
+    <Folder Include="wwwroot\Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\placeholder.png" />
+    <Content Remove="wwwroot\Image\100x100.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\Image\placeholder.png" />
+    <None Include="wwwroot\Image\100x100.jpeg" />
   </ItemGroup>
 </Project>

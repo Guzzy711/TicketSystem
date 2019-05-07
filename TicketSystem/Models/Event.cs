@@ -20,7 +20,7 @@ namespace TicketSystem.Models
 
 
 
-        public Event(int event_id, string event_name, string location, DateTime date, TimeSpan time, int ticket_amount, float price, string description, bool active_state)
+        public Event(int event_id, string event_name, string location, DateTime date, TimeSpan time, int ticket_amount, float price, string image, string description, bool active_state)
         {
             this.EventID = event_id;
             this.EventName = event_name;
@@ -29,6 +29,7 @@ namespace TicketSystem.Models
             this.Time = time;
             this.TicketAmount = ticket_amount;
             this.Price = price;
+            this.Image = image;
             this.Description = description;
             this.ActiveState = active_state; 
         }
