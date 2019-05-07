@@ -27,15 +27,13 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                ticket.CustomerFirstname = firstname;
-                ticket.CustomerSurname = surname;
-                ticket.CustomerEmail = email;
-                ticket.CustomerPhonenumber = phonenumber;
-
-        
-
-                ViewBag.Message = ticket.CustomerFirstname;
-                dbhelper.InsertQueryToDB($"INSERT INTO Tickets(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhonenumber) VALUES ('{ticket.CustomerFirstname}','{ticket.CustomerSurname}','{ticket.CustomerEmail}','{ticket.CustomerPhonenumber}')");
+                ticket.Customer_firstname = firstname;
+                ticket.Customer_surname = surname;
+                ticket.Customer_email = email;
+                ticket.Customer_phonenumber = phonenumber;
+                   
+                ViewBag.Message = ticket.Customer_firstname;
+                dbhelper.InsertQueryToDB($"INSERT INTO tickets(customer_firstname, customer_surname, customer_email, customer_phonenumber) VALUES ('{ticket.Customer_firstname}','{ticket.Customer_surname}','{ticket.Customer_email}','{ticket.Customer_phonenumber}')");
                 return RedirectToAction("OrganizerLandingPage", "Organizer");           //skal laves om til organizer home
             }
 
