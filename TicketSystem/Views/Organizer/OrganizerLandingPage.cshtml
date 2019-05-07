@@ -1,11 +1,13 @@
 ﻿@{
 
     ViewData["Title"] = "Organizer LandingPage";
-    var organizer = (Organizer)ViewBag.Organizer; 
+    var organizer = (Organizer)ViewBag.Organizer;
+    var events = ViewBag.Events; 
 }
 
-<p>@organizer.ContactPerson</p>
-<p>@organizer.Email</p>
+
+
+
 <div class="row">
 
     <div class="col-12">
@@ -15,63 +17,39 @@
     <div class="row">
         <a href="#" class="btn btn-primary w-100 mt-2"><i class="far fa-calendar-plus"></i> Create event</a>
     </div>
-    <div class="card w-100 mt-3">
-        <div class="card-body">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-2">
-                        <img src="https://via.placeholder.com/100" alt="Alternate Text" />
-                    </div>
-                    <div class="col-4">
-                        <h5 class="card-title">Event Name</h5>
-                        <p class="mb-0">Date</p>
-                        <p class="mb-0">Time</p>
-                        <p class="mb-0">Location</p>
-                    </div>
-                    <div class="col-4">
-                        <p class="mb-0 mt-3">32 tickets total</p>
-                        <p class="mb-0 mt-3">30 tickets sold</p>
-                    </div>
-                    <div class="col-2 text-center">
-                        <a href="#" class="btn btn-primary mb-2 mt-2 w-100">View event</a>
-                        <a href="#" class="btn btn-primary w-100">Edit event</a>
+
+    @foreach(var eventt in events)
+    {
+        <div class="card w-100 mt-3">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="https://via.placeholder.com/100" alt="Alternate Text" />
+                        </div>
+                        <div class="col-4">
+                            <h5 class="card-title">@eventt.EventName</h5>
+                            <p class="mb-0">@eventt.Date.Day/@eventt.Date.Month/@eventt.Date.Year</p>
+                            <p class="mb-0">@eventt.Time.Hours:@eventt.Time.Minutes</p>
+                            <p class="mb-0">@eventt.Location</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="mb-0 mt-3">32 tickets total</p>
+                            <p class="mb-0 mt-3">30 tickets sold</p>
+                        </div>
+                        <div class="col-2 text-center">
+                            <a href="#" class="btn btn-primary mb-2 mt-2 w-100">View event</a>
+                            <a href="#" class="btn btn-primary w-100">Edit event</a>
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
-
         </div>
-    </div>
-    <div class="card w-100 mt-3">
-        <div class="card-body">
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-2">
-                        <img src="https://via.placeholder.com/100" alt="Alternate Text" />
-                    </div>
-                    <div class="col-4">
-                        <h5 class="card-title">Event Name</h5>
-                        <p class="mb-0">Date</p>
-                        <p class="mb-0">Time</p>
-                        <p class="mb-0">Location</p>
-                    </div>
-                    <div class="col-4">
-                        <p class="mb-0 mt-3">100 tickets total</p>
-                        <p class="mb-0 mt-3">43 tickets sold</p>
-                    </div>
-                    <div class="col-2 text-center">
-                        <a href="#" class="btn btn-primary mb-2 mt-2 w-100">View event</a>
-                        <a href="#" class="btn btn-primary w-100">Edit event</a>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
+    }
 </div>
+
 
 

@@ -128,6 +128,8 @@ namespace TicketSystem.Controllers
         public IActionResult OrganizerLandingPage(int ID)
         {
             ViewBag.Organizer = dbhelper.CreateOrganizerObject(ID);
+            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE organizer_id = {ID}");
+
             return View();
         }
 
