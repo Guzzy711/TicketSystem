@@ -28,11 +28,18 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
                     <li class="mr-1"><a asp-area="" asp-controller="Customer" asp-action="LandingPage"><i class="fas fa-calendar-alt"></i>Events</a></li>
-                    <li class="mr-1"><a asp-area="" asp-controller="Customer" asp-action="OrderTicket"><i class="glyphicon glyphicon-barcode"></i>Buy Ticket</a></li>
+                    <li class="mr-1"><a asp-area="" asp-controller="Organizer" asp-action="ChangeLoginInfo"><i class="fas fa-address-card"></i>Change login info</a></li>
+                    <li class="mr-1"><a asp-area="" asp-controller="Organizer" asp-action="CreateEvent"><i class="far fa-calendar-plus"></i>Create Event</a></li>
+                    <li class="mr-1"><a asp-area="" asp-controller="Organizer" asp-action="CreateOrganizer"><i class="fas fa-user"></i>Create Organizer</a></li>
+                    <li class="mr-1"><a asp-area="" asp-controller="Organizer" asp-action="EditEvent"><i class="fas fa-pen"></i>Edit Event</a></li>
+                    <li class="mr-1"><a asp-area="" asp-controller="Organizer" asp-action="OrganizerLandingPage"><i class="fas fa-file-alt"></i>Overview</a></li>
+                    <li class="mr-1"><a asp-area="" asp-controller="Organizer" asp-action="OrganizerViewEvent"><i class="fas fa-file-alt"></i>View</a></li>
+                    <li class="mr-1"><a asp-area="" asp-controller="Organizer" asp-action="Index"><i class="fas fa-angle-right"></i>Login</a></li>
+
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-secondary my-2 my-sm-0 fas fa-search" type="submit"> Search</button>
                 </form>
             </div>
         </nav>

@@ -97,7 +97,7 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid)
             {
 
-                dbhelper.InsertQueryToDB($"INSERT INTO events(id, even_name, location, date, time, ticket_amount, price, image, description) VALUES ('{Organizer_ID =10}','{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
+                dbhelper.InsertQueryToDB($"INSERT INTO events(organizer_id, event_name, location, date, time, ticket_amount, price, image, description) VALUES ('{10}','{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
                 return RedirectToAction("OrganizerLandingPage", "Organizer");           //skal laves om til organizer home
             }
             return View();
