@@ -115,9 +115,10 @@ namespace TicketSystem.Controllers
 
         public IActionResult OrganizerLandingPage(int ID)
         {
-
+            ViewBag.Organizer =  dbhelper.CreateOrganizerObject(ID); 
             return View();
         }
+
         [HttpPost]
         public IActionResult O(int orgID)
         {

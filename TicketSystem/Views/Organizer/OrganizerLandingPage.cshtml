@@ -1,25 +1,11 @@
-﻿@using TicketSystem.Helpers;
-
-@{
+﻿@{
 
     ViewData["Title"] = "Organizer LandingPage";
-    var login = (string)ViewBag.login;
-    var dbHelper = new DBhelper();
-}
-<h3>@ViewBag.Login</h3>
-
-
-@if (login == "loggedin")
-{
-    <p> Du er logget ind</p>
-}
-else
-{
-    <p>Du er logget ud</p>
+    var organizer = (Organizer)ViewBag.Organizer; 
 }
 
-
-
+<p>@organizer.ContactPerson</p>
+<p>@organizer.Email</p>
 <div class="row">
 
     <div class="col-12">
