@@ -35,7 +35,12 @@ namespace TicketSystem.Controllers
                 var result = dbhelper.SelectQuery(queryString);
                 if (result.Rows.Count == 1)
                 {
-                    return RedirectToAction("OrganizerLandingPage", "Organizer");
+                    foreach(DataRow row in result.Rows)
+                    {
+                        return RedirectToAction("OrganizerLandingPage", new { id = (int)row["id"] });
+                    }
+
+                
 
                 } else
                 {
@@ -113,16 +118,16 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-        public IActionResult OrganizerLandingPage(int ID)
+        public IActionResult OrganizerLandingPage()
         {
-            ViewBag.Organizer =  dbhelper.CreateOrganizerObject(ID); 
+            ViewBag.Organizer =  dbhelper.CreateOrganizerObject(1); 
             return View();
         }
 
-        [HttpPost]
-        public IActionResult O(int orgID)
+        [HttpGet]
+        public IActionResult OrganizerLandingPage(int ID)
         {
-
+            ViewBag.Organizer = dbhelper.CreateOrganizerObject(ID);
             return View();
         }
 
