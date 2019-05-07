@@ -7,30 +7,30 @@ namespace TicketSystem.Models
 {
     public class Customer
     {
-        public int event_id { get; set; }
-        public string event_name { get; set; }
-        public string location { get; set; }
-        public DateTime date { get; set; }
-        public TimeSpan time { get; set; }
-        public int ticket_amount { get; set; }
-        public float price { get; set; }
-        public string image { get; set; }
-        public string description { get; set; }
-        public bool active_state { get; set; }
+        public int EventID { get; set; }
+        public string EventName { get; set; }
+        public string Location { get; set; }
+        public DateTime Date { get; set; }
+        public TimeSpan Time { get; set; }
+        public int TicketAmount { get; set; }
+        public float Price { get; set; }
+        public string Image { get; set; }
+        public string Description { get; set; }
+        public bool ActiveState { get; set; }
 
 
 
-        public Customer(int event_id, string event_name, string location, DateTime date, TimeSpan time, int ticket_amount, float price, string description, bool active_state)
+        public Customer(int EventID, string EventName, string Location, DateTime Date, TimeSpan Time, int TicketAmount, float Price, string Description, bool ActiveState)
         {
-            this.event_id = event_id;
-            this.event_name = event_name;
-            this.location = location;
-            this.date = date;
-            this.time = time;
-            this.ticket_amount = ticket_amount;
-            this.price = price;
-            this.description = description;
-            this.active_state = this.active_state;
+            this.EventID = EventID;
+            this.EventName = EventName;
+            this.Location = Location;
+            this.Date = Date;
+            this.Time = Time;
+            this.TicketAmount = TicketAmount;
+            this.Price = Price;
+            this.Description = Description;
+            this.ActiveState = ActiveState;
         }
 
     }
