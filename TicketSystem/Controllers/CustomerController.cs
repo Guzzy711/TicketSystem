@@ -21,18 +21,18 @@ namespace TicketSystem.Controllers
 
         public IActionResult LandingPage()
         {
-            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery("SELECT * FROM Events"); 
+            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery("SELECT * FROM events"); 
 
             return View();
         }
 
          [HttpPost]                                   //route
-        public IActionResult OrderTicket(string CustomerFirstname, string CustomerSurname, string CustomerEmail, int CustomerPhonenumber,int EventID)      
+        public IActionResult OrderTicket(string customer_firstname, string customer_surname, string customer_email, int customer_phonenumber,int event_id)      
         {
             if (ModelState.IsValid)
             {
 
-                dbhelper.InsertQueryToDB($"INSERT INTO Tickets(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhonenumber, EventID) VALUES ('{CustomerFirstname}','{CustomerSurname}','{CustomerEmail}','{CustomerPhonenumber}',{EventID})");
+                dbhelper.InsertQueryToDB($"INSERT INTO tickets(customer_firstname, customer_surname, customer_email, customer_phonenumber, event_id) VALUES ('{customer_firstname}','{customer_surname}','{customer_email}','{customer_phonenumber}',{event_id})");
                 return RedirectToAction("LandingPage", "Customer");         
             }
 
@@ -43,7 +43,7 @@ namespace TicketSystem.Controllers
         {
 
 
-            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM Events WHERE EventID={id}");
+            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE event_id={id}");
 
 
 
