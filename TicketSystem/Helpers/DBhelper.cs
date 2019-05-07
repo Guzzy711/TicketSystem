@@ -145,8 +145,9 @@ namespace TicketSystem.Helpers
                 var Price = (float)row["price"];
                 var Description = (string)row["description"];
                 var ActiveState = (bool)row["active_state"];
+                var TicketsSold = TicketCounter(EventID); 
 
-                events[counter] = new Event(EventID,EventName,Location,Date, Time,TicketAmount,Price,Description,ActiveState);
+                events[counter] = new Event(EventID,EventName,Location,Date, Time,TicketAmount,Price,Description,ActiveState, TicketsSold);
                 counter++; 
             }
 
@@ -176,6 +177,21 @@ namespace TicketSystem.Helpers
             }
 
             return organizer;
+        }
+
+        public Int64 TicketCounter(int eventID)
+        {
+            string query = $"SELECT COUNT(*) FROM tickets WHERE event_id = {eventID}";
+            var queryResult = SelectQuery(query);
+
+            Int64 count = 0; 
+
+            foreach (DataRow row in queryResult.Rows)
+            {
+                count = (Int64)row["COUNT(*)"]; 
+            }
+
+            return count; 
         }
 
     }
