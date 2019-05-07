@@ -31,7 +31,7 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                string queryString = $"SELECT * FROM Organizers WHERE EmailAddress='{email}' AND Password='{password}'";
+                string queryString = $"SELECT * FROM organizers WHERE email_address='{email}' AND password='{password}'";
                 var result = dbhelper.SelectQuery(queryString);
                 if (result.Rows.Count == 1)
                 {
@@ -54,7 +54,7 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                dbhelper.InsertQueryToDB($"INSERT INTO Organizers(ContactPerson, Password, PhoneNumber, EmailAddress, OrganizationName) VALUES ('{name}','{password}','{phonenumber}','{email}','{organizationName}')");
+                dbhelper.InsertQueryToDB($"INSERT INTO organizers(contact_person, password, phone_number, email_address,organization_name) VALUES ('{name}','{password}','{phonenumber}','{email}','{organizationName}')");
                 return RedirectToAction("Index", "Organizer");           //skal laves om til organizer home
             }
 
@@ -71,7 +71,7 @@ namespace TicketSystem.Controllers
 
 
 
-                dbhelper.InsertQueryToDB($"UPDATE Events (EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
+                dbhelper.InsertQueryToDB($"UPDATE events (event_name, location, date, time, ticket_amount, price, image, description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
                 return RedirectToAction("Index", "Event");           //skal laves om til organizer home
             }
 
@@ -92,7 +92,7 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid)
             {
 
-                dbhelper.InsertQueryToDB($"INSERT INTO Events(Organizer_ID, EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{Organizer_ID =10}','{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
+                dbhelper.InsertQueryToDB($"INSERT INTO events(organizer_id, even_name, location, date, time, ticket_amount, price, image, description) VALUES ('{Organizer_ID =10}','{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
                 return RedirectToAction("OrganizerLandingPage", "Organizer");           //skal laves om til organizer home
             }
             return View();
