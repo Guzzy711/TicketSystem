@@ -32,11 +32,7 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid)
             {
 
-<<<<<<< HEAD
-                dbhelper.InsertQueryToDB($"INSERT INTO tickets(customer_first_name, customer_surname, customer_email, customer_phone_number, event_id) VALUES ('{customer_firstname}','{customer_surname}','{customer_email}',{customer_phonenumber},{event_id})");
-=======
                 dbhelper.InsertQueryToDB($"INSERT INTO tickets(event_id, customer_first_name, customer_surname, customer_email, customer_phone_number) VALUES ({EventID},'{customer_first_name}','{customer_surname}','{customer_email}',{customer_phonenumber})");
->>>>>>> 2c84826... Fixed Order Ticket-error
                 return RedirectToAction("LandingPage", "Customer");         
             }
 
