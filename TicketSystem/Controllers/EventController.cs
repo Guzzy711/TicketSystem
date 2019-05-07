@@ -25,7 +25,7 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid)
             {
                
-                dbhelper.InsertQueryToDB($"INSERT INTO Events(EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
+                dbhelper.InsertQueryToDB($"INSERT INTO events(event_name, location, date, time, ticket_amount, price, image, description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
                 return RedirectToAction("OrganizerLandingPage", "Organizer");           //skal laves om til organizer home
             }
             return View();
@@ -41,8 +41,8 @@ namespace TicketSystem.Controllers
 
 
                
-                dbhelper.InsertQueryToDB($"UPDATE Events (EventName, Location, Date, Time, TicketAmount, Price, Image, Description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
-                return RedirectToAction("Index", "Event");           //skal laves om til organizer home
+                dbhelper.InsertQueryToDB($"UPDATE events(event_name, location, date, time, ticket_amount, price, image, description) VALUES ('{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
+                return RedirectToAction("OrganizerLandingPage", "Organizer");           //skal laves om til organizer home
             }
 
             return View();

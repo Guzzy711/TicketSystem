@@ -7,10 +7,10 @@ namespace TicketSystem.Models
 {
     public class Ticket
     {
-        public string CustomerFirstname { get; set; }
-        public string CustomerSurname{ get; set; }
-        public string CustomerEmail { get; set; }
-        public int CustomerPhonenumber{ get; set; }
+        public string Customer_firstname { get; set; }
+        public string Customer_surname{ get; set; }
+        public string Customer_email { get; set; }
+        public int Customer_phonenumber{ get; set; }
         
     }
 }
