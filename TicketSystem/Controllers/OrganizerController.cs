@@ -75,13 +75,6 @@ namespace TicketSystem.Controllers
             {
 
                 ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
-
-                // dbhelper.InsertQueryToDB($" UPDATE events SET event_name='Nicolaaaaj', location='Aalborg', ticket_amount=5, price=5, description='description' WHERE id=43;");
-
-                // dbhelper.InsertQueryToDB($"UPDATE events SET event_name='{name}', location='{location}', date='{date}', time='{time}', ticket_amount={ticketamount}, price={price}, image='{image}', description='{description}' WHERE id={id}");
-
-
-                //skal laves om til organizer home
             }
 
             return View();
@@ -91,6 +84,22 @@ namespace TicketSystem.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        public IActionResult EditEvent(int id, string name, string location, string date, string time, int ticketamount, int price, string image, string description)
+        {
+            if(ModelState.IsValid)
+            {
+                dbhelper.InsertQueryToDB($"UPDATE events SET event_name='{name}',location='{location}', date='{date}', time='{time}', ticket_amount={ticketamount}, price={price}, image='{image}', description='{description}' WHERE id={id}");
+            }
+            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
+
+            return View();
+        }
+
+
+        
+        
 
 
 
