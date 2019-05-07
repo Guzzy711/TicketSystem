@@ -75,13 +75,6 @@ namespace TicketSystem.Controllers
             {
 
                 ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
-
-                // dbhelper.InsertQueryToDB($" UPDATE events SET event_name='Nicolaaaaj', location='Aalborg', ticket_amount=5, price=5, description='description' WHERE id=43;");
-
-                // dbhelper.InsertQueryToDB($"UPDATE events SET event_name='{name}', location='{location}', date='{date}', time='{time}', ticket_amount={ticketamount}, price={price}, image='{image}', description='{description}' WHERE id={id}");
-
-
-                //skal laves om til organizer home
             }
 
             return View();
