@@ -60,3 +60,13 @@ th, td {
 th {
     text-align: left;
 }
+
+.lpimg {
+    width: 100px;
+    height: 100px;
+}
+
+.otimg {
+    width: 200px;
+    height: 200px;
+}

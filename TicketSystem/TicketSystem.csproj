@@ -15,5 +15,18 @@
   <ItemGroup>
     <Folder Include="Helpers\" />
     <Folder Include="Views\Event\" />
+    <Folder Include="wwwroot\Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\Image\100x100.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Image\placeholder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\100x100.jpeg" />
+    <Content Remove="wwwroot\Image\placeholder.png" />
   </ItemGroup>
 </Project>
