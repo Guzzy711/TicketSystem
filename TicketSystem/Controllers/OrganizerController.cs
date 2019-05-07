@@ -92,6 +92,22 @@ namespace TicketSystem.Controllers
         }
 
 
+        [HttpPost]
+        public IActionResult EditEvent(int id, string name, string location, string date, string time, int ticketamount, int price, string image, string description)
+        {
+            if(ModelState.IsValid)
+            {
+                dbhelper.InsertQueryToDB($"UPDATE events SET event_name='{name}',location='{location}', date='{date}', time='{time}', ticket_amount={ticketamount}, price={price}, image='{image}', description='{description}' WHERE id={id}");
+            }
+            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
+
+            return View();
+        }
+
+
+        
+        
+
 
 
 
