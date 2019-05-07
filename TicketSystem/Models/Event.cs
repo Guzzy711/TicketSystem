@@ -7,30 +7,30 @@ namespace TicketSystem.Models
 {
     public class Event
     {
-        public int id { get; set; }
-        public string event_name { get; set; }
-        public string location { get; set; }
-        public DateTime date { get; set; }
-        public TimeSpan time { get; set; }
-        public int ticket_amount { get; set; }
-        public float price { get; set; }
-        public string image { get; set; }
-        public string description { get; set; }
-        public bool active_state { get; set; }
+        public int EventID { get; set; }
+        public string EventName { get; set; }
+        public string Location { get; set; }
+        public DateTime Date { get; set; }
+        public TimeSpan Time { get; set; }
+        public int TicketAmount { get; set; }
+        public float Price { get; set; }
+        public string Image { get; set; }
+        public string Description { get; set; }
+        public bool ActiveState { get; set; }
 
 
 
         public Event(int event_id, string event_name, string location, DateTime date, TimeSpan time, int ticket_amount, float price, string description, bool active_state)
         {
-            this.id = id;
-            this.event_name = event_name;
-            this.location = location;
-            this.date = date;
-            this.time = time;
-            this.ticket_amount = ticket_amount;
-            this.price = price;
-            this.description = description;
-            this.active_state = active_state; 
+            this.EventID = event_id;
+            this.EventName = event_name;
+            this.Location = location;
+            this.Date = date;
+            this.Time = time;
+            this.TicketAmount = ticket_amount;
+            this.Price = price;
+            this.Description = description;
+            this.ActiveState = active_state; 
         }
 
     }
