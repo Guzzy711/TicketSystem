@@ -20,14 +20,14 @@ namespace TicketSystem.Controllers
 
 
 
-        public IActionResult Index()
+        public IActionResult Login()
         {
 
             return View();
         }
 
         [HttpPost]
-        public IActionResult Index(string email, string password)
+        public IActionResult Login(string email, string password)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid)
             {
                 dbhelper.InsertQueryToDB($"INSERT INTO organizers(contact_person, password, phone_number, email_address,organization_name) VALUES ('{name}','{password}','{phonenumber}','{email}','{organizationName}')");
-                return RedirectToAction("Index", "Organizer");           //skal laves om til organizer home
+                return RedirectToAction("Login", "Organizer");           //skal laves om til organizer home
             }
 
             return View();
