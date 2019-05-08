@@ -35,14 +35,15 @@ namespace TicketSystem.Controllers
                 var result = dbhelper.SelectQuery(queryString);
                 if (result.Rows.Count == 1)
                 {
-                    foreach(DataRow row in result.Rows)
+                    foreach (DataRow row in result.Rows)
                     {
                         return RedirectToAction("OrganizerLandingPage", new { id = (int)row["id"] });
                     }
 
-                
 
-                } else
+
+                }
+                else
                 {
                     ViewBag.error = "Wrong username or password";
                 }
@@ -88,7 +89,7 @@ namespace TicketSystem.Controllers
         [HttpPost]
         public IActionResult EditEvent(int id, string name, string location, string date, string time, int ticketamount, int price, string image, string description)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 dbhelper.InsertQueryToDB($"UPDATE events SET event_name='{name}',location='{location}', date='{date}', time='{time}', ticket_amount={ticketamount}, price={price}, image='{image}', description='{description}' WHERE id={id}");
             }
@@ -98,14 +99,14 @@ namespace TicketSystem.Controllers
         }
 
 
-        
-        
+
+
 
 
 
 
         [HttpPost]                                   //route
-        public IActionResult CreateEvent(int id,string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+        public IActionResult CreateEvent(int id, string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
         {
             if (ModelState.IsValid)
             {
@@ -134,7 +135,7 @@ namespace TicketSystem.Controllers
 
         public IActionResult OrganizerLandingPage()
         {
-            ViewBag.Organizer =  dbhelper.CreateOrganizerObject(1); 
+            ViewBag.Organizer = dbhelper.CreateOrganizerObject(1);
             return View();
         }
 
@@ -157,11 +158,31 @@ namespace TicketSystem.Controllers
 
 
 
-
-        public IActionResult ChangeLoginInfo()
+        [HttpGet]
+        public IActionResult ChangeLoginInfo(int id)
         {
+            if (ModelState.IsValid)
+            {
+
+                ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
+            }
+            ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
             return View();
         }
+     
+
+        [HttpPost]
+        public IActionResult ChangeLoginInfo(int id, string organization_name, string contact_person, int phone_number, string email_address, string password)
+        {
+            if (ModelState.IsValid)
+            {
+                dbhelper.InsertQueryToDB($"UPDATE events SET organization_name='{organization_name}',contact_person='{contact_person}', phone_number={phone_number}, email_address='{email_address}', password='{password}' WHERE id={id}");
+            }
+            ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
+
+            return View();
+        }
+
     }
 
-}
+    }

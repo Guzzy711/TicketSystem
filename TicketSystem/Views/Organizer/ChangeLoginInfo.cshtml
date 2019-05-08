@@ -1,12 +1,14 @@
 ﻿
 @{
     ViewData["Title"] = "ChangeLoginInfo";
+    var organizer = ViewBag.Organizer;
 }
 
 <h2>Change login information</h2>
 
-@using (Html.BeginForm())
-{
+
+    @using (Html.BeginForm())
+    {
     <div class="row">
         <div class="col-10 mb-3 float-right">
             <button type="button" class="btn btn-primary float-right">Delete account</button>
@@ -16,33 +18,34 @@
         <div class="col-6">
             <div class="form-group mb-0">
                 @Html.Label("Contact Person name") <br />
-                @Html.TextBox("Name", null, new { required = true, placeholder = "Contact Person name", @class = "form-control" })<br />
+                @Html.TextBox("ContactPerson", (string)organizer.ContactPerson, new { required = true, @class = "form-control" })<br />
             </div>
 
             <div class="form-group mb-0">
                 @Html.Label("Organization name") <br />
-                @Html.TextBox("OrganizationName", null, new { required = true, placeholder = "Organization Name", @class = "form-control" })<br />
+                @Html.TextBox("OrganizationName", (string)organizer.OrganizationName, new { required = true, @class = "form-control" })<br />
             </div>
 
             <div class="form-group mb-0">
                 @Html.Label("Phonenumber") <br />
-                @Html.TextBox("Phonenumber", null, new { required = true, placeholder = "Phone number", @class = "form-control", @type = "number" })<br />
+                @Html.TextBox("Phonenumber", (string)organizer.PhoneNumber, new { required = true, @class = "form-control", @type = "number" })<br />
 
             </div>
 
             <div class="form-group mb-0">
                 @Html.Label("Email Address") <br />
-                @Html.TextBox("Email", null, new { required = true, placeholder = "Email Address", @class = "form-control" })<br />
+                @Html.TextBox("Email", (string)organizer.Email, new { required = true, @class = "form-control" })<br />
 
             </div>
 
             <div class="form-group mb-0">
                 @Html.Label("Password") <br />
-                @Html.Password("Password", null, new { required = true, placeholder = "Password", @class = "form-control", @type = "password" })<br />
+                @Html.Password("Password", (string)organizer.Password, new { required = true, @class = "form-control", @type = "password" })<br />
             </div>
 
             <button type="submit" class="btn btn-primary fas fa-check"> Save changes </button>
             
         </div>
     </div>
+    
 }
