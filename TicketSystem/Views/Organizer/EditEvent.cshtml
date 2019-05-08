@@ -22,37 +22,37 @@
         <div class="col-md-12">
             <div class="float-right form-group col-md-6">
                 @Html.Label("Description *") <br />
-                @Html.TextArea("Description", null, new { required = true, placeholder = eventt.Description, @class = "form-control",})
+                @Html.TextArea("Description", (string)eventt.Description, new { required = true, @class = "form-control",})
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group mb-0">
                 @Html.Label("Event name *") <br />
-                @Html.TextBox("Name", null, new { required = true, placeholder = eventt.EventName, @class = "form-control"})<br />
+                @Html.TextBox("Name", (string) eventt.EventName, new { required = true, @class = "form-control"})<br />
             </div>
             <div class="form-group mb-0">
                 @Html.Label("Location *") <br />
-                @Html.TextBox("Location", null, new { required = true, placeholder = eventt.Location, @class = "form-control"})<br />
+                @Html.TextBox("Location", (string)eventt.Location, new { required = true, @class = "form-control"})<br />
             </div>
             <div class="form-group mb-0">
                 @Html.Label("Date *") <br />
-                @Html.TextBox("Date", null, new { required = true, placeholder  = eventt.Date, @class = "form-control", @type = "date" })<br />
+                @Html.TextBox("Date", (DateTime)eventt.Date, new { required = true, @class = "form-control", @type = "date" })<br />
             </div>
             <div class="form-group mb-0">
                 @Html.Label("Start time *") <br />
-                @Html.TextBox("Time", null, new { required = true, placeholder = eventt.Time, @class = "form-control", @type = "time"})<br />
+                @Html.TextBox("Time", (TimeSpan)eventt.Time, new { required = true, @class = "form-control", @type = "time"})<br />
             </div>
             <div class="form-group mb-0">
                 @Html.Label("Total amount of tickets *") <br />
-                @Html.TextBox("TicketAmount", null, new { required = true, placeholder = eventt.TicketAmount, @class = "form-control", @type = "number" })<br />
+                @Html.TextBox("TicketAmount", (float)eventt.TicketAmount, new { required = true, @class = "form-control", @type = "number" })<br />
             </div>
             <div class="form-group mb-0">
                 @Html.Label("Price *") <br />
-                @Html.TextBox("Price", null, new { required = true, placeholder = eventt.Price, @class = "form-control", @type = "float" })<br />
+                @Html.TextBox("Price", (float)eventt.Price, new { required = true, @class = "form-control", @type = "float" })<br />
             </div>
             <div class="form-group mb-0">
                 @Html.Label("Image") <br />
-                @Html.TextBox("Image", null, new { placeholder = eventt.Image, @class = "form-control", @type = "file" })<br />
+                @Html.TextBox("Image", (string)eventt.Image, new { @class = "form-control", @type = "file" })<br />
             </div>
         </div>
 
