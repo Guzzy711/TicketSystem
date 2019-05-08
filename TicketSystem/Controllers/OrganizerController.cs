@@ -153,6 +153,7 @@ namespace TicketSystem.Controllers
         {
 
             ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id= {ID}");
+            ViewBag.Tickets = dbhelper.CreateTicketObjectsFromQuery($"SELECT * FROM tickets WHERE event_id={ID}"); 
 
             return View();
         }

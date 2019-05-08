@@ -1,6 +1,7 @@
 ﻿@{
     var Organizer = ViewBag.Organizer;
     var events = ViewBag.Events;
+    var tickets = ViewBag.Tickets; 
 }
 
 @foreach (var eventt in events)
@@ -19,10 +20,12 @@
                     <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <hr/>
                     <ul class="eventdata">
-                        <li><b>@eventt.Location</b></li>
-                        <li>@eventt.Date.Day/@eventt.Date.Month/@eventt.Date.Year</li>
-                        <li>@eventt.Time.Hours:@eventt.Time.Minutes</li>
-                        <li>@eventt.Price</li>
+                        <li><b>Location: @eventt.Location</b></li>
+                        <li>Date: @eventt.Date.Day/@eventt.Date.Month/@eventt.Date.Year</li>
+                        <li>Time: @eventt.Time.Hours:@eventt.Time.Minutes</li>
+                        <li>Price: @eventt.Price kr.</li>
+                        <li>Tickets sold: @eventt.TicketsSold </li>
+                        <li>Tickets left: @eventt.TicketsLeft </li>
                     </ul>
                 </div>
             </div>
@@ -30,31 +33,26 @@
     </div>
 </div>
 <hr>
-<h3 class="text-center mb-3">Change Event</h3>
+<h3 class="text-center mb-3">Sold Tickets to @eventt.EventName</h3>
 <form action=""> 
     <div class="form-row">
         <table style="width:100%">
             <tr>
                 <th>Name</th>
-                <th>Ticket bought</th>
                 <th>Email</th>
                 <th>ID</th>
                 <th>Resend tickets</th>
             </tr>
-            <tr>
-                <td>Mads</td>
-                <td>100</td>
-                <td>mads@mads.dk</td>
-                <td></td>
-                <td><button type="button" class="btn btn-primary">Resend ticket(s)</button></td>
-            </tr>
-            <tr>
-                <td>Patrick</td>
-                <td>200</td>
-                <td>patrick@patrick.dk</td>
-                <td></td>
-                <td><button type="button" class="btn btn-primary">Resend ticket(s)</button></td>
-            </tr>
+            @foreach (var ticket in tickets)
+            {
+               
+                <tr>
+                    <td>@ticket.CustomerFirstname @ticket.CustomerSurname</td>
+                    <td>@ticket.CustomerEmail</td>
+                    <td>@ticket.TicketID</td>
+                    <td><button type="button" class="btn btn-primary">Resend ticket(s)</button></td>
+                </tr>
+            }
         </table>
     </div>
     <div class="row mt-4">
