@@ -146,10 +146,17 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-        public IActionResult OrganizerViewEvent()
+        public IActionResult OrganizerViewEvent(int ID)
         {
+
+            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id= {ID}");
+
             return View();
         }
+
+
+
+
         public IActionResult ChangeLoginInfo()
         {
             return View();
