@@ -14,19 +14,21 @@ namespace TicketSystem.Models
         public string CustomerEmail { get; set; }
         public int CustomerPhoneNumber { get; set; }
         public int TicketID { get; set; }
+        public int EventID { get; set; }
 
         Random rand = new Random();
         DBhelper db = new DBhelper();
 
         public Ticket() { }
 
-        public Ticket(string Firstname, string Surname, string Email, int PhoneNumber, int TicketID)
+        public Ticket(string Firstname, string Surname, string Email, int PhoneNumber, int TicketID, int EventID)
         {
             CustomerFirstname = Firstname;
             CustomerSurname = Surname;
             CustomerEmail = Email;
             CustomerPhoneNumber = PhoneNumber;
-            this.TicketID = TicketID;  
+            this.TicketID = TicketID;
+            this.EventID = EventID; 
         }
 
 
@@ -52,8 +54,6 @@ namespace TicketSystem.Models
 
             }
             while (keyList.Contains(ID));
-
-
             return ID; 
         }
         
