@@ -10,10 +10,10 @@
 <h2>Create Organizer</h2>
 
 
-<div class="row">
-    <div class="col-6">
-        @using (Html.BeginForm())
-        {
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-6">
             <div class="form-group mb-0">
                 @Html.Label("Contact Person name") <br />
                 @Html.TextBox("Name", null, new { required = true, placeholder = "Contact Person name", @class = "form-control" })<br />
@@ -34,12 +34,17 @@
                 @Html.Label("Password") <br />
                 @Html.Password("Password", null, new { required = true, placeholder = "Password", @class = "form-control", @type = "password" })<br />
             </div>
-            <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Submit </button>
-        }
-
-
+            <div class="row mt-5">
+                <div class="col-8">
+                    <a class="btn btn-primary" asp-controller="Customer" asp-action="LandingPage">Back</a>
+                </div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Create user</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+}
 
 
 
