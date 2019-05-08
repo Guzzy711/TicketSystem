@@ -75,14 +75,14 @@ namespace TicketSystem.Controllers
             {
 
                 ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
+                ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
             }
 
             return View();
         }
-        public IActionResult EditEvent()
-        {
-            return View();
-        }
+
+
+
 
 
         [HttpPost]
@@ -91,6 +91,7 @@ namespace TicketSystem.Controllers
             if(ModelState.IsValid)
             {
                 dbhelper.InsertQueryToDB($"UPDATE events SET event_name='{name}',location='{location}', date='{date}', time='{time}', ticket_amount={ticketamount}, price={price}, image='{image}', description='{description}' WHERE id={id}");
+                ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
             }
             ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
 
