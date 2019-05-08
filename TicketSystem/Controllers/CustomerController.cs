@@ -10,9 +10,9 @@ namespace TicketSystem.Controllers
 {
    public class CustomerController : Controller
     {
-         
-          DBhelper dbhelper = new DBhelper();
-
+        DBhelper dbhelper = new DBhelper();
+        Ticket tick = new Ticket();
+          
    
         public IActionResult Index()
         {
@@ -31,9 +31,11 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                int ID = tick.IDGenerator();      
 
-                dbhelper.InsertQueryToDB($"INSERT INTO tickets(event_id, customer_first_name, customer_surname, customer_email, customer_phone_number) VALUES ({EventID},'{customer_first_name}','{customer_surname}','{customer_email}',{customer_phonenumber})");
+                dbhelper.InsertQueryToDB($"INSERT INTO tickets(id, event_id, customer_first_name, customer_surname, customer_email, customer_phone_number) VALUES ({ID},{EventID},'{customer_first_name}','{customer_surname}','{customer_email}',{customer_phonenumber})");
                 return RedirectToAction("Confirmation", "Ticket");         
+
             }
 
             return View();

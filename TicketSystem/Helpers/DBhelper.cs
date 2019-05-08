@@ -153,8 +153,34 @@ namespace TicketSystem.Helpers
             }
 
             return events; 
+        }
+
+        public Ticket[] CreateTicketObjectsFromQuery(string query)
+        {
+            DataTable queryResult = SelectQuery(query);
+
+            Ticket[] tickets = new Ticket[queryResult.Rows.Count];
+
+            int counter = 0; 
+
+            foreach (DataRow row in queryResult.Rows)
+            {
+                var TicketID = (int)row["id"];
+                var EventID = (int)row["event_id"];
+                var CustomerFirstname = (string)row["customer_first_name"];
+                var CustomerSurname = (string)row["customer_surname"];
+                var CustomerEmail = (string)row["customer_email"];
+                var CustomerPhone = (int)row["customer_phone_number"];
+
+                tickets[counter] = new Ticket(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhone, TicketID, EventID);
+
+                counter++; 
+            }
+
+            return tickets; 
 
         }
+
 
         public Organizer CreateOrganizerObject(int ID)
         {
