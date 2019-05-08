@@ -41,10 +41,7 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-        public IActionResult Confirmation()
-        {
-            return View();
-        }
+
     }
    
 }

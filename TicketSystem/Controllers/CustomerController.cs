@@ -27,14 +27,15 @@ namespace TicketSystem.Controllers
         }
 
          [HttpPost]                                   //route
-        public IActionResult OrderTicket(string customer_first_name, string customer_surname, string customer_email, int customer_phonenumber,int EventID)      
+        public IActionResult OrderTicket(string customer_first_name, string customer_surname, string customer_email, int customer_phonenumber,int id)      
         {
             if (ModelState.IsValid)
             {
-                int ID = tick.IDGenerator();      
-
-                dbhelper.InsertQueryToDB($"INSERT INTO tickets(id, event_id, customer_first_name, customer_surname, customer_email, customer_phone_number) VALUES ({ID},{EventID},'{customer_first_name}','{customer_surname}','{customer_email}',{customer_phonenumber})");
-                return RedirectToAction("Confirmation", "Ticket");         
+                int ID = tick.IDGenerator();
+                ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
+                dbhelper.InsertQueryToDB($"INSERT INTO tickets(id, event_id, customer_first_name, customer_surname, customer_email, customer_phone_number) VALUES ('{ID}','{id}','{customer_first_name}','{customer_surname}','{customer_email}',{customer_phonenumber})");
+                return RedirectToAction("Confirmation", new {id = ID});     
+                //return RedirectToAction("LandingPage", "Customer");
 
             }
 
@@ -44,13 +45,26 @@ namespace TicketSystem.Controllers
         public IActionResult OrderTicket(int id)
         {
 
-
             ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
-
-
 
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Confirmation(int id)
+        {
+            if (ModelState.IsValid) {
+                ViewBag.Ticket = dbhelper.CreateOneTicketObject(id);
+            }
+           
+            return View();
+        }
+
+        public IActionResult Confirmation()
+        {
+            return View();
+        }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

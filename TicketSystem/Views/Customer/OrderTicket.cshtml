@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-4">
-                        <img src="/Image/@eventt.Image" class="otimg"/>
+                        <img src="/Image/@eventt.Image" class="otimg" />
                     </div>
                     <div class="col-8">
                         <h3 class="card-title">@eventt.EventName</h3>
@@ -30,7 +30,7 @@
     </div>
     <hr>
     <h3 class="text-center mb-3">Order Ticket to @eventt.EventName</h3>
-    @using (Html.BeginForm("OrderTicket", "Customer", new { EventID = eventt.EventID }, FormMethod.Post))
+    @using (Html.BeginForm("OrderTicket", "Customer", null, FormMethod.Post))
     {
         <div class="col-1g-4 col-lg-offset-4">
             <div class="form-group mb-0">
