@@ -28,41 +28,11 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    <hr>
-    <h3 class="text-center mb-3">Order Ticket to @eventt.EventName</h3>
-   @using (Html.BeginForm("OrderTicket","Customer",new {EventID = eventt.EventID},FormMethod.Post))
-    {
-        <div class="col-1g-4 col-lg-offset-4">
-            <div class="form-group mb-0">
-                @Html.Label("First name *") <br />
-                @Html.TextBox("CustomerFirstname", null, new { required = true, placeholder = "First name", @class = "form-control", @type = "text" })<br />
-            </div>
-            <div class="form-group mb-0">
-                @Html.Label("Surname *") <br />
-                @Html.TextBox("CustomerSurname", null, new { required = true, placeholder = "Surname", @class = "form-control", @type = "text" })<br />
-            </div>
-            <div class="form-group mb-0">
-
-                @Html.Label("Email *") <br />
-                @Html.TextBox("CustomerEmail", null, new { required = true, placeholder = "Email", @class = "form-control", @type = "text" })<br />
-            </div>
-            <div class="form-group mb-0">
-                @Html.Label("Confirm Email *") <br />
-                @Html.TextBox("ConfirmCustomerEmail", null, new { required = true, placeholder = "Confirm Email", @class = "form-control", @type = "text" })<br />
-            </div>
-            <div class="form-group mb-0">
-                @Html.Label("Phone number *") <br />
-                @Html.TextBox("CustomerPhonenumber", null, new { required = true, placeholder = "Phone Number", @class = "form-control", @type = "number" })<br />
-            </div>
-=======
-</div>
-
 <hr>
 <h3 class="text-center mb-3">Order Ticket to @eventt.EventName</h3>
 
 
-@using (Html.BeginForm("OrderTicket","Customer",new {EventID = eventt.EventID},FormMethod.Post))
+@using (Html.BeginForm("OrderTicket", "Customer", new { EventID = eventt.EventID }, FormMethod.Post))
 {
     <div class="col-1g-4 col-lg-offset-4">
         <div class="form-group mb-0">
@@ -87,11 +57,6 @@
             @Html.TextBox("customer_phonenumber", null, new { required = true, placeholder = "Phone Number", @class = "form-control", @type = "number" })<br />
         </div>
     </div>
-    <div class="row">
-        <div class="col-8">
-            <button type="button" class="btn btn-primary">Back</button>
->>>>>>> 2c84826... Fixed Order Ticket-error
-        </div>
         <div class="row">
             <div class="col-8">
                 <a class="btn btn-primary" asp-controller="Customer" asp-action="LandingPage">Back</a>
@@ -100,8 +65,8 @@
                 <a asp-controller="Ticket" asp-action="Confirmation"><button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Order Ticket</button></a>
             </div>
         </div>
-    }
 }
+   }
 
 
 
