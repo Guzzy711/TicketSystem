@@ -1,10 +1,11 @@
 ﻿@{
     var Event = ViewBag.Event;
+    var orgID = ViewBag.orgID;
 }
 
 <h3 id="Createevent" class="text-left">Create Event</h3>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("CreateEvent", "Organizer", new { id = orgID }, FormMethod.Post))
 {
     <div class="col-md-12">
         <div class="float-right form-group col-md-6">

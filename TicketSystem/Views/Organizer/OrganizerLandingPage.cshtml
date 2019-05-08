@@ -1,22 +1,30 @@
 ﻿@{
 
     ViewData["Title"] = "Organizer LandingPage";
-    var organizer = (Organizer)ViewBag.Organizer;
-    var events = ViewBag.Events; 
+    var organizer = ViewBag.Organizer;
+    var events = ViewBag.Events;
 }
 
 
 
-
 <div class="row">
-    <div class="col-12">
+    <div class="col-6">
         <h2>@ViewData["Title"]</h2>
     </div>
+    <div class="col-6 text-right">
+        <div class="avatar-container">
+            <img src="https://i.pravatar.cc/50" class=" = align-self-center rounded-circle d-inline" />
+                <h4 class="d-inline align-middle mt-3 ml-2" > @organizer.ContactPerson</h4>
+           
+        </div>
+    </div>
     <div class="row">
-        <a class="btn btn-primary w-100 mt-2" asp-controller="Organizer" asp-action="CreateEvent">Create Event</a>
+        <a class="btn btn-primary w-100 mt-2" asp-controller="Organizer" asp-action="CreateEvent" asp-route-id="@organizer.OrganizerID">Create Event</a>
+    </div>
     </div>
 
-    @foreach(var eventt in events)
+
+    @foreach (var eventt in events)
     {
         <div class="card w-100 mt-3">
             <div class="card-body">
@@ -43,8 +51,9 @@
                 </div>
             </div>
         </div>
+
+
+
+    
+
     }
-</div>
-
-
-
