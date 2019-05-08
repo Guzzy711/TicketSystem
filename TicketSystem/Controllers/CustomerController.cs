@@ -34,6 +34,8 @@ namespace TicketSystem.Controllers
                 int ID = tick.IDGenerator();      
 
                 dbhelper.InsertQueryToDB($"INSERT INTO tickets(id, event_id, customer_first_name, customer_surname, customer_email, customer_phone_number) VALUES ({ID},{EventID},'{customer_first_name}','{customer_surname}','{customer_email}',{customer_phonenumber})");
+                var customer = new Customer();
+
                 return RedirectToAction("Confirmation", "Ticket");         
 
             }
