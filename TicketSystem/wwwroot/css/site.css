@@ -61,12 +61,12 @@ th {
     text-align: left;
 }
 
-.lpimg {
-    width: 100px;
-    height: 100px;
+.otimg {
+    height: 200px;
+    width: 200px;
 }
 
-.otimg {
-    width: 200px;
-    height: 200px;
+.lpimg {
+    height: 100px;
+    width: 100px;
 }
