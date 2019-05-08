@@ -143,11 +143,12 @@ namespace TicketSystem.Helpers
                 var Time = (TimeSpan)row["time"];
                 var TicketAmount = (int)row["ticket_amount"];
                 var Price = (float)row["price"];
+                var Image = (string)row["image"];
                 var Description = (string)row["description"];
                 var ActiveState = (bool)row["active_state"];
                 var TicketsSold = TicketCounter(EventID); 
 
-                events[counter] = new Event(EventID,EventName,Location,Date, Time,TicketAmount,Price,Description,ActiveState, TicketsSold);
+                events[counter] = new Event(EventID,EventName,Location,Date,Time,TicketAmount,Price,Image,Description,ActiveState,TicketsSold);
                 counter++; 
             }
 

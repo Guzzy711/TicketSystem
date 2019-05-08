@@ -27,12 +27,12 @@ namespace TicketSystem.Controllers
         }
 
          [HttpPost]                                   //route
-        public IActionResult OrderTicket(string customer_firstname, string customer_surname, string customer_email, int customer_phonenumber,int event_id)      
+        public IActionResult OrderTicket(string customer_first_name, string customer_surname, string customer_email, int customer_phonenumber,int EventID)      
         {
             if (ModelState.IsValid)
             {
 
-                dbhelper.InsertQueryToDB($"INSERT INTO tickets(customer_firstname, customer_surname, customer_email, customer_phonenumber, event_id) VALUES ('{customer_firstname}','{customer_surname}','{customer_email}','{customer_phonenumber}',{event_id})");
+                dbhelper.InsertQueryToDB($"INSERT INTO tickets(event_id, customer_first_name, customer_surname, customer_email, customer_phone_number) VALUES ({EventID},'{customer_first_name}','{customer_surname}','{customer_email}',{customer_phonenumber})");
                 return RedirectToAction("LandingPage", "Customer");         
             }
 
