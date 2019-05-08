@@ -146,9 +146,9 @@ namespace TicketSystem.Helpers
                 var Image = (string)row["image"];
                 var Description = (string)row["description"];
                 var ActiveState = (bool)row["active_state"];
-                var TicketsSold = TicketCounter(EventID); 
-
-                events[counter] = new Event(EventID,EventName,Location,Date,Time,TicketAmount,Price,Image,Description,ActiveState,TicketsSold);
+                var TicketsSold = TicketCounter(EventID);
+                var OrganizerID = (int)row["organizer_id"];
+                events[counter] = new Event(EventID,EventName,Location,Date,Time,TicketAmount,Price,Image,Description,ActiveState,TicketsSold, OrganizerID);
                 counter++; 
             }
 

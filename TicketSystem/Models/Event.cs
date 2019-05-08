@@ -19,10 +19,10 @@ namespace TicketSystem.Models
         public bool ActiveState { get; set; }
         public int TicketsSold { get; set; }
         public int TicketsLeft { get; set; }
+        public int OrganizerID { get; set; }
 
 
-
-        public Event(int event_id, string event_name, string location, DateTime date, TimeSpan time, int ticket_amount, float price, string image, string description, bool active_state, Int64 TicketsSold)
+        public Event(int event_id, string event_name, string location, DateTime date, TimeSpan time, int ticket_amount, float price, string image, string description, bool active_state, Int64 TicketsSold, int organizer_id)
         {
             EventID = event_id;
             EventName = event_name;
@@ -35,7 +35,8 @@ namespace TicketSystem.Models
             Description = description;
             ActiveState = active_state;
             this.TicketsSold = (int)TicketsSold;
-            TicketsLeft = TicketAmount - this.TicketsSold; 
+            TicketsLeft = TicketAmount - this.TicketsSold;
+            OrganizerID = organizer_id;
 
         }
 
