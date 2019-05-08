@@ -6,8 +6,6 @@
 
 <p>
     @ViewBag.Message
-
-
 </p>
 ﻿
 
@@ -22,8 +20,6 @@
                         <i class="fas fa-exclamation-circle"></i> @ViewBag.error
                     </div>
                 }
-
-
                 @using (Html.BeginForm())
                 {
                     <div class="form-group">
@@ -31,11 +27,9 @@
                         @Html.TextBox("Email", null, new { required = true, placeholder = "Email Address", @class = "form-control", type = "email", id = "loginemail" })<br />
                         <small id="emailHelp" class="form-text text-muted">Enter your email to login.</small>
                     </div>
-
                     <div class="form-group">
                         @Html.Label("Password *") <br />
                         @Html.Password("Password", null, new { required = true, placeholder = "Password", @class = "form-control", id = "loginpassword" })<br />
-
                     </div>
                     <button type="submit" class="btn btn-primary">Sign in</button>
                 }
