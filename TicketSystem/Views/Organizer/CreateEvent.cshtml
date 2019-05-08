@@ -1,0 +1,55 @@
+﻿@{
+    var Event = ViewBag.Event;
+}
+
+<h3 id="Createevent" class="text-left">Create Event</h3>
+
+@using (Html.BeginForm())
+{
+    <div class="col-md-12">
+        <div class="float-right form-group col-md-6">
+            @Html.Label("Description *") <br />
+            @Html.TextArea("Description", null, new { required = true, @class = "form-control"})
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group mb-0">
+            @Html.Label("Event name *") <br />
+            @Html.TextBox("Name", null, new { required = true, placeholder = "Event name", @class = "form-control" })<br />
+        </div>
+        <div class="form-group mb-0">
+            @Html.Label("Location *") <br />
+            @Html.TextBox("Location", null, new { required = true, placeholder = "Location", @class = "form-control" })<br />
+        </div>
+        <div class="form-group mb-0">
+            @Html.Label("Date *") <br />
+            @Html.TextBox("Date", null, new { required = true, placeholder = "Date and time", @class = "form-control", @type = "date" })<br />
+        </div>
+        <div class="form-group mb-0">
+            @Html.Label("Start time *") <br />
+            @Html.TextBox("Time", null, new { required = true, placeholder = "Start time", @class = "form-control", @type = "time" })<br />
+        </div>
+        <div class="form-group mb-0">
+            @Html.Label("Total amount of tickets *") <br />
+            @Html.TextBox("TicketAmount", null, new { required = true, placeholder = "Total amount of tickets", @class = "form-control", @type = "number" })<br />
+        </div>
+        <div class="form-group mb-0">
+            @Html.Label("Price *") <br />
+            @Html.TextBox("Price", null, new { required = true, placeholder = "Price", @class = "form-control", @type = "float" })<br />
+        </div>
+        <div class="form-group mb-0">
+            @Html.Label("Image") <br />
+            @Html.TextBox("Image", null, new { placeholder = "Image", @class = "form-control", @type = "file" })<br />
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-8">
+            <a class="btn btn-primary" asp-controller="Organizer" asp-action="OrganizerLandingPage">Back</a>
+        </div>
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary fas fa-check"> Create event</button>
+        </div>
+    </div>
+}
+
+

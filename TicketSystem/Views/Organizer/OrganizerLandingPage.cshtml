@@ -1,72 +1,50 @@
-﻿
-@{
+﻿@{
+
     ViewData["Title"] = "Organizer LandingPage";
+    var organizer = (Organizer)ViewBag.Organizer;
+    var events = ViewBag.Events; 
 }
+
+
+
 
 <div class="row">
     <div class="col-12">
         <h2>@ViewData["Title"]</h2>
     </div>
-
     <div class="row">
-            <a href="#" class="btn btn-primary w-100 mt-2">+ Create event</a>
+        <a class="btn btn-primary w-100 mt-2" asp-controller="Organizer" asp-action="CreateEvent">Create Event</a>
     </div>
-    <div class="card w-100 mt-3">
-        <div class="card-body">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-2">
-                        <img src="https://via.placeholder.com/100" alt="Alternate Text" />
-                    </div>
-                    <div class="col-4">
-                        <h5 class="card-title">Event Name</h5>
-                        <p class="mb-0">Date</p>
-                        <p class="mb-0">Time</p>
-                        <p class="mb-0">Location</p>
-                    </div>
-                    <div class="col-4">
-                        <p class="mb-0 mt-3">32 tickets total</p>
-                        <p class="mb-0 mt-3">30 tickets sold</p>
-                    </div>
-                    <div class="col-2 text-center">
-                        <a href="#" class="btn btn-primary mb-2 mt-2 w-100">View event</a>
-                        <a href="#" class="btn btn-primary w-100">Edit event</a>
-                    </div>
 
+    @foreach(var eventt in events)
+    {
+        <div class="card w-100 mt-3">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="/Image/@eventt.Image" class="lpimg"/>
+                        </div>
+                        <div class="col-4">
+                            <h5 class="card-title">@eventt.EventName</h5>
+                            <p class="mb-0">@eventt.Date.Day/@eventt.Date.Month/@eventt.Date.Year</p>
+                            <p class="mb-0">@eventt.Time.Hours:@eventt.Time.Minutes</p>
+                            <p class="mb-0">@eventt.Location</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="mb-0 mt-3">Tickets sold: @eventt.TicketsSold</p>
+                            <p class="mb-0 mt-3">Tickets left: @eventt.TicketsLeft</p>
+                        </div>
+                        <div class="col-2 text-center">
+                            <a class="btn btn-primary  w-100" asp-controller="Customer" asp-action="OrderTicket" asp-route-id="@eventt.EventID">View Event</a>
+                            <a class="btn btn-primary  w-100" asp-controller="Organizer" asp-action="EditEvent" asp-route-id="@eventt.EventID">Edit Event</a>
+                        </div>
+                    </div>
                 </div>
-
             </div>
-
         </div>
-    </div>
-    <div class="card w-100 mt-3">
-        <div class="card-body">
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-2">
-                        <img src="https://via.placeholder.com/100" alt="Alternate Text" />
-                    </div>
-                    <div class="col-4">
-                        <h5 class="card-title">Event Name</h5>
-                        <p class="mb-0">Date</p>
-                        <p class="mb-0">Time</p>
-                        <p class="mb-0">Location</p>
-                    </div>
-                    <div class="col-4">
-                        <p class="mb-0 mt-3">100 tickets total</p>
-                        <p class="mb-0 mt-3">43 tickets sold</p>
-                    </div>
-                    <div class="col-2 text-center">
-                        <a href="#" class="btn btn-primary mb-2 mt-2 w-100">View event</a>
-                        <a href="#" class="btn btn-primary w-100">Edit event</a>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
+    }
 </div>
+
+
 

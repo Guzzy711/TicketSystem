@@ -44,7 +44,7 @@ namespace TicketSystem
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Customer/Error");
                 app.UseHsts();
             }
 
@@ -56,7 +56,7 @@ namespace TicketSystem
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Customer}/{action=LandingPage}/{id?}");
             });
         }
     }

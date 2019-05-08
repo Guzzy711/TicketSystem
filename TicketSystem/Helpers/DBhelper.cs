@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Data; 
 using MySql.Data.MySqlClient;
+using TicketSystem.Models;
 
 namespace TicketSystem.Helpers
 {
@@ -122,6 +123,76 @@ namespace TicketSystem.Helpers
                 Console.WriteLine("Could not delete from database");
                 throw error; 
             }
+        }
+
+        public Event[] CreateEventObjectsFromQuery(string query)
+        {
+
+            DataTable queryResult = SelectQuery(query);
+
+            Event[] events = new Event[queryResult.Rows.Count];
+
+            int counter = 0;
+
+            foreach (DataRow row in queryResult.Rows)
+            {
+                var EventID = (int)row["id"];
+                var EventName = (string)row["event_name"];
+                var Location = (string)row["location"];
+                var Date = (DateTime)row["date"];
+                var Time = (TimeSpan)row["time"];
+                var TicketAmount = (int)row["ticket_amount"];
+                var Price = (float)row["price"];
+                var Image = (string)row["image"];
+                var Description = (string)row["description"];
+                var ActiveState = (bool)row["active_state"];
+                var TicketsSold = TicketCounter(EventID); 
+
+                events[counter] = new Event(EventID,EventName,Location,Date,Time,TicketAmount,Price,Image,Description,ActiveState,TicketsSold);
+                counter++; 
+            }
+
+            return events; 
+
+        }
+
+        public Organizer CreateOrganizerObject(int ID)
+        {
+            string query = $"SELECT * FROM organizers WHERE id = {ID}";
+            var queryResult = SelectQuery(query);
+
+            Organizer organizer = new Organizer();
+
+            foreach (DataRow row in queryResult.Rows)
+            {
+                string organizationName = (string)row["organization_name"];
+                string contactPerson = (string)row["contact_person"];
+                string phoneNumber = (string)row["phone_number"];
+                string emailAddress = (string)row["email_address"];
+                string passWord = (string)row["password"];
+                int organizerID = (int)row["id"];
+
+                organizer = new Organizer(contactPerson, passWord, phoneNumber, emailAddress, organizationName, organizerID);
+
+
+            }
+
+            return organizer;
+        }
+
+        public Int64 TicketCounter(int eventID)
+        {
+            string query = $"SELECT COUNT(*) FROM tickets WHERE event_id = {eventID}";
+            var queryResult = SelectQuery(query);
+
+            Int64 count = 0; 
+
+            foreach (DataRow row in queryResult.Rows)
+            {
+                count = (Int64)row["COUNT(*)"]; 
+            }
+
+            return count; 
         }
 
     }
