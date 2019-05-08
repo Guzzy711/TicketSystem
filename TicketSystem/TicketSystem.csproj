@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Event\**" />
+    <Content Remove="Views\Event\**" />
+    <EmbeddedResource Remove="Views\Event\**" />
+    <None Remove="Views\Event\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
@@ -14,7 +21,6 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
-    <Folder Include="Views\Event\" />
     <Folder Include="wwwroot\Image\" />
   </ItemGroup>
   <ItemGroup>
