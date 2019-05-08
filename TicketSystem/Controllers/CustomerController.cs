@@ -33,7 +33,7 @@ namespace TicketSystem.Controllers
             {
 
                 dbhelper.InsertQueryToDB($"INSERT INTO tickets(event_id, customer_first_name, customer_surname, customer_email, customer_phone_number) VALUES ({EventID},'{customer_first_name}','{customer_surname}','{customer_email}',{customer_phonenumber})");
-                return RedirectToAction("LandingPage", "Customer");         
+                return RedirectToAction("Confirmation", "Ticket");         
             }
 
             return View();
