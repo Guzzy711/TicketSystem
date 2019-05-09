@@ -207,7 +207,28 @@ namespace TicketSystem.Helpers
             }
 
             return tickets; 
+        }
 
+        public Ticket CreateOneTicketObject(int ID)
+        {
+            string query = $"SELECT * FROM tickets WHERE id = {ID}";
+            var queryResult = SelectQuery(query);
+
+            Ticket ticket = new Ticket();
+
+            foreach (DataRow row in queryResult.Rows)
+            {
+                var TicketID = (int)row["id"];
+                var EventID = (int)row["event_id"];
+                var CustomerFirstname = (string)row["customer_first_name"];
+                var CustomerSurname = (string)row["customer_surname"];
+                var CustomerEmail = (string)row["customer_email"];
+                var CustomerPhone = (int)row["customer_phone_number"];
+
+                ticket = new Ticket(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhone, TicketID, EventID);
+            }
+
+            return ticket; 
         }
 
 
@@ -228,8 +249,6 @@ namespace TicketSystem.Helpers
                 int organizerID = (int)row["id"];
 
                 organizer = new Organizer(contactPerson, passWord, phoneNumber, emailAddress, organizationName, organizerID);
-
-
             }
 
             return organizer;
@@ -249,6 +268,8 @@ namespace TicketSystem.Helpers
 
             return count; 
         }
+
+
 
     }
 }
