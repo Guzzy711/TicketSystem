@@ -25,7 +25,7 @@ namespace TicketSystem.Models
 
         public string OrganizationName { get; set; }
 
-        public int OrganizerID { get; set; }
+        public int? OrganizerID { get; set; }
 
         public Organizer()
         {

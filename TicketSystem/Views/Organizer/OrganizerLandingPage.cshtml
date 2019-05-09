@@ -12,10 +12,12 @@
         <h2>@ViewData["Title"]</h2>
     </div>
     <div class="col-6 text-right">
-        <div class="avatar-container">
+        <div class="avatar-container d-block">
             <img src="https://i.pravatar.cc/50" class=" = align-self-center rounded-circle d-inline" />
-                <h4 class="d-inline align-middle mt-3 ml-2" > @organizer.ContactPerson</h4>
-           
+            <h4 class="d-inline align-middle mt-3 ml-2"> @organizer.ContactPerson</h4>
+        </div>
+        <div class="d-block">
+            <a class="btn btn-primary  w-40 mt-2" asp-controller="Organizer" asp-action="ChangeLoginInfo" asp-route-id="@organizer.OrganizerID"><i class="fas fa-user-edit"></i> Account information</a>
         </div>
     </div>
     <div class="row">
