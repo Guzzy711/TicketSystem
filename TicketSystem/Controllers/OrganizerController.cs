@@ -40,8 +40,6 @@ namespace TicketSystem.Controllers
                         return RedirectToAction("OrganizerLandingPage", new { id = (int)row["id"] });
                     }
 
-
-
                 }
                 else
                 {
@@ -61,7 +59,7 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid)
             {
                 dbhelper.InsertQueryToDB($"INSERT INTO organizers(contact_person, password, phone_number, email_address,organization_name) VALUES ('{name}','{password}','{phonenumber}','{email}','{organizationName}')");
-                return RedirectToAction("Login", "Organizer");           //skal laves om til organizer home
+                return RedirectToAction("Login", "Organizer");          
             }
 
             return View();
@@ -75,8 +73,7 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid)
             {
                 dbhelper.DeleteQuery($"DELETE FROM organizers WHERE id={id}");
-                //dbhelper.DeleteQuery($"DELETE * FROM organizers WHERE id={id}");
-               return RedirectToAction("Login", "Organizer");           //skal laves om til organizer home
+                return RedirectToAction("Login", "Organizer");
             }
 
             return View();
@@ -90,7 +87,7 @@ namespace TicketSystem.Controllers
 
 
         [HttpGet]                                   //route
-        public IActionResult EditEvent(int id)// string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+        public IActionResult EditEvent(int id)
         {
             if (ModelState.IsValid)
             {
@@ -127,13 +124,13 @@ namespace TicketSystem.Controllers
 
 
         [HttpPost]                                   //route
-        public IActionResult CreateEvent(int id, string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+        public IActionResult CreateEvent(int id, string name, string location, string date, string time, int ticketamount, int price, string image, string description)       
         {
             if (ModelState.IsValid)
             {
 
                 dbhelper.InsertQueryToDB($"INSERT INTO events(organizer_id, event_name, location, date, time, ticket_amount, price, image, description) VALUES ('{id}','{name}','{location}','{date}','{time}','{ticketamount}','{price}','{image}','{description}')");
-                return RedirectToAction("OrganizerLandingPage", new { id = (int)id });           //skal laves om til organizer home
+                return RedirectToAction("OrganizerLandingPage", new { id = (int)id });           
             }
             return View();
 

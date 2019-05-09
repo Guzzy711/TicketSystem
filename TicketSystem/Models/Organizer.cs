@@ -27,9 +27,11 @@ namespace TicketSystem.Models
 
         public int? OrganizerID { get; set; }
 
+        public int Login { get; set; } = 0;
+
         public Organizer()
         {
-
+            Login = 0;
         }
 
         public Organizer(string ContactPerson, string Password, string PhoneNumber, string Email, string OrganizationName, int OrganizerID)
@@ -39,7 +41,8 @@ namespace TicketSystem.Models
             this.PhoneNumber = PhoneNumber;
             this.Email = Email;
             this.OrganizationName = OrganizationName;
-            this.OrganizerID = OrganizerID; 
+            this.OrganizerID = OrganizerID;
+            Login = 1;
         }
 
     }
