@@ -63,7 +63,7 @@ namespace TicketSystem.Models
         {
             Event eventt = db.CreateOneEventObject(ticket.EventID);
 
-            var body = "<table align ='center'><tr><h1>Hello {0},</h1> </tr><tr><p>{1}</p></tr> <tr><h3>{2}</h3></tr></table>";
+            var body = "<table align ='center' border='1'><tr><td style='padding:10px;'><h1>Hello {0},</h1></td> </tr><tr><td style='padding:10px;'><p>{1}</p></td></tr> <tr><td style='padding:10px;'><h3>{2}</h3><span>* Please show this at the event</span></td></tr></table>";
             var message = new MailMessage();
             message.To.Add(new MailAddress(ticket.CustomerEmail));  // replace with valid value 
             message.From = new MailAddress("info@guzzy.dk");  // replace with valid value
