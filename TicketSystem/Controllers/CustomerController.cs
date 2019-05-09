@@ -48,21 +48,20 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Confirmation(int id)
+        [HttpGet]
+        public IActionResult Confirmation(int id) //TicketID
         {
             if (ModelState.IsValid) {
-                ViewBag.Ticket = dbhelper.CreateOneTicketObject(id);
+                var ticket = dbhelper.CreateOneTicketObject(id);
+                _ = tick.SendTicketAsync(ticket);
+
+                ViewBag.Ticket = ticket;
             }
            
             return View();
         }
 
-        public IActionResult Confirmation()
-        {
-            return View();
-        }
-
+       
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
