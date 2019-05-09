@@ -158,10 +158,13 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-
-
-
+               
         public IActionResult ChangeLoginInfo()
+        {
+            return View();
+        }
+
+        public IActionResult CheckTickets()
         {
             return View();
         }
