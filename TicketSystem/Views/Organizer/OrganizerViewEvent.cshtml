@@ -13,7 +13,9 @@
                 <div class="col-4">
                     <img src="https://via.placeholder.com/200" alt="Alternate Text" />
                     
-                    <a class="btn btn-primary w-100 mt-5" asp-controller="Organizer" asp-action="EditEvent" asp-route-id="@eventt.EventID">Edit Event</a>
+                    <a class="btn btn-primary mt-5" asp-controller="Organizer" asp-action="EditEvent" asp-route-id="@eventt.EventID">Edit Event</a>
+                    <a class="btn btn-primary mt-5" asp-controller="Organizer" asp-action="CheckTickets" asp-route-id="@eventt.EventID">Check Tickets</a>
+
                 </div>
                 <div class="col-8">
                     <h3 class="card-title">@eventt.EventName</h3>
