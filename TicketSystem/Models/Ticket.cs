@@ -63,12 +63,12 @@ namespace TicketSystem.Models
         {
             Event eventt = db.CreateOneEventObject(ticket.EventID);
 
-            var body = "<p>Hello {0},</p> <h2>{1}</h2><p>{2}</p>";
+            var body = "<table align ='center'><tr><h1>Hello {0},</h1> </tr><tr><p>{1}</p></tr> <tr><h3>{2}</h3></tr></table>";
             var message = new MailMessage();
             message.To.Add(new MailAddress(ticket.CustomerEmail));  // replace with valid value 
             message.From = new MailAddress("info@guzzy.dk");  // replace with valid value
             message.Subject = $"Ticket Confirmation #{ticket.TicketID}";
-            message.Body = string.Format(body, ticket.CustomerFirstname, $"Here is your ticket for {eventt.EventName}", $"Your TicketID is #{ticket.TicketID}");
+            message.Body = string.Format(body, ticket.CustomerFirstname, $"Your recent order for {eventt.EventName} has been completed.  Your order details are shown below for reference:", $"Your TicketID is #{ticket.TicketID}");
             message.IsBodyHtml = true;
 
             using (var smtp = new SmtpClient())
