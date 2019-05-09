@@ -55,7 +55,9 @@ namespace TicketSystem.Controllers
                 var ticket = dbhelper.CreateOneTicketObject(id);
                 _ = tick.SendTicketAsync(ticket);
 
+                ViewBag.Event = dbhelper.CreateOneEventObject(ticket.EventID);
                 ViewBag.Ticket = ticket;
+
             }
            
             return View();
