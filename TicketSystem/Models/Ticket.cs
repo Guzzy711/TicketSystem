@@ -63,12 +63,16 @@ namespace TicketSystem.Models
         {
             Event eventt = db.CreateOneEventObject(ticket.EventID);
 
-            var body = "<table align ='center' border='1'><tr><td style='padding:10px;'><h1>Hello {0},</h1></td> </tr><tr><td style='padding:10px;'><p>{1}</p></td></tr> <tr><td style='padding:10px;'><h3>{2}</h3><span>* Please show this at the event</span></td></tr></table>";
+            var body = "<table align ='center' style=' border: 1px solid black;'><tr><td style='padding:10px;'><h1>Hello {0},</h1></td> </tr><tr><td style='padding:10px;'><p>{1}</p></td></tr> <tr><td style='padding:10px;'><span>* Please show this at the event</span><h3>{2}</h3> <h3>{3}</h3><h3>{4}</h3> <h3>{5}</h3><h3>{6}</h3></td></tr><tr><td style='padding:10px;'>You are receiving this email because you bought a ticket on TicketSystem.</td></tr></table>";
             var message = new MailMessage();
             message.To.Add(new MailAddress(ticket.CustomerEmail));  // replace with valid value 
             message.From = new MailAddress("info@guzzy.dk");  // replace with valid value
             message.Subject = $"Ticket Confirmation #{ticket.TicketID}";
-            message.Body = string.Format(body, ticket.CustomerFirstname, $"Your recent order for {eventt.EventName} has been completed.  Your order details are shown below for reference:", $"Your TicketID is #{ticket.TicketID}");
+            message.Body = string.Format(body, ticket.CustomerFirstname, $"Your recent order for {eventt.EventName} has been completed. " +
+            	"Your order details are shown below for reference:", $"Your TicketID: #{ticket.TicketID}",
+                $"Your name: {ticket.CustomerFirstname} {ticket.CustomerSurname}",$"Ticket price: {eventt.Price},-",
+                $"Event Location: {eventt.Location}",
+                $"Event day: {eventt.Date} Time: {eventt.Time}");
             message.IsBodyHtml = true;
 
             using (var smtp = new SmtpClient())
