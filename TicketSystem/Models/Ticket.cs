@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data;
-using TicketSystem.Helpers; 
+using TicketSystem.Helpers;
+using System.Net.Mail;
+using System.Net;
 
 namespace TicketSystem.Models
 {
@@ -56,6 +58,34 @@ namespace TicketSystem.Models
             while (keyList.Contains(ID));
             return ID; 
         }
-        
+
+        public async Task SendTicketAsync(Ticket ticket)
+        {
+            Event eventt = db.CreateOneEventObject(ticket.EventID);
+
+            var body = "<p>Hello {0},</p> <h2>{1}</h2><p>{2}</p>";
+            var message = new MailMessage();
+            message.To.Add(new MailAddress(ticket.CustomerEmail));  // replace with valid value 
+            message.From = new MailAddress("info@guzzy.dk");  // replace with valid value
+            message.Subject = $"Ticket Confirmation #{ticket.TicketID}";
+            message.Body = string.Format(body, ticket.CustomerFirstname, $"Here is your ticket for {eventt.EventName}", $"Your TicketID is #{ticket.TicketID}");
+            message.IsBodyHtml = true;
+
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
+                {
+                    UserName = "info@guzzy.dk",  // replace with valid value
+                    Password = "gomucanodi96"  // replace with valid value
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "asmtp.unoeuro.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                await smtp.SendMailAsync(message);
+
+            }
+        }
+
     }
 }
