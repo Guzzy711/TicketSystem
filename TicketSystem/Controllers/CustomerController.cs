@@ -35,8 +35,6 @@ namespace TicketSystem.Controllers
                 ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
                 dbhelper.InsertQueryToDB($"INSERT INTO tickets(id, event_id, customer_first_name, customer_surname, customer_email, customer_phone_number) VALUES ('{ID}','{id}','{customer_first_name}','{customer_surname}','{customer_email}',{customer_phonenumber})");
                 return RedirectToAction("Confirmation", new {id = ID});     
-                //return RedirectToAction("LandingPage", "Customer");
-
             }
 
             return View();
@@ -50,20 +48,20 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-        [HttpPost]
         public IActionResult Confirmation(int id)
         {
             if (ModelState.IsValid) {
-                ViewBag.Ticket = dbhelper.CreateOneTicketObject(id);
+                var ticket = dbhelper.CreateOneTicketObject(id);
+
+                ViewBag.Event = dbhelper.CreateOneEventObject(ticket.EventID);
+
+                ViewBag.Ticket = ticket; 
+
             }
            
             return View();
         }
 
-        public IActionResult Confirmation()
-        {
-            return View();
-        }
 
 
 

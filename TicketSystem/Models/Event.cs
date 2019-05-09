@@ -22,6 +22,8 @@ namespace TicketSystem.Models
         public int OrganizerID { get; set; }
 
 
+        public Event() { }
+
         public Event(int event_id, string event_name, string location, DateTime date, TimeSpan time, int ticket_amount, float price, string image, string description, bool active_state, Int64 TicketsSold, int organizer_id)
         {
             EventID = event_id;
