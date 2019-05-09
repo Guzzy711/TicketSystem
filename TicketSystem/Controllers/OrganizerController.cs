@@ -76,7 +76,7 @@ namespace TicketSystem.Controllers
             {
                 dbhelper.DeleteQuery($"DELETE FROM organizers WHERE id={id}");
                 //dbhelper.DeleteQuery($"DELETE * FROM organizers WHERE id={id}");
-               return RedirectToAction("Index", "Organizer");           //skal laves om til organizer home
+               return RedirectToAction("Login", "Organizer");           //skal laves om til organizer home
             }
 
             return View();
