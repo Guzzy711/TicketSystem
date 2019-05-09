@@ -4,11 +4,22 @@
     var ticket = ViewBag.Ticket; 
 }
 
-
-<div class="col-12">
-    <h1 class="text-center mt-3">Confirmation</h1>
-    <p class="mt-5">Thank you for using the ticket system. Your ticket has been sent to your email!</p>
-    <p class="mt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card text-center">
+            <div class="card-header">
+                Confirmation
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Ticket to: @eventt.EventName</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+        </div>
 </div>
-
 <a class="btn btn-primary" asp-controller="Customer" asp-action="LandingPage">Back to homepage</a>
+
+
