@@ -70,6 +70,26 @@ namespace TicketSystem.Controllers
 
 
         [HttpGet]                                   //route
+        public IActionResult DeleteOrganizer(int id)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+        {
+            if (ModelState.IsValid)
+            {
+                dbhelper.DeleteQuery($"DELETE FROM organizers WHERE id={id}");
+                //dbhelper.DeleteQuery($"DELETE * FROM organizers WHERE id={id}");
+               return RedirectToAction("Index", "Organizer");           //skal laves om til organizer home
+            }
+
+            return View();
+        }
+        public IActionResult DeleteOrganizer()
+        {
+            return View();
+        }
+
+
+
+
+        [HttpGet]                                   //route
         public IActionResult EditEvent(int id)// string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
         {
             if (ModelState.IsValid)
@@ -97,7 +117,6 @@ namespace TicketSystem.Controllers
 
             return View();
         }
-
 
 
 
