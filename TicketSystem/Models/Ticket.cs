@@ -59,14 +59,16 @@ namespace TicketSystem.Models
             return ID; 
         }
 
-        public async Task SendTicketAsync()
+        public async Task SendTicketAsync(Ticket ticket)
         {
-            var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+            Event eventt = db.CreateOneEventObject(ticket.EventID);
+
+            var body = "<p>Hello {0},</p> <h2>{1}</h2><p>{2}</p>";
             var message = new MailMessage();
-            message.To.Add(new MailAddress("Guzzy711@gmail.com"));  // replace with valid value 
+            message.To.Add(new MailAddress(ticket.CustomerEmail));  // replace with valid value 
             message.From = new MailAddress("info@guzzy.dk");  // replace with valid value
-            message.Subject = "Your email subject";
-            message.Body = string.Format(body, "Christian", "Guzzy711@gmail.com", "test");
+            message.Subject = $"Ticket Confirmation #{ticket.TicketID}";
+            message.Body = string.Format(body, ticket.CustomerFirstname, $"Here is your ticket for {eventt.EventName}", $"Your TicketID is #{ticket.TicketID}");
             message.IsBodyHtml = true;
 
             using (var smtp = new SmtpClient())

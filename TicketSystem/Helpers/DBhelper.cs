@@ -125,6 +125,35 @@ namespace TicketSystem.Helpers
             }
         }
 
+        public Event CreateOneEventObject(int ID)
+        {
+            string query = $"SELECT * FROM events WHERE id = {ID}";
+            var queryResult = SelectQuery(query);
+
+            Event eventt = new Event();
+
+            foreach (DataRow row in queryResult.Rows)
+            {
+                var EventID = (int)row["id"];
+                var EventName = (string)row["event_name"];
+                var Location = (string)row["location"];
+                var Date = (DateTime)row["date"];
+                var Time = (TimeSpan)row["time"];
+                var TicketAmount = (int)row["ticket_amount"];
+                var Price = (float)row["price"];
+                var Image = (string)row["image"];
+                var Description = (string)row["description"];
+                var ActiveState = (bool)row["active_state"];
+                var TicketsSold = TicketCounter(EventID);
+                var OrganizerID = (int)row["organizer_id"];
+
+                eventt = new Event(EventID, EventName, Location, Date, Time, TicketAmount, Price, Image, Description, ActiveState, TicketsSold, OrganizerID);
+               
+            }
+
+            return eventt;
+        }
+
         public Event[] CreateEventObjectsFromQuery(string query)
         {
 
