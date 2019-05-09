@@ -1,47 +1,79 @@
 ﻿
 @{
     ViewData["Title"] = "ChangeLoginInfo";
+    var organizer = ViewBag.Organizer;
 }
 
 <h2>Change login information</h2>
+
 
 @using (Html.BeginForm())
 {
     <div class="row">
         <div class="col-10 mb-3 float-right">
-            <button type="button" class="btn btn-primary float-right">Delete account</button>
+            <a class="btn btn-danger float-right text-white" data-toggle="modal" data-target="#ModalWindow"> <i class="fas fa-trash-alt"></i> Delete Organizer Account</a>
+
         </div>
     </div>
     <div class="row">
         <div class="col-6">
             <div class="form-group mb-0">
                 @Html.Label("Contact Person name") <br />
-                @Html.TextBox("Name", null, new { required = true, placeholder = "Contact Person name", @class = "form-control" })<br />
+                @Html.TextBox("ContactPerson", (string)organizer.ContactPerson, new { required = true, @class = "form-control" })<br />
             </div>
+
             <div class="form-group mb-0">
                 @Html.Label("Organization name") <br />
-                @Html.TextBox("OrganizationName", null, new { required = true, placeholder = "Organization Name", @class = "form-control" })<br />
+                @Html.TextBox("OrganizationName", (string)organizer.OrganizationName, new { required = true, @class = "form-control" })<br />
             </div>
+
             <div class="form-group mb-0">
                 @Html.Label("Phonenumber") <br />
-                @Html.TextBox("Phonenumber", null, new { required = true, placeholder = "Phone number", @class = "form-control", @type = "number" })<br />
+                @Html.TextBox("Phonenumber", (string)organizer.PhoneNumber, new { required = true, @class = "form-control", @type = "number" })<br />
+
             </div>
+
             <div class="form-group mb-0">
                 @Html.Label("Email Address") <br />
-                @Html.TextBox("Email", null, new { required = true, placeholder = "Email Address", @class = "form-control" })<br />
+                @Html.TextBox("Email", (string)organizer.Email, new { required = true, @class = "form-control" })<br />
+
             </div>
+
             <div class="form-group mb-0">
                 @Html.Label("Password") <br />
-                @Html.Password("Password", null, new { required = true, placeholder = "Password", @class = "form-control", @type = "password" })<br />
+                @Html.Password("Password", (string)organizer.Password, new { required = true, @class = "form-control", @type = "password" })<br />
+            </div>
+
+            <button type="submit" class="btn btn-primary fas fa-check"> Save changes </button>
+
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="ModalWindow">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete your account? Deleting the account will also cause all information connected to this account to be deleted.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a class="btn btn-danger" asp-controller="Organizer" asp-action="DeleteOrganizer" asp-route-id="@organizer.OrganizerID">Delete</a>
+
+                </div>
             </div>
         </div>
     </div>
-    <div class="row mt-5">
-        <div class="col-8">
-            <a class="btn btn-primary" asp-controller="Organizer" asp-action="OrganizerLandingPage">Back</a>
-        </div>
-        <div class="col-4">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Save changes</button>
-        </div>
-    </div>
+
+
+
+
+
+
+
 }
