@@ -1,25 +1,33 @@
 ﻿
 @{
     ViewData["Title"] = "Confirmation";
-    var ticket = ViewBag.Ticket; 
+    Ticket ticket = ViewBag.Ticket;
+    Event eventt = ViewBag.Event;
 }
-
 <div class="row">
     <div class="col-12">
-        <div class="card text-center">
-            <div class="card-header">
-                Confirmation
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Ticket to: @eventt.EventName</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            <div class="card-footer text-muted">
-                2 days ago
-            </div>
+        <div class="card-header">
+            Confirmation
         </div>
+        <div class="card-body">
+            <h5 class="card-title text-center">Ticket to: @eventt.EventName </h5>
+        </div>
+    </div>
 </div>
+<div class="row">
+    <div class="col-8">
+        <p class="card-text">Hello @ticket.CustomerFirstname @ticket.CustomerSurname.<br /><br /> Thank you for buying a ticket to @eventt.EventName.<br /> Your ticket has been sent to: @ticket.CustomerEmail.</p>
+        <b>Event Information:</b>
+        <ul class="eventdata">
+            <li>Location: @eventt.Location</li>
+            <li>Date: @eventt.Date.Day/@eventt.Date.Month/@eventt.Date.Year</li>
+            <li>Time: @eventt.Time.Hours:@eventt.Time.Minutes</li>
+            <li>Price: @eventt.Price kr.</li>
+        </ul>
+    </div>
+    <div class="col-4">
+        <img src="/Image/@eventt.Image" class="otimg" />
+    </div>
+</div>
+
 <a class="btn btn-primary" asp-controller="Customer" asp-action="LandingPage">Back to homepage</a>
-
-
