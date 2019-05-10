@@ -17,6 +17,7 @@ namespace TicketSystem.Controllers
     {
 
         DBhelper dbhelper = new DBhelper();
+        Ticket tick = new Ticket();
 
 
 
@@ -122,6 +123,14 @@ namespace TicketSystem.Controllers
 
 
 
+        public IActionResult ResendTicket(int id)
+        {
+            ViewBag.currentTicket = dbhelper.CreateOneTicketObject(id);
+            return View();
+        }
+      
+
+      
 
 
 
@@ -172,13 +181,22 @@ namespace TicketSystem.Controllers
         public IActionResult OrganizerViewEvent(int ID)
         {
 
-            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id= {ID}");
+            var eventt = dbhelper.CreateOneEventObject(ID);
+            ViewBag.Event = eventt; 
             ViewBag.Tickets = dbhelper.CreateTicketObjectsFromQuery($"SELECT * FROM tickets WHERE event_id={ID}"); 
 
             return View();
         }
-
-
+        [HttpPost]
+        public IActionResult OrganizerViewEvent(int ID, int ticketid, string Email) {
+            var eventt = dbhelper.CreateOneEventObject(ID);
+            ViewBag.Event = eventt;
+            ViewBag.Tickets = dbhelper.CreateTicketObjectsFromQuery($"SELECT * FROM tickets WHERE event_id={ID}");
+            var ticket = dbhelper.CreateOneTicketObject(ticketid);
+            ticket.CustomerEmail = Email; 
+            _=tick.SendTicketAsync(ticket);
+            return View();
+        }
 
         [HttpGet]
         public IActionResult ChangeLoginInfo(int id)
@@ -194,11 +212,11 @@ namespace TicketSystem.Controllers
      
 
         [HttpPost]
-        public IActionResult ChangeLoginInfo(int id, string organization_name, string contact_person, int phone_number, string email_address, string password)
+        public IActionResult ChangeLoginInfo(int id, string OrganizationName, string ContactPerson, int Phonenumber, string Email, string Password)
         {
             if (ModelState.IsValid)
             {
-                dbhelper.InsertQueryToDB($"UPDATE organizers SET organization_name='{organization_name}',contact_person='{contact_person}', phone_number={phone_number}, email_address='{email_address}', password='{password}' WHERE id={id}");
+                dbhelper.InsertQueryToDB($"UPDATE organizers SET organization_name='{OrganizationName}',contact_person='{ContactPerson}', phone_number={Phonenumber}, email_address='{Email}', password='{Password}' WHERE id={id}");
             }
             ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
 

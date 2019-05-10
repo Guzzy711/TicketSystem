@@ -1,11 +1,11 @@
 ﻿@{
     var Organizer = ViewBag.Organizer;
-    var events = ViewBag.Events;
-    var tickets = ViewBag.Tickets; 
+    Event eventt = ViewBag.Event;
+    var tickets = ViewBag.Tickets;
+    var error = ViewBag.error;
 }
+<p>@error</p>
 
-@foreach (var eventt in events)
-{
 <div class="card w-100 mt-3 border-0">
     <div class="card-body pb-0">
         <div class="container-fluid">
@@ -52,15 +52,17 @@
                     <td>@ticket.CustomerFirstname @ticket.CustomerSurname</td>
                     <td>@ticket.CustomerEmail</td>
                     <td>@ticket.TicketID</td>
-                    <td><button type="button" class="btn btn-primary">Resend ticket(s)</button></td>
+                    <td>
+                        <a  class="btn btn-primary" asp-controller="organizer" asp-action="resendticket" asp-route-id="@ticket.TicketID">Resend ticket</a>
+                    </td>
                 </tr>
             }
         </table>
     </div>
     <div class="row mt-4">
         <div class="col-8">
-            <a  class="btn btn-primary" asp-controller="Organizer" asp-action="OrganizerLandingPage" asp-route-id="@eventt.OrganizerID">Back</a>
+            <a  class="btn btn-primary" asp-controller="Organizer" asp-action="OrganizerLandingPage" asp-route-id="@eventt.OrganizerID" asp-route-val="1">Back</a>
         </div>
     </div>
 </form>
-}
+

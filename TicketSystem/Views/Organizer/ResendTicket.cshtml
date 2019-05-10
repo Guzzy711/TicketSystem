@@ -1,0 +1,41 @@
+﻿@{
+    var ticket = ViewBag.currentTicket;
+
+}
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+<!--Open modal when page is loaded-->
+<script type="text/javascript">$(function () {
+        $('#resendModal').modal();
+    })</script>
+<div class="modal" tabindex="-1" role="dialog" id="resendModal" data-show=true>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Do you want to resend the ticket?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("organizerviewevent", "organizer", null, FormMethod.Post))
+            {
+            <div class="modal-body">
+                @Html.Label("Email") <br />
+                <small id="imghelp" class="form-text text-muted"> Please ensure that the email is correct</small>
+                @Html.TextBox("Email", (string)ticket.CustomerEmail, new { required = true, @class = "form-control" })<br />
+                <input name="ticketid" type="hidden" id="@ticket.TicketID" value="@ticket.TicketID"/>
+
+
+
+            </div>
+
+        <div class="modal-footer">
+
+            <a  class="btn btn-secondary"  asp-controller="organizer" asp-action="organizerviewevent" asp-route-id="@ticket.EventID">Close</a>
+            <button type="submit" class="btn btn-primary" asp-controller="organizer" asp-action="organizerviewevent" asp-route-id="@ticket.EventID">Send ticket</button>
+        </div>
+}
+        </div>
+    </div>
+</div>
