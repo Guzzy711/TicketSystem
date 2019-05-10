@@ -9,45 +9,53 @@
 
 @using (Html.BeginForm())
 {
-    <div class="row">
-        <div class="col-10 mb-3 float-right">
-            <a class="btn btn-danger float-right text-white" data-toggle="modal" data-target="#ModalWindow"> <i class="fas fa-trash-alt"></i> Delete Organizer Account</a>
+
+
+<div class="row">
+    <div class="col-6">
+        <div class="form-group mb-0">
+            @Html.Label("Contact Person name") <br />
+            @Html.TextBox("ContactPerson", (string)organizer.ContactPerson, new { required = true, @class = "form-control" })<br />
+        </div>
+
+        <div class="form-group mb-0">
+            @Html.Label("Organization name") <br />
+            @Html.TextBox("OrganizationName", (string)organizer.OrganizationName, new { required = true, @class = "form-control" })<br />
+        </div>
+
+        <div class="form-group mb-0">
+            @Html.Label("Phonenumber") <br />
+            @Html.TextBox("Phonenumber", (string)organizer.PhoneNumber, new { required = true, @class = "form-control", @type = "number" })<br />
 
         </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <div class="form-group mb-0">
-                @Html.Label("Contact Person name") <br />
-                @Html.TextBox("ContactPerson", (string)organizer.ContactPerson, new { required = true, @class = "form-control" })<br />
-            </div>
 
-            <div class="form-group mb-0">
-                @Html.Label("Organization name") <br />
-                @Html.TextBox("OrganizationName", (string)organizer.OrganizationName, new { required = true, @class = "form-control" })<br />
-            </div>
-
-            <div class="form-group mb-0">
-                @Html.Label("Phonenumber") <br />
-                @Html.TextBox("Phonenumber", (string)organizer.PhoneNumber, new { required = true, @class = "form-control", @type = "number" })<br />
-
-            </div>
-
-            <div class="form-group mb-0">
-                @Html.Label("Email Address") <br />
-                @Html.TextBox("Email", (string)organizer.Email, new { required = true, @class = "form-control" })<br />
-
-            </div>
-
-            <div class="form-group mb-0">
-                @Html.Label("Password") <br />
-                @Html.Password("Password", (string)organizer.Password, new { required = true, @class = "form-control", @type = "password" })<br />
-            </div>
-
-            <button type="submit" class="btn btn-primary fas fa-check"> Save changes </button>
+        <div class="form-group mb-0">
+            @Html.Label("Email Address") <br />
+            @Html.TextBox("Email", (string)organizer.Email, new { required = true, @class = "form-control" })<br />
 
         </div>
+
+        <div class="form-group mb-0">
+            @Html.Label("Password") <br />
+            @Html.Password("Password", (string)organizer.Password, new { required = true, @class = "form-control", @type = "password" })<br />
+        </div>
+
+        <button type="submit" class="btn btn-primary fas fa-check"> Save changes </button>
+
     </div>
+    <div class="col-6 text-right">
+        <div class="avatar-container d-block">
+            <img src="https://i.pravatar.cc/50" class=" = align-self-center rounded-circle d-inline" />
+            <h4 class="d-inline align-middle mt-3 ml-2"> @organizer.ContactPerson</h4>
+        </div>
+        <div class="d-block">
+            <a class="btn btn-danger float-right text-white mt-3" data-toggle="modal" data-target="#ModalWindow"> <i class="fas fa-trash-alt"></i> Delete Organizer Account</a>
+        </div>
+    </div>
+</div>
+   
+       
+    
 
     <div class="modal" tabindex="-1" role="dialog" id="ModalWindow">
         <div class="modal-dialog" role="document">
@@ -64,16 +72,10 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <a class="btn btn-danger" asp-controller="Organizer" asp-action="DeleteOrganizer" asp-route-id="@organizer.OrganizerID">Delete</a>
-                    
+
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
 
 }

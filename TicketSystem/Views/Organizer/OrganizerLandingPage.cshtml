@@ -47,7 +47,18 @@
                             <button type="button" class="btn btn-light btn-sm d-block mt-3 text-muted">
                                 <i class="fas fa-ticket-alt"></i> Tickets left: <span class="badge badge-dark">@eventt.TicketsLeft</span>
                             </button>
-
+                            @if (eventt.ActiveState)
+                            {
+                                <button type="button" class="btn btn-light btn-sm mt-3 text-muted">
+                                    <i class="fas fa-credit-card"></i> Status: <span class="badge badge-light text-success"> Active </span>
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-light btn-sm mt-3 text-muted">
+                                    <i class="fas fa-credit-card"></i> Status: <span class="badge badge-light text-danger"> Inactive</span>
+                                </button>
+                            }
 
                         </div>
                         <div class="col-2 text-center">

@@ -69,8 +69,8 @@ namespace TicketSystem.Controllers
 
 
 
-        [HttpGet]                                   //route
-        public IActionResult DeleteOrganizer(int id)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+        [HttpGet]                                   
+        public IActionResult DeleteOrganizer(int id)        
         {
             if (ModelState.IsValid)
             {
@@ -87,10 +87,44 @@ namespace TicketSystem.Controllers
         }
 
 
+        [HttpGet]                                  
+        public IActionResult CancelEvent(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                dbhelper.InsertQueryToDB($"UPDATE events SET active_state='{0}' WHERE id={id}");
+                var eventt = dbhelper.CreateOneEventObject(id);
+                return RedirectToAction("OrganizerLandingPage", new { id = eventt.OrganizerID });
+
+            }
+                return View();
+        }
+
+        [HttpGet]                                   
+        public IActionResult ReactivateEvent(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                dbhelper.InsertQueryToDB($"UPDATE events SET active_state='{1}' WHERE id={id}");
+
+                var eventt = dbhelper.CreateOneEventObject(id);
+                
+                return RedirectToAction("OrganizerLandingPage", new { id=eventt.OrganizerID});
+            }
+
+            return View();
+        }
 
 
-        [HttpGet]                                   //route
-        public IActionResult EditEvent(int id)// string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+
+
+
+
+
+
+
+        [HttpGet]                                 
+        public IActionResult EditEvent(int id)
         {
             if (ModelState.IsValid)
             {
@@ -119,6 +153,11 @@ namespace TicketSystem.Controllers
 
             return View();
         }
+
+
+
+      
+
 
 
 
@@ -204,6 +243,7 @@ namespace TicketSystem.Controllers
 
             return View();
         }
+
         public IActionResult CheckTickets()
         {
             return View();
