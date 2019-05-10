@@ -1,29 +1,52 @@
 ﻿
 @{
-        Ticket ticket = ViewBag.Ticket;
+    Ticket ticket = ViewBag.Ticket;
 }
 
 <div class="row">
-    <div class="col-12  offset-4 mt-5">
+    <div class="col-12 mt-5">
         <h2>Check Tickets</h2>
         <br />
         <p>Please type ticket ID to validate the ticket:</p>
-        @using (Html.BeginForm("checktickets", "organizer", null, FormMethod.Post)){
-            <div class="form-group mx-sm-3 mb-2">
-                <input name="ticket_id" ="text" class="form-control" id="inputTicketID" placeholder="Ticket ID">
+        @using (Html.BeginForm("checktickets", "organizer", null, FormMethod.Post))
+        {
+            <div class="form-group mb-2 w-25">
+                <input name="ticket_id" type="text" class="form-control" id="inputTicketID" placeholder="Ticket ID">
             </div>
             <button type="submit" class="btn btn-primary mb-2">Validate</button>
         }
 
-
-
-        <form class="form-inline">
-
-        </form>
+        <form class="form-inline"></form>
     </div>
 </div>
 
+@if (ticket != null)
+{
+    @if (!ticket.TicketUsed)
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
 
-<p>@ticket.TicketID</p>
-<p>@ticket.CustomerFirstname</p>
+                <p class="card-text">Ticket information:</p> <br />
+                <p class="card-text">Ticket ID: @ticket.TicketID</p>
+                <p class="card-text">Name: @ticket.CustomerFirstname @ticket.CustomerSurname</p>
+                <p class="card-text">Email: @ticket.CustomerEmail</p>
+                <p class="card-text">Phonenumber: @ticket.CustomerPhoneNumber</p>
+
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+    }
+    else
+    {
+
+    }
+}
+else
+{
+    <p class="btn btn-danger">Ticket ID does not exist</p>
+}
+
 

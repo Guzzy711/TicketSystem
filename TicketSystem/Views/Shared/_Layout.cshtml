@@ -37,12 +37,10 @@
                 else
                 {
                     <ul class="navbar-nav col-10 justify-content-end text-muted float-right">
-                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="ChangeLoginInfo" asp-route-id="@organizer.OrganizerID"><i class="fas fa-address-card"></i> Change login info</a></li>
+                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="OrganizerLandingPage" asp-route-id="@organizer.OrganizerID"><i class="fas fa-list-ul"></i> Overview</a></li>
                         <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="CreateEvent" asp-route-id="@organizer.OrganizerID"><i class="far fa-calendar-plus"></i> Create Event</a></li>
                         <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="CreateOrganizer" asp-route-id="@organizer.OrganizerID"><i class="fas fa-user-plus"></i> Create Organizer</a></li>
-                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="EditEvent" asp-route-id="@organizer.OrganizerID"><i class="fas fa-edit"></i>  Edit Event</a></li>
-                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="OrganizerLandingPage" asp-route-id="@organizer.OrganizerID"><i class="fas fa-list-ul"></i> Overview</a></li>
-                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="OrganizerViewEvent" asp-route-id="@organizer.OrganizerID"><i class="fas fa-eye"></i> View</a></li>
+                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="ChangeLoginInfo" asp-route-id="@organizer.OrganizerID"><i class="fas fa-address-card"></i> Change login info</a></li>
                         <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="Login"><i class="fas fa-sign-in-alt"></i> Sign out</a></li>
                     </ul>
                 }
