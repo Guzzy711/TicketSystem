@@ -2,7 +2,7 @@
     ViewData["Title"] = "Ticket System";
     var events = ViewBag.Events;
 }
-<h2>@ViewData["Title"]</h2>
+<h2>All Events</h2>
 
 @foreach (var eventt in events)
 {
@@ -18,14 +18,14 @@
                                     <img src="/Image/@eventt.Image" class="lpimg"/>
                                 </div>
                                 <div class="col-8">
-                                    <h5 class="card-title">@eventt.EventName</h5>
-                                    <p class="mb-0">@eventt.Date.Day/@eventt.Date.Month/@eventt.Date.Year</p>
-                                    <p class="mb-0">@eventt.Time.Hours:@eventt.Time.Minutes</p>
-                                    <p class="mb-0">@eventt.Location</p>
+                                    <h4 class="card-title"><b>@eventt.EventName</b></h4>
+                                    <p class="mb-0"><b>Date: </b>@eventt.Date.Day/@eventt.Date.Month/@eventt.Date.Year</p>
+                                    <p class="mb-0"><b>Time:</b> @eventt.Time.Hours:@eventt.Time.Minutes</p>
+                                    <p class="mb-0"><b>Location</b> @eventt.Location</p>
                                 </div>
                                 <div class="col-2 text-center">
-                                    <p>@eventt.Price kr.</p>
-                                    <a class="btn btn-primary" asp-controller="Customer" asp-action="OrderTicket" asp-route-id="@eventt.EventID">Buy Ticket</a>
+                                    <p>Ticket price: <br /><b>@eventt.Price kr.</b> </p>
+                                    <a class="btn btn-primary" asp-controller="Customer" asp-action="OrderTicket" asp-route-id="@eventt.EventID"><i class="fas fa-eye"></i> Show event</a>
                                 </div>
                             </div>
                         </div>

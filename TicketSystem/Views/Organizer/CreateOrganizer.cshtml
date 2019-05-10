@@ -7,13 +7,27 @@
     @ViewBag.Message
 
 </p>
-<h2>Create Organizer</h2>
+
 
 
 @using (Html.BeginForm())
 {
     <div class="row">
-        <div class="col-6">
+        <div class="col-4">
+            <div class="card mt-4" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-subtitle mb-2 text-muted"><b><i class="far fa-question-circle"></i> As an organizer you can:</b></h5>
+
+                    <ul class="list-group list-group-flush text-muted">
+                        <li class="list-group-item"><i class="fas fa-angle-right"></i> Create events</li>
+                        <li class="list-group-item"><i class="fas fa-angle-right"></i> Sell tickets</li>
+                        <li class="list-group-item"><i class="fas fa-angle-right"></i> Monitor sold tickets</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 ">
+            <h2>Create Organizer</h2>
             <div class="form-group mb-0">
                 @Html.Label("Contact Person name") <br />
                 @Html.TextBox("Name", null, new { required = true, placeholder = "Contact Person name", @class = "form-control" })<br />
@@ -29,17 +43,19 @@
             <div class="form-group mb-0">
                 @Html.Label("Email Address") <br />
                 @Html.TextBox("Email", null, new { required = true, placeholder = "Email Address", @class = "form-control" })<br />
+
             </div>
-            <div class="form-group mb-0">
+            <div class="form-group mb-">
                 @Html.Label("Password") <br />
                 @Html.Password("Password", null, new { required = true, placeholder = "Password", @class = "form-control", @type = "password" })<br />
             </div>
-            <div class="row mt-5">
+            <hr />
+            <div class="row mt-5 mb-3">
                 <div class="col-8">
-                    <a class="btn btn-primary" asp-controller="Customer" asp-action="LandingPage">Back</a>
+                    <a class="btn btn-primary" asp-controller="Customer" asp-action="LandingPage"><i class="fas fa-angle-left"></i> Back</a>
                 </div>
                 <div class="col-4">
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Create user</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Create Organizer</button>
                 </div>
             </div>
         </div>

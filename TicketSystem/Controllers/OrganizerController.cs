@@ -198,7 +198,7 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                dbhelper.InsertQueryToDB($"UPDATE events SET organization_name='{organization_name}',contact_person='{contact_person}', phone_number={phone_number}, email_address='{email_address}', password='{password}' WHERE id={id}");
+                dbhelper.InsertQueryToDB($"UPDATE organizers SET organization_name='{organization_name}',contact_person='{contact_person}', phone_number={phone_number}, email_address='{email_address}', password='{password}' WHERE id={id}");
             }
             ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
 

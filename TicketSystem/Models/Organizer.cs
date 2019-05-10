@@ -19,7 +19,7 @@ namespace TicketSystem.Models
 
         public string PhoneNumber { get; set; }
 
-
+        [Required]
         public string Email { get; set; }
 
 

@@ -3,54 +3,81 @@
     var orgID = ViewBag.orgID;
 }
 
-<h3 id="Createevent" class="text-left">Create Event</h3>
+
 
 @using (Html.BeginForm("CreateEvent", "Organizer", new { id = orgID }, FormMethod.Post))
 {
+<div class="row">
     <div class="col-md-12">
-        <div class="float-right form-group col-md-6">
-            @Html.Label("Description *") <br />
-            @Html.TextArea("Description", null, new { required = true, @class = "form-control"})
-        </div>
+        <h3 id="Createevent" class="text-left">Create Event</h3>
+
     </div>
     <div class="col-md-6">
         <div class="form-group mb-0">
-            @Html.Label("Event name *") <br />
-            @Html.TextBox("Name", null, new { required = true, placeholder = "Event name", @class = "form-control" })<br />
+            @Html.Label("Event name *")
+            <small id="datehelp" class="form-text text-muted">This will appear as the event name</small>
+        @Html.TextBox("Name", null, new { required = true, placeholder = "Event name", @class = "form-control" })<br />
         </div>
         <div class="form-group mb-0">
-            @Html.Label("Location *") <br />
-            @Html.TextBox("Location", null, new { required = true, placeholder = "Location", @class = "form-control" })<br />
+            @Html.Label("Location *")
+            <small id="datehelp" class="form-text text-muted">This will appear on the event-page as the location for the event</small>
+        @Html.TextBox("Location", null, new { required = true, placeholder = "Location", @class = "form-control" })<br />
         </div>
         <div class="form-group mb-0">
-            @Html.Label("Date *") <br />
+            @Html.Label("Date *")
+            <small id="datehelp" class="form-text text-muted">Please enter a date in format dd/mm/yyyy</small>
             @Html.TextBox("Date", null, new { required = true, placeholder = "Date and time", @class = "form-control", @type = "date" })<br />
         </div>
         <div class="form-group mb-0">
-            @Html.Label("Start time *") <br />
+            @Html.Label("Start time *")
+            <small id="timehelp" class="form-text text-muted">Please enter a time in format hh/mm</small>
             @Html.TextBox("Time", null, new { required = true, placeholder = "Start time", @class = "form-control", @type = "time" })<br />
         </div>
         <div class="form-group mb-0">
-            @Html.Label("Total amount of tickets *") <br />
-            @Html.TextBox("TicketAmount", null, new { required = true, placeholder = "Total amount of tickets", @class = "form-control", @type = "number" })<br />
+            @Html.Label("Total amount of tickets *")
+            <small id="totalhelp" class="form-text text-muted">This is the total amount of tickets that is available</small>
+        @Html.TextBox("TicketAmount", null, new { required = true, placeholder = "Total amount of tickets", @class = "form-control", @type = "number" })<br />
         </div>
         <div class="form-group mb-0">
-            @Html.Label("Price *") <br />
+            @Html.Label("Price *")
+            <small id="pricehelp" class="form-text text-muted">Please enter a price in DKK</small>
             @Html.TextBox("Price", null, new { required = true, placeholder = "Price", @class = "form-control", @type = "float" })<br />
         </div>
         <div class="form-group mb-0">
-            @Html.Label("Image") <br />
-            @Html.TextBox("Image", null, new { placeholder = "Image", @class = "form-control", @type = "file" })<br />
+            @Html.Label("Image")
+            <small id="imghelp" class="form-text text-muted">This image will appear on the event-page</small>
+            <div class="custom-file">
+                @Html.TextBox("Image", null, new { placeholder = "Image", @class = "form-control custom-file-input", @type = "file" })<br />
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+
+            </div>
         </div>
     </div>
-    <div class="row mt-5">
-        <div class="col-8">
-            <a class="btn btn-primary" asp-controller="Organizer" asp-action="OrganizerLandingPage" asp-route-id="@orgID">Back</a>
-        </div>
-        <div class="col-4">
-            <button type="submit" class="btn btn-primary" ><i class="fas fa-check"></i>Create event</button>
+    <div class="col-md-6">
+        <div class=" form-group ">
+            @Html.Label("Description *")
+            <small id="deschelp" class="form-text text-muted">This description will appear on the event-page</small>
+        @Html.TextArea("Description", null, new
+{
+    required = true,
+    @class = "form-control",
+    @style = "height:300px;"
+})
+
         </div>
     </div>
+    <div class="col-12 mt-2">
+        <div class="row">
+            <div class="col-8">
+                <a class="btn btn-primary" asp-controller="Organizer" asp-action="OrganizerLandingPage" asp-route-id="@orgID"><i class="fas fa-angle-left"></i> Back</a>
+            </div>
+            <div class="col-4 text-right">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Create event</button>
+            </div>
+        </div>
+    </div>
+</div>
 }
+
 
 
