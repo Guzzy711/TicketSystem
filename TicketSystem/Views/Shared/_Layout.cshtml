@@ -27,19 +27,25 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav col-2">
-                    <li class="m-2"><a asp-area="" asp-controller="Customer" asp-action="LandingPage"><i class="fas fa-calendar-alt"></i> Events</a></li>
-                </ul>
-                <ul class="navbar-nav col-10 justify-content-end text-muted">
-                    <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="ChangeLoginInfo" ><i class="fas fa-address-card"></i> Change login info</a></li>
-                    <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="CreateEvent"><i class="far fa-calendar-plus"></i> Create Event</a></li>
-                    <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="CreateOrganizer"><i class="fas fa-user-plus"></i> Create Organizer</a></li>
-                    <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="EditEvent"><i class="fas fa-edit"></i>  Edit Event</a></li>
-                    <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="OrganizerLandingPage"><i class="fas fa-list-ul"></i> Overview</a></li>
-                    <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="OrganizerViewEvent"><i class="fas fa-eye"></i> View</a></li>
-                    <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="Login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                </ul>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
+                @if (organizer is null)
+                {
+                    <ul class="navbar-nav col-2">
+                        <li class="m-2"><a asp-area="" asp-controller="Customer" asp-action="LandingPage"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="navbar-nav col-10 justify-content-end text-muted float-right">
+                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="ChangeLoginInfo" asp-route-id="@organizer.OrganizerID"><i class="fas fa-address-card"></i> Change login info</a></li>
+                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="CreateEvent" asp-route-id="@organizer.OrganizerID"><i class="far fa-calendar-plus"></i> Create Event</a></li>
+                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="CreateOrganizer" asp-route-id="@organizer.OrganizerID"><i class="fas fa-user-plus"></i> Create Organizer</a></li>
+                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="EditEvent" asp-route-id="@organizer.OrganizerID"><i class="fas fa-edit"></i>  Edit Event</a></li>
+                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="OrganizerLandingPage" asp-route-id="@organizer.OrganizerID"><i class="fas fa-list-ul"></i> Overview</a></li>
+                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="OrganizerViewEvent" asp-route-id="@organizer.OrganizerID"><i class="fas fa-eye"></i> View</a></li>
+                        <li class="m-2"><a asp-area="" asp-controller="Organizer" asp-action="Login"><i class="fas fa-sign-in-alt"></i> Sign out</a></li>
+                    </ul>
+                }
 
             </div>
         </nav>
@@ -79,7 +85,6 @@
                     crossorigin="anonymous"
                     integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
             </script>
-
             <script src="~/js/site.min.js" asp-append-version="true"></script>
         </environment>
 

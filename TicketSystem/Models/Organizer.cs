@@ -22,9 +22,11 @@ namespace TicketSystem.Models
 
         DBhelper dBhelper = new DBhelper(); 
 
+        public int Login { get; set; } = 0;
+
         public Organizer()
         {
-
+            Login = 0;
         }
 
         public Organizer(string ContactPerson, string Password, string PhoneNumber, string Email, string OrganizationName, int OrganizerID)
