@@ -5,6 +5,14 @@
     var events = ViewBag.Events;
 }
 
+<style>
+    .btn-nohover {
+        cursor: default !important;
+        color: #95a5a6 !important;
+        background-color: #ecf0f1 !important;
+        border-color: #ecf0f1 !important;
+    }
+</style>
 
 
 <div class="row">
@@ -31,37 +39,37 @@
             <div class="card-body">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-2">
+                        <div class="col-2 mt-4">
                             <img src="/Image/@eventt.Image" class="lpimg"/>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 mt-2">
                             <h4 class="card-title"><b>@eventt.EventName</b></h4>
                             <p class="mb-0"><b>Date: </b>@eventt.Date.Day/@eventt.Date.Month/@eventt.Date.Year</p>
                             <p class="mb-0"><b>Time:</b> @eventt.Time.Hours:@eventt.Time.Minutes</p>
                             <p class="mb-0"><b>Location</b> @eventt.Location</p>
                         </div>
                         <div class="col-4">
-                            <button type="button" class="btn btn-light btn-sm mt-3 text-muted">
-                                <i class="fas fa-credit-card"></i> Tickets sold: <span class="badge badge-dark"> @eventt.TicketsSold</span>
+                            <button type="button" class="btn btn-light btn-sm mt-3 text-muted btn-nohover">
+                                <i class="fas fa-credit-card"></i> Tickets sold: <span class="badge badge-dark btn-nohover"> @eventt.TicketsSold</span>
                             </button>
-                            <button type="button" class="btn btn-light btn-sm d-block mt-3 text-muted">
-                                <i class="fas fa-ticket-alt"></i> Tickets left: <span class="badge badge-dark">@eventt.TicketsLeft</span>
+                            <button type="button" class="btn btn-light btn-sm d-block mt-3 text-muted btn-nohover">
+                                <i class="fas fa-ticket-alt"></i> Tickets left: <span class="badge badge-dark btn-nohover">@eventt.TicketsLeft</span>
                             </button>
                             @if (eventt.ActiveState)
                             {
-                                <button type="button" class="btn btn-light btn-sm mt-3 text-muted">
-                                    <i class="fas fa-credit-card"></i> Status: <span class="badge badge-light text-success"> Active </span>
-                                </button>
+                                <a class="btn btn-light btn-sm mt-3 text-muted btn-nohover">
+                                    <i class="fas fa-credit-card"></i> Status: <span class="badge badge-light text-success "> Active </span>
+                                </a>
                             }
                             else
                             {
-                                <button type="button" class="btn btn-light btn-sm mt-3 text-muted">
+                                <a class="btn btn-light btn-sm mt-3 text-muted btn-nohover">
                                     <i class="fas fa-credit-card"></i> Status: <span class="badge badge-light text-danger"> Inactive</span>
-                                </button>
+                                </a>
                             }
 
                         </div>
-                        <div class="col-2 text-center">
+                        <div class="col-2 text-center mt-4">
                             <a class="btn btn-primary  w-100" asp-controller="Organizer" asp-action="OrganizerViewEvent" asp-route-id="@eventt.EventID"><i class="fas fa-eye"></i> View Event</a>
                             <a class="btn btn-primary  w-100 mt-3" asp-controller="Organizer" asp-action="EditEvent" asp-route-id="@eventt.EventID"><i class="fas fa-edit"></i> Edit Event</a>
                         </div>
