@@ -35,16 +35,19 @@
     </div>
 </div>
 <hr>
-<h3 class="text-center mb-3">Sold Tickets to @eventt.EventName</h3>
+<h3 class="text-center mb-3">Sold tickets to: @eventt.EventName</h3>
 <form action=""> 
     <div class="form-row">
-        <table style="width:100%">
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>ID</th>
-                <th>Resend tickets</th>
-            </tr>
+        <table class="table table-striped table-bordered table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>ID</th>
+                    <th>Resend tickets</th>
+                    </tr>
+            </thead>
+            <tbody>
             @foreach (var ticket in tickets)
             {
                
@@ -52,11 +55,11 @@
                     <td>@ticket.CustomerFirstname @ticket.CustomerSurname</td>
                     <td>@ticket.CustomerEmail</td>
                     <td>@ticket.TicketID</td>
-                    <td>
-                        <a  class="btn btn-primary" asp-controller="organizer" asp-action="resendticket" asp-route-id="@ticket.TicketID">Resend ticket</a>
-                    </td>
+                    <td class="text-center"><a type="button" class="btn btn-primary far fa-paper-plane" asp-controller="organizer" asp-action="resendticket" asp-route-id="@ticket.TicketID"> Resend ticket</a></td>
+
                 </tr>
             }
+            </tbody>
         </table>
     </div>
     <div class="row mt-4">

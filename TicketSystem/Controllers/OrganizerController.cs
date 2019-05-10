@@ -9,7 +9,6 @@ using TicketSystem.Models;
 using System.Web;
 
 
-
 namespace TicketSystem.Controllers
 {
 
@@ -19,6 +18,7 @@ namespace TicketSystem.Controllers
         DBhelper dbhelper = new DBhelper();
         Ticket tick = new Ticket();
 
+        Organizer organizer = new Organizer();
 
 
         public IActionResult Login()
@@ -70,8 +70,8 @@ namespace TicketSystem.Controllers
 
 
 
-        [HttpGet]                                   //route
-        public IActionResult DeleteOrganizer(int id)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+        [HttpGet]                                   
+        public IActionResult DeleteOrganizer(int id)        
         {
             if (ModelState.IsValid)
             {
@@ -88,10 +88,44 @@ namespace TicketSystem.Controllers
         }
 
 
+        [HttpGet]                                  
+        public IActionResult CancelEvent(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                dbhelper.InsertQueryToDB($"UPDATE events SET active_state='{0}' WHERE id={id}");
+                var eventt = dbhelper.CreateOneEventObject(id);
+                return RedirectToAction("OrganizerLandingPage", new { id = eventt.OrganizerID });
+
+            }
+                return View();
+        }
+
+        [HttpGet]                                   
+        public IActionResult ReactivateEvent(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                dbhelper.InsertQueryToDB($"UPDATE events SET active_state='{1}' WHERE id={id}");
+
+                var eventt = dbhelper.CreateOneEventObject(id);
+                
+                return RedirectToAction("OrganizerLandingPage", new { id=eventt.OrganizerID});
+            }
+
+            return View();
+        }
 
 
-        [HttpGet]                                   //route
-        public IActionResult EditEvent(int id)// string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
+
+
+
+
+
+
+
+        [HttpGet]                                 
+        public IActionResult EditEvent(int id)
         {
             if (ModelState.IsValid)
             {
@@ -100,6 +134,7 @@ namespace TicketSystem.Controllers
 
             }
             ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
+
             return View();
         }
 
@@ -222,11 +257,36 @@ namespace TicketSystem.Controllers
 
             return View();
         }
-        public IActionResult CheckTickets()
+
+        public IActionResult CheckTickets(int id, int value) //id is EventID, value is TicketID!
         {
+            if (ModelState.IsValid) {
+
+                var ticket = dbhelper.CheckTicket(value);
+
+                ViewBag.Ticket = ticket; 
+
+            }
+
             return View();
         }
 
-    }
+        [HttpPost]
+        public IActionResult CheckTickets(int id, int value, int ticket_id) //id is EventID, value is TicketID!
+        {
+            if (ModelState.IsValid)
+            {
+
+                var ticket = dbhelper.CheckTicket(ticket_id);
+
+                ViewBag.Ticket = ticket;
+
+            }
+
+            return View();
+        }
+
 
     }
+
+}

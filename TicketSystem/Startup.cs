@@ -56,7 +56,7 @@ namespace TicketSystem
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Customer}/{action=LandingPage}/{id?}");
+                    template: "{controller=Customer}/{action=LandingPage}/{id?}/{value?}");
             });
         }
     }
