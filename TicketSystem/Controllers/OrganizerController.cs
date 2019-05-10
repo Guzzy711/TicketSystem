@@ -9,7 +9,6 @@ using TicketSystem.Models;
 using System.Web;
 
 
-
 namespace TicketSystem.Controllers
 {
 
@@ -17,7 +16,7 @@ namespace TicketSystem.Controllers
     {
 
         DBhelper dbhelper = new DBhelper();
-
+        Organizer organizer = new Organizer();
 
 
         public IActionResult Login()
@@ -99,6 +98,7 @@ namespace TicketSystem.Controllers
 
             }
             ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
+
             return View();
         }
 
@@ -204,11 +204,36 @@ namespace TicketSystem.Controllers
 
             return View();
         }
-        public IActionResult CheckTickets()
+
+        public IActionResult CheckTickets(int id, int value) //id is EventID, value is TicketID!
         {
+            if (ModelState.IsValid) {
+
+                var ticket = dbhelper.CheckTicket(value);
+
+                ViewBag.Ticket = ticket; 
+
+            }
+
             return View();
         }
 
-    }
+        [HttpPost]
+        public IActionResult CheckTickets(int id, int value, int ticket_id) //id is EventID, value is TicketID!
+        {
+            if (ModelState.IsValid)
+            {
+
+                var ticket = dbhelper.CheckTicket(ticket_id);
+
+                ViewBag.Ticket = ticket;
+
+            }
+
+            return View();
+        }
+
 
     }
+
+}
