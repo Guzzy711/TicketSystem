@@ -17,20 +17,22 @@ namespace TicketSystem.Models
         public int CustomerPhoneNumber { get; set; }
         public int TicketID { get; set; }
         public int EventID { get; set; }
+        public bool TicketUsed { get; set; }
 
         Random rand = new Random();
         DBhelper db = new DBhelper();
 
         public Ticket() { }
 
-        public Ticket(string Firstname, string Surname, string Email, int PhoneNumber, int TicketID, int EventID)
+        public Ticket(string Firstname, string Surname, string Email, int PhoneNumber, int TicketID, int EventID, bool TicketUsed)
         {
             CustomerFirstname = Firstname;
             CustomerSurname = Surname;
             CustomerEmail = Email;
             CustomerPhoneNumber = PhoneNumber;
             this.TicketID = TicketID;
-            this.EventID = EventID; 
+            this.EventID = EventID;
+            this.TicketUsed = TicketUsed; 
         }
 
 

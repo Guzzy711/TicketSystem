@@ -200,8 +200,9 @@ namespace TicketSystem.Helpers
                 var CustomerSurname = (string)row["customer_surname"];
                 var CustomerEmail = (string)row["customer_email"];
                 var CustomerPhone = (int)row["customer_phone_number"];
+                var TicketUsed = (bool)row["ticket_used"];
 
-                tickets[counter] = new Ticket(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhone, TicketID, EventID);
+                tickets[counter] = new Ticket(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhone, TicketID, EventID, TicketUsed);
 
                 counter++; 
             }
@@ -224,8 +225,9 @@ namespace TicketSystem.Helpers
                 var CustomerSurname = (string)row["customer_surname"];
                 var CustomerEmail = (string)row["customer_email"];
                 var CustomerPhone = (int)row["customer_phone_number"];
+                var TicketUsed = (bool)row["ticket_used"];
 
-                ticket = new Ticket(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhone, TicketID, EventID);
+                ticket = new Ticket(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhone, TicketID, EventID, TicketUsed);
             }
 
             return ticket; 
@@ -269,7 +271,25 @@ namespace TicketSystem.Helpers
             return count; 
         }
 
+        public Ticket CheckTicket(int TicketID)
+        {
+            Ticket ticket = null;
+            string query = $"SELECT * FROM tickets WHERE id={TicketID}";
+            var queryResult = SelectQuery(query); 
 
+            foreach(DataRow row in queryResult.Rows)
+            {
+                ticket = CreateOneTicketObject((int)row["id"]); 
+            }
 
+            return ticket; 
+
+        }
+
+        public void UseTicket(int TicketID)
+        {
+            string query = $"UPDATE tickets SET ticket_used = true WHERE id = {TicketID}";
+            SelectQuery(query);
+        }
     }
 }
