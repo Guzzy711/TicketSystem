@@ -121,10 +121,11 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                var eventt = dbhelper.CreateOneEventObject(id);
                 dbhelper.DeleteQuery($"DELETE FROM events WHERE id={id}");
                 //dbhelper.DeleteQuery($"DELETE * FROM organizers WHERE id={id}");
 
-                return RedirectToAction("OrganizerLandingPage","Organizer");        //skal laves om til organizer home
+                return RedirectToAction("OrganizerLandingPage", new { id = eventt.OrganizerID});        //skal laves om til organizer home
             }
 
             return View();
@@ -141,14 +142,16 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                dbhelper.InsertQueryToDB($"UPDATE tickets SET ticket_used='{1}' WHERE id={id}"); 
-
-                return RedirectToAction("CheckTickets", "Organizer");
+                var ticket = dbhelper.CreateOneTicketObject(id);
+                var eventt = dbhelper.CreateOneEventObject(ticket.EventID);
+                dbhelper.InsertQueryToDB($"UPDATE tickets SET ticket_used='{1}' WHERE id={id}");
+                return RedirectToAction("CheckTickets", new { id = eventt.EventID });
             }
 
             return View();
         }
 
+        
 
 
 
