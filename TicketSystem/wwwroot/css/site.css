@@ -42,11 +42,10 @@ ul {
     padding-left: 0;
     padding-top: 5px;
 }
-
-#Createevent {
-    margin-top: 20px;
-    margin-bottom: 40px;
+label{
+    margin-bottom: 0px;
 }
+
 
 table, th, td {
     border: 1px solid black;

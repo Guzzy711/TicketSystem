@@ -154,6 +154,7 @@ namespace TicketSystem.Helpers
             return eventt;
         }
 
+
         public Event[] CreateEventObjectsFromQuery(string query)
         {
 
@@ -183,6 +184,25 @@ namespace TicketSystem.Helpers
 
             return events; 
         }
+        /*
+        public Event[] CreateEventObjectsFromQuery(string query)
+        {
+
+            DataTable queryResult = SelectQuery(query);
+
+            Event[] events = new Event[queryResult.Rows.Count];
+
+            int counter = 0;
+
+            foreach (DataRow row in queryResult.Rows)
+            {
+                var EventID = (int)row["id"];
+                events[counter] = CreateOneEventObject(EventID); 
+                counter++;
+            }
+
+            return events;
+        }*/
 
         public Ticket[] CreateTicketObjectsFromQuery(string query)
         {
