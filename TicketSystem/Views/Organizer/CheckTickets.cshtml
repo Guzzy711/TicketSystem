@@ -26,7 +26,7 @@
                             <p class="card-text"><b>Ticket ID:</b> @ticket.TicketID</p>
                             <p class="card-text"><b>Name:</b> @ticket.CustomerFirstname @ticket.CustomerSurname</p>
                             <p class="card-text"><b>Email:</b> @ticket.CustomerEmail</p>
-                            <a href="#" class="btn btn-primary float-right"><i class="fas fa-check"></i> Use ticket</a>
+                            <button class="btn btn-primary float-right" type="submit" asp-controller="Organizer" asp-action="TicketUsed" asp-route-id="CheckTickets"><i class="fas fa-check"></i> Use ticket</button>
                             <p class="card-text"><b>Phonenumber:</b> @ticket.CustomerPhoneNumber</p>
                         </div>
                     </div>
@@ -36,13 +36,13 @@
             else
             {
                 <div class="col-3">
-                    <h4 class="card-text text-muted">Ticket information:</h4>
+                    <h4 class="card-text text-danger">Ticket information: Ticket already used</h4>
                     <div class="card text-muted" style="width: 35rem;">
                         <div class="card-body">
                             <p class="card-text"><b>Ticket ID:</b> @ticket.TicketID</p>
                             <p class="card-text"><b>Name:</b> @ticket.CustomerFirstname @ticket.CustomerSurname</p>
                             <p class="card-text"><b>Email:</b> @ticket.CustomerEmail</p>
-                            <button class="btn btn-secondary float-right disabled" type="submit" asp-controller="Organizer" asp-action="TicketUsed"><i class="fas fa-check"></i> Use ticket</button>
+                            <button class="btn btn-secondary float-right" type="submit" asp-controller="Organizer" asp-action="TicketUsed" disabled ><i class="fas fa-check"></i> Use ticket</button>
                             <p class="card-text"><b>Phonenumber:</b> @ticket.CustomerPhoneNumber</p>
                         </div>
                     </div>
