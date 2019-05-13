@@ -12,28 +12,15 @@
 ﻿
 
 
-<div class="row mb-5">
-    <div class="col-4">
-        <div class="card mt-5" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-subtitle mb-2 text-muted"><b><i class="far fa-question-circle"></i> As an organizer you can:</b></h5>
-
-                <ul class="list-group list-group-flush text-muted">
-                    <li class="list-group-item"><i class="fas fa-angle-right"></i> Create events</li>
-                    <li class="list-group-item"><i class="fas fa-angle-right"></i> Sell tickets</li>
-                    <li class="list-group-item"><i class="fas fa-angle-right"></i> Monitor sold tickets</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<div class="row" style="margin-bottom: 20rem;">
     <div class="col-8 ">
-        <h2 class="">Organizer Login-page</h2>
-        <div class="card w-75">
+        <h2>Organizer Login-page</h2>
+        <div class="card w-75 mt-3">
             <div class="card-body">
                 @if (ViewBag.error != null)
                 {
                     <div class="alert alert-danger" role="alert">
-                        <i class="fas fa-exclamation-circle"></i> @ViewBag.error
+                        <i class="fas fa-exclamation-circle"></i>  @ViewBag.error
                     </div>
                 }
 
@@ -59,7 +46,22 @@
             </div>
         </div>
     </div>
+            <div class="col-4 float-right">
+        <div class="card mt-5" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-subtitle mb-2 text-muted"><b><i class="far fa-question-circle"></i> As an organizer you can:</b></h5>
+
+                <ul class="list-group list-group-flush text-muted">
+                    <li class="list-group-item"><i class="fas fa-angle-right"></i> Create events</li>
+                    <li class="list-group-item"><i class="fas fa-angle-right"></i> Sell tickets</li>
+                    <li class="list-group-item"><i class="fas fa-angle-right"></i> Monitor sold tickets</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
+    </div>
+
 
 
 

@@ -118,6 +118,45 @@ namespace TicketSystem.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult DeleteEvent(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                dbhelper.DeleteQuery($"DELETE FROM events WHERE id={id}");
+                //dbhelper.DeleteQuery($"DELETE * FROM organizers WHERE id={id}");
+
+                return RedirectToAction("OrganizerLandingPage","Organizer");        //skal laves om til organizer home
+            }
+
+            return View();
+        }
+        public IActionResult DeleteEvent()
+        {
+            return View();
+        }
+
+
+
+        [HttpGet]
+        public IActionResult TicketUsed(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                dbhelper.InsertQueryToDB($"UPDATE tickets SET ticket_used='{1}' WHERE id={id}"); 
+
+                return RedirectToAction("CheckTickets", "Organizer");
+            }
+
+            return View();
+        }
+
+
+
+
+
+
+
         [HttpGet]                                 
         public IActionResult EditEvent(int id)
         {
@@ -249,7 +288,7 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid) {
 
-                var ticket = dbhelper.CheckTicket(value);
+                var ticket = dbhelper.CheckTicket(value,id);
 
                 ViewBag.Ticket = ticket; 
 
@@ -264,7 +303,7 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid)
             {
 
-                var ticket = dbhelper.CheckTicket(ticket_id);
+                var ticket = dbhelper.CheckTicket(ticket_id,id);
 
                 ViewBag.Ticket = ticket;
 

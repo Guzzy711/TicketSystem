@@ -16,10 +16,11 @@
                         <p class="mb-0">@eventt.Description</p>
                         <hr />
                         <ul class="eventdata">
-                            <li><b>@eventt.Location</b></li>
-                            <li>@eventt.Date</li>
-                            <li>@eventt.Time</li>
-                            <li>@eventt.Price,-</li>
+                            <div class="float-left mr-5">
+                                <li><b><i class="fas fa-map-marked-alt"></i> Location: @eventt.Location</b></li>
+                                <li><i class="fas fa-calendar-day mt-3"></i> Date: @eventt.Date.Day/@eventt.Date.Month/@eventt.Date.Year at  @eventt.Time.Hours:@eventt.Time.Minutes</li>
+                                <li><i class="fas fa-money-bill-alt mt-3"></i> Price: @eventt.Price kr.</li>
+                            </div>
                         </ul>
                     </div>
                 </div>
@@ -27,7 +28,7 @@
         </div>
     </div>
     <hr>
-    <h3 class="text-center mb-3">Order Ticket to @eventt.EventName</h3>
+    <h3 class="text-center m-3">Order Ticket to @eventt.EventName</h3>
     @using (Html.BeginForm("OrderTicket", "Customer", null, FormMethod.Post))
     {
         <div class="col-1g-4 col-lg-offset-4">
