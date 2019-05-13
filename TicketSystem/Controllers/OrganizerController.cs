@@ -17,6 +17,7 @@ namespace TicketSystem.Controllers
 
         DBhelper dbhelper = new DBhelper();
         Ticket tick = new Ticket();
+        Event evt = new Event(); 
 
         Organizer organizer = new Organizer();
 
@@ -95,6 +96,7 @@ namespace TicketSystem.Controllers
             {
                 dbhelper.InsertQueryToDB($"UPDATE events SET active_state='{0}' WHERE id={id}");
                 var eventt = dbhelper.CreateOneEventObject(id);
+                _ = evt.CancelMail(eventt);
                 return RedirectToAction("OrganizerLandingPage", new { id = eventt.OrganizerID });
 
             }
@@ -116,14 +118,6 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-
-
-
-
-
-
-
-
         [HttpGet]                                 
         public IActionResult EditEvent(int id)
         {
@@ -137,10 +131,6 @@ namespace TicketSystem.Controllers
 
             return View();
         }
-
-
-
-
 
         [HttpPost]
         public IActionResult EditEvent(int id, string name, string location, string date, string time, int ticketamount, int price, string image, string description)
@@ -166,12 +156,6 @@ namespace TicketSystem.Controllers
             return View();
         }
       
-
-      
-
-
-
-
         [HttpPost]                                   //route
         public IActionResult CreateEvent(int id, string name, string location, string date, string time, int ticketamount, int price, string image, string description)        //bedre måde at skrive de tpå men fungere ikke:Index(OrganizerModel model
         {

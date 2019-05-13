@@ -10,63 +10,63 @@
 
     @using (Html.BeginForm())
     {
-<div class="row">
-    <div class="col-md-6">
-        <div class="form-group mb-0">
-            @Html.Label("Event name *") 
-            <small id="name" class="form-text text-muted">This will appear as the event name</small>
-            @Html.TextBox("Name", (string)eventt.EventName, new { required = true, @class = "form-control" })<br />
-        </div>
-        <div class="form-group mb-0">
-            @Html.Label("Location *") 
-            <small id="location" class="form-text text-muted">This will appear on the event-page as the location for the event</small>
-            @Html.TextBox("Location", (string)eventt.Location, new { required = true, @class = "form-control" })<br />
-        </div>
-        <div class="form-group mb-0">
-            @Html.Label("Date *") 
-            <small id="datehelp" class="form-text text-muted">Please enter a date in format dd/mm/yyyy</small>
-            @Html.TextBox("Date", (DateTime)eventt.Date, new { required = true, @class = "form-control", @type = "date" })<br />
-        </div>
-        <div class="form-group mb-0">
-            @Html.Label("Start time *") 
-            <small id="timehelp" class="form-text text-muted">Please enter a time in format hh/mm</small>
-            @Html.TextBox("Time", (TimeSpan)eventt.Time, new { required = true, @class = "form-control", @type = "time" })<br />
-        </div>
-        <div class="form-group mb-0">
-            @Html.Label("Total amount of tickets *") 
-            <small id="totalhelp" class="form-text text-muted">This is the total amount of tickets that is available</small>
-            @Html.TextBox("TicketAmount", (float)eventt.TicketAmount, new { required = true, @class = "form-control", @type = "number" })<br />
-        </div>
-        <div class="form-group mb-0">
-            @Html.Label("Price *") 
-            <small id="pricehelp" class="form-text text-muted">Please enter a price in DKK</small>
-            @Html.TextBox("Price", (float)eventt.Price, new { required = true, @class = "form-control", @type = "float" })<br />
-        </div>
-
-    </div>
-    <div class="col-md-6">
-        <div class=" form-group ">
-            @Html.Label("Description *")
-            <small id="deschelp" class="form-text text-muted">This description will appear on the event-page</small>
-            @Html.TextArea("Description", (string)eventt.Description, new
-        {
-            required = true,
-            @class = "form-control",
-            @style = "height:450px;"
-        })
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group mb-0">
+                @Html.Label("Event name *") 
+                <small id="name" class="form-text text-muted">This will appear as the event name</small>
+                @Html.TextBox("Name", (string)eventt.EventName, new { required = true, @class = "form-control" })<br />
+            </div>
+            <div class="form-group mb-0">
+                @Html.Label("Location *") 
+                <small id="location" class="form-text text-muted">This will appear on the event-page as the location for the event</small>
+                @Html.TextBox("Location", (string)eventt.Location, new { required = true, @class = "form-control" })<br />
+            </div>
+            <div class="form-group mb-0">
+                @Html.Label("Date *") 
+                <small id="datehelp" class="form-text text-muted">Please enter a date in format dd/mm/yyyy</small>
+                @Html.TextBox("Date", (DateTime)eventt.Date, new { required = true, @class = "form-control", @type = "date" })<br />
+            </div>
+            <div class="form-group mb-0">
+                @Html.Label("Start time *") 
+                <small id="timehelp" class="form-text text-muted">Please enter a time in format hh/mm</small>
+                @Html.TextBox("Time", (TimeSpan)eventt.Time, new { required = true, @class = "form-control", @type = "time" })<br />
+            </div>
+            <div class="form-group mb-0">
+                @Html.Label("Total amount of tickets *") 
+                <small id="totalhelp" class="form-text text-muted">This is the total amount of tickets that is available</small>
+                @Html.TextBox("TicketAmount", (float)eventt.TicketAmount, new { required = true, @class = "form-control", @type = "number" })<br />
+            </div>
+            <div class="form-group mb-0">
+                @Html.Label("Price *") 
+                <small id="pricehelp" class="form-text text-muted">Please enter a price in DKK</small>
+                @Html.TextBox("Price", (float)eventt.Price, new { required = true, @class = "form-control", @type = "float" })<br />
+            </div>
 
         </div>
-        <div class="form-group mb-0">
-            @Html.Label("Event Image")
-            <small id="imghelp" class="form-text text-muted">This image will appear on the event-page</small>
-            <div class="custom-file">
-                @Html.TextBox("Image", null, new { placeholder = "Image", @class = "form-control custom-file-input", @type = "file" })<br />
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        <div class="col-md-6">
+            <div class=" form-group ">
+                @Html.Label("Description *")
+                <small id="deschelp" class="form-text text-muted">This description will appear on the event-page</small>
+                @Html.TextArea("Description", (string)eventt.Description, new
+                {
+                required = true,
+                @class = "form-control",
+                @style = "height:450px;"
+                })
 
+            </div>
+            <div class="form-group mb-0">
+                @Html.Label("Event Image")
+                <small id="imghelp" class="form-text text-muted">This image will appear on the event-page</small>
+                <div class="custom-file">
+                    @Html.TextBox("Image", null, new { placeholder = "Image", @class = "form-control custom-file-input", @type = "file" })<br />
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 <div class="row">
     <div class="col-8 ">
@@ -74,13 +74,13 @@
     </div>
     <div class="col-4 text-right">
         @if (eventt.ActiveState)
-    {
+        {
         <a class="btn btn-danger text-white" data-toggle="modal" data-target="#ModalWindow"> <i class="fas fa-ban"></i> Cancel Event</a>
-}
-else
-{
-    <a class="btn btn-success text-white" data-toggle="modal" data-target="#ModalWindow2"> <i class="fas fa-calendar-check"></i> Reactivate Event</a>
-}
+        }
+        else
+        {
+            <a class="btn btn-success text-white" data-toggle="modal" data-target="#ModalWindow2"> <i class="fas fa-calendar-check"></i> Reactivate Event</a>
+        }
         <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Save changes</button>
 
     </div>
@@ -97,7 +97,7 @@ else
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to cancel your event?</p>
+                        <p>Are you sure you want to cancel your event? <br /> <i class="fas fa-info-circle"></i> All customers who has bought a ticket to this event, will be alerted</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
