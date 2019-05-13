@@ -13,10 +13,10 @@
                 <div class="col-4">
                     <img src="https://via.placeholder.com/200" alt="Alternate Text" />
                     <div>
-                        <a class="btn btn-primary mt-4"style="width: 12.5rem;" asp-controller="Organizer" asp-action="EditEvent" asp-route-id="@eventt.EventID"><i class="fas fa-edit"></i> Edit Event</a>
+                        <a class="btn btn-primary mt-4"style="width: 12.5rem;" asp-controller="Organizer" asp-action="EditEvent" asp-route-id="@eventt.EventID"><i class="fas fa-edit"></i>Edit Event</a>
                     </div>
                     <div>
-                        <a class="btn btn-primary mt-2"style="width: 12.5rem;" asp-controller="Organizer" asp-action="CheckTickets" asp-route-id="@eventt.EventID"><i class="fas fa-check"></i> Check Tickets</a>
+                        <a class="btn btn-primary mt-2"style="width: 12.5rem;" asp-controller="Organizer" asp-action="CheckTickets" asp-route-id="@eventt.EventID"><i class="fas fa-check"></i>Check Tickets</a>
                     </div>
                     </div>
                     <div class="col-8">
@@ -71,7 +71,7 @@
     </div>
     <div class="row mt-4">
         <div class="col-8">
-            <a  class="btn btn-primary" asp-controller="Organizer" asp-action="OrganizerLandingPage" asp-route-id="@Organizer.OrganizerID" asp-route-val="1"><i class="fas fa-angle-left"></i> Back</a>
+            <a  class="btn btn-primary" asp-controller="Organizer" asp-action="OrganizerLandingPage" asp-route-id="@eventt.OrganizerID" asp-route-val="1"><i class="fas fa-angle-left"></i> Back</a>
         </div>
     </div>
 </form>
