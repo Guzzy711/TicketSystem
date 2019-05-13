@@ -42,27 +42,28 @@
             <small id="pricehelp" class="form-text text-muted">Please enter a price in DKK</small>
             @Html.TextBox("Price", (float)eventt.Price, new { required = true, @class = "form-control", @type = "float" })<br />
         </div>
-        <div class="form-group mb-0">
-            @Html.Label("Event Image")
-            <small id="imghelp" class="form-text text-muted">This image will appear on the event-page</small>
-        <div class="custom-file">
-            @Html.TextBox("Image", null, new { placeholder = "Image", @class = "form-control custom-file-input", @type = "file" })<br />
-            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
 
-        </div>
-        </div>
     </div>
     <div class="col-md-6">
         <div class=" form-group ">
             @Html.Label("Description *")
             <small id="deschelp" class="form-text text-muted">This description will appear on the event-page</small>
             @Html.TextArea("Description", (string)eventt.Description, new
-    {
-        required = true,
-        @class = "form-control",
-        @style = "height:450px;"
-    })
+        {
+            required = true,
+            @class = "form-control",
+            @style = "height:450px;"
+        })
 
+        </div>
+        <div class="form-group mb-0">
+            @Html.Label("Event Image")
+            <small id="imghelp" class="form-text text-muted">This image will appear on the event-page</small>
+            <div class="custom-file">
+                @Html.TextBox("Image", null, new { placeholder = "Image", @class = "form-control custom-file-input", @type = "file" })<br />
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+
+            </div>
         </div>
     </div>
 </div>
