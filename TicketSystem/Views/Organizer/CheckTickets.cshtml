@@ -27,7 +27,7 @@
                             <p class="card-text"><b>Ticket ID:</b> @ticket.TicketID</p>
                             <p class="card-text"><b>Name:</b> @ticket.CustomerFirstname @ticket.CustomerSurname</p>
                             <p class="card-text"><b>Email:</b> @ticket.CustomerEmail</p>
-                            <a class="btn btn-primary float-right" type="submit" asp-controller="Organizer" asp-action="TicketUsed" asp-route-id="@ticket.TicketID"><i class="fas fa-check"></i> Use ticket</a>
+                            <a class="btn btn-primary float-right" asp-controller="Organizer" asp-action="TicketUsed" asp-route-id="@ticket.TicketID"><i class="fas fa-check"></i> Use ticket</a>
                             <p class="card-text"><b>Phonenumber:</b> @ticket.CustomerPhoneNumber</p>
                         </div>
                     </div>
@@ -37,13 +37,13 @@
             else
             {
                 <div class="col-8">
-                    <h4 class="card-text text-danger">Ticket information: Ticket already used</h4>
+                    <h4 class="card-text text-danger"><i class="fas fa-info-circle"></i> Ticket information: Ticket already used</h4>
                     <div class="card text-muted" style="width: 35rem;">
                         <div class="card-body">
                             <p class="card-text"><b>Ticket ID:</b> @ticket.TicketID</p>
                             <p class="card-text"><b>Name:</b> @ticket.CustomerFirstname @ticket.CustomerSurname</p>
                             <p class="card-text"><b>Email:</b> @ticket.CustomerEmail</p>
-                           <a class="btn btn-secondary float-right" type="submit" asp-controller="Organizer" asp-action="TicketUsed" disabled ><i class="fas fa-check"></i> Use ticket </a>
+                           <a class="btn btn-secondary float-right" disabled style="cursor: not-allowed;"><i class="fas fa-check"></i> Use ticket </a>
                             <p class="card-text"><b>Phonenumber:</b> @ticket.CustomerPhoneNumber</p>
                         </div>
                     </div>
@@ -52,8 +52,13 @@
         }
         else
         {
-                <div class="col-3">
-                    <p class="btn btn-danger disabled" style="margin-top: 5.5rem;"><i class="fas fa-exclamation "></i>Ticket ID does not exist<i class=" fas fa-exclamation"></i></p>
+                <div class="col-8">
+                    <div class="card text-muted" style="width: 35rem;">
+                        <div class="card-body">
+                            <p class="btn btn-danger disabled" ><i class="fas fa-info-circle"></i> Ticket ID does not exist </p>
+                        </div>
+                    </div>
+
                 </div>
         }
     </div>
