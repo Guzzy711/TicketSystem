@@ -17,7 +17,7 @@ namespace TicketSystem.Controllers
 
         DBhelper dbhelper = new DBhelper();
         Ticket tick = new Ticket();
-
+        Event evt = new Event();
         Organizer organizer = new Organizer();
 
 
@@ -95,6 +95,7 @@ namespace TicketSystem.Controllers
             {
                 dbhelper.InsertQueryToDB($"UPDATE events SET active_state='{0}' WHERE id={id}");
                 var eventt = dbhelper.CreateOneEventObject(id);
+                _ = evt.CancelMail(eventt);
                 return RedirectToAction("OrganizerLandingPage", new { id = eventt.OrganizerID });
 
             }
