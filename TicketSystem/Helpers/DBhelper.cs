@@ -291,10 +291,10 @@ namespace TicketSystem.Helpers
             return count; 
         }
 
-        public Ticket CheckTicket(int TicketID)
+        public Ticket CheckTicket(int TicketID, int EventID)
         {
             Ticket ticket = null;
-            string query = $"SELECT * FROM tickets WHERE id={TicketID}";
+            string query = $"SELECT * FROM tickets WHERE id={TicketID} AND event_id= {EventID}";
             var queryResult = SelectQuery(query); 
 
             foreach(DataRow row in queryResult.Rows)
