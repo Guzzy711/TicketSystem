@@ -129,11 +129,14 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                var eventt = dbhelper.CreateOneEventObject(id);
+                var organizerID = eventt.OrganizerID; 
 
-                ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
 
+
+                ViewBag.Event = eventt; 
+                ViewBag.Organizer = dbhelper.CreateOrganizerObject(organizerID);
             }
-            ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
 
             return View();
         }
@@ -148,10 +151,12 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid)
             {
                 dbhelper.InsertQueryToDB($"UPDATE events SET event_name='{name}',location='{location}', date='{date}', time='{time}', ticket_amount={ticketamount}, price={price}, image='{image}', description='{description}' WHERE id={id}");
-               
+
+                var eventt = dbhelper.CreateOneEventObject(id);
+
+                ViewBag.Event = eventt;
+                ViewBag.Organizer = dbhelper.CreateOrganizerObject(eventt.OrganizerID);
             }
-            ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
-            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
 
             return View();
         }
@@ -185,7 +190,7 @@ namespace TicketSystem.Controllers
 
         public IActionResult CreateEvent(int id)
         {
-            ViewBag.orgID = id;
+            ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
             return View();
         }
 
@@ -218,7 +223,8 @@ namespace TicketSystem.Controllers
 
             var eventt = dbhelper.CreateOneEventObject(ID);
             ViewBag.Event = eventt; 
-            ViewBag.Tickets = dbhelper.CreateTicketObjectsFromQuery($"SELECT * FROM tickets WHERE event_id={ID}"); 
+            ViewBag.Tickets = dbhelper.CreateTicketObjectsFromQuery($"SELECT * FROM tickets WHERE event_id={ID}");
+            ViewBag.Organizer = dbhelper.CreateOrganizerObject(eventt.OrganizerID); 
 
             return View();
         }
