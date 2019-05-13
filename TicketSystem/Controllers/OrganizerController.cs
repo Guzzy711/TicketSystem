@@ -131,9 +131,6 @@ namespace TicketSystem.Controllers
             {
                 var eventt = dbhelper.CreateOneEventObject(id);
                 var organizerID = eventt.OrganizerID; 
-
-
-
                 ViewBag.Event = eventt; 
                 ViewBag.Organizer = dbhelper.CreateOrganizerObject(organizerID);
             }
