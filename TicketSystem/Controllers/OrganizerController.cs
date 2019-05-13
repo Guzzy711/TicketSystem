@@ -118,6 +118,21 @@ namespace TicketSystem.Controllers
 
 
 
+        [HttpGet]
+        public IActionResult TicketUsed(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                dbhelper.InsertQueryToDB($"UPDATE tickets SET ticket_used='{1}' WHERE id={id}");
+
+                var eventt = dbhelper.CreateOneEventObject(id);
+
+                return RedirectToAction("CheckTickets", "Organizer");
+            }
+
+            return View();
+        }
+
 
 
 
