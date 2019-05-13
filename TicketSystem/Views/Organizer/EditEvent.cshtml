@@ -42,8 +42,8 @@
                 <small id="pricehelp" class="form-text text-muted">Please enter a price in DKK</small>
                 @Html.TextBox("Price", (float)eventt.Price, new { required = true, @class = "form-control", @type = "float" })<br />
             </div>
-
         </div>
+
         <div class="col-md-6">
             <div class=" form-group ">
                 @Html.Label("Description *")
@@ -79,13 +79,10 @@
             }
             else
             {
-                <a class="btn btn-success text-white" data-toggle="modal" data-target="#ModalWindow2"> <i class="fas fa-calendar-check"></i> Reactivate Event</a>
                 <a class="btn btn-danger text-white" data-toggle="modal" data-target="#ModalWindow3"> <i class="fas fa-trash-alt"></i> Delete Event</a>
             }
-            <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Save changes</button>
-
+            <button type="submit" class="btn btn-primary ml-2"><i class="fas fa-check"></i> Save changes</button>
         </div>
-
     </div>
 
     <div class="modal" tabindex="-1" role="dialog" id="ModalWindow">
@@ -98,38 +95,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Customers who bought a ticket to this event will be notified.</p>
+                    <p>If you cancel the event your customers will automaticaly recieve an email and a refund. <br /> <b>This can not be undone!</b></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-angle-left"></i> Back</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-angle-left"></i> Back</button>
                     <a class="btn btn-danger" asp-controller="Organizer" asp-action="CancelEvent" asp-route-id="@eventt.EventID"><i class="fas fa-ban"></i> Cancel Event</a>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="modal" tabindex="-1" role="dialog" id="ModalWindow2">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"><i class="fas fa-info-circle"></i> Are you sure you want to reactivate your event?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to reactivate your event?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-angle-left"></i> Back</button>
-                    <a class="btn btn-success" asp-controller="Organizer" asp-action="ReactivateEvent" asp-route-id="@eventt.EventID"><i class="fas fa-calendar-check"></i> Reactivate Event</a>
-
                 </div>
             </div>
         </div>
     </div>
+
     <div class="modal" tabindex="-1" role="dialog" id="ModalWindow3">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -140,12 +115,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p><i class="fas fa-exclamation-circle"></i> The event wont be able to recover the event, as it will be deleted from the database.</p>
+                    <p><i class="fas fa-exclamation-circle"></i> This will permanently delete your event and it will no longer be shown in the overview.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-angle-left"></i> Back</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-angle-left"></i> Back</button>
                     <a class="btn btn-danger" asp-controller="Organizer" asp-action="DeleteEvent" asp-route-id="@eventt.EventID"><i class="fas fa-trash-alt"></i> Delete Event</a>
-
                 </div>
             </div>
         </div>

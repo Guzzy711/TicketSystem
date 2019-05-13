@@ -56,9 +56,12 @@
                         <div class="col-6 text-muted">
                             TicketSystem
                         </div>
-                        <div class="col-6 text-right">
-                            <a asp-area="" asp-controller="Organizer" asp-action="Login"><i class="fas fa-sign-in-alt"></i> Organizer login</a>
-                        </div>
+                        @if (organizer is null)
+                         {
+                            <div class="col-6 text-right">
+                                <a asp-area="" asp-controller="Organizer" asp-action="Login"><i class="fas fa-sign-in-alt"></i> Organizer login</a>
+                            </div>
+                         }
                     </div>
                 </div>
             </footer>
