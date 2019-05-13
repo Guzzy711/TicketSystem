@@ -296,7 +296,7 @@ namespace TicketSystem.Controllers
         {
             if (ModelState.IsValid) {
 
-                var ticket = dbhelper.CheckTicket(value);
+                var ticket = dbhelper.CheckTicket(value,id);
 
                 ViewBag.Ticket = ticket; 
 
@@ -311,7 +311,7 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid)
             {
 
-                var ticket = dbhelper.CheckTicket(ticket_id);
+                var ticket = dbhelper.CheckTicket(ticket_id,id);
 
                 ViewBag.Ticket = ticket;
 
