@@ -42,8 +42,7 @@ namespace TicketSystem.Controllers
 
         public IActionResult OrderTicket(int id)
         {
-
-            ViewBag.Events = dbhelper.CreateEventObjectsFromQuery($"SELECT * FROM events WHERE id={id}");
+            ViewBag.Event = dbhelper.CreateOneEventObject(id); 
 
             return View();
         }

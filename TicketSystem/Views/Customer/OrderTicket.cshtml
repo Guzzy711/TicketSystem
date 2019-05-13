@@ -1,17 +1,15 @@
 @{
     var Ticket = ViewBag.Ticket;
-    var id = ViewBag.id;
-    var events = ViewBag.Events;
+    var eventt = ViewBag.Event;
 }
 
-@foreach (var eventt in events)
-{
+
     <div class="card w-100 mt-3 border-0">
         <div class="card-body pb-0">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-4">
-                        <img src="/Image/@eventt.Image" class="otimg" />
+                        <img src="/Image/" class="otimg" />
                     </div>
                     <div class="col-8">
                         <h3 class="card-title">@eventt.EventName</h3>
@@ -64,7 +62,7 @@
             </div>
         </div>
     }
-}
+
 
 
 
