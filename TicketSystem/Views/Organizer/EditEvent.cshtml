@@ -1,14 +1,13 @@
 ﻿
 @{
     ViewData["Title"] = "EditEvent";
-    var events = ViewBag.Events;
+    var eventt = ViewBag.Event;
     var org = ViewBag.Organizer;
 
 }
 
 <h3 id="Createevent" class="text-left">Edit Event</h3>
-@foreach (var eventt in events)
-{
+
     @using (Html.BeginForm())
     {
         <div class="row">
@@ -111,6 +110,6 @@
             </div>
         </div>
     }
-}
+
 
 
