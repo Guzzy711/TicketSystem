@@ -2,69 +2,77 @@
 @{
     ViewData["Title"] = "ChangeLoginInfo";
     var organizer = ViewBag.Organizer;
+    var success = ViewBag.success;
 }
 
 <h2>Change login information</h2>
-
+@if (success != null)
+{
+    <div class="alert alert-success" role="alert">
+        <i class="fas fa-check-circle"></i> @success
+    </div>
+}
 
 @using (Html.BeginForm())
 {
 
 
-<div class="row">
-    <div class="col-6">
-        <div class="form-group mb-0">
-            @Html.Label("Contact Person name") <br />
-            @Html.TextBox("ContactPerson", (string)organizer.ContactPerson, new { required = true, @class = "form-control" })<br />
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group mb-0">
+                @Html.Label("Contact Person name") <br />
+                @Html.TextBox("ContactPerson", (string)organizer.ContactPerson, new { required = true, @class = "form-control" })<br />
+            </div>
+
+            <div class="form-group mb-0">
+                @Html.Label("Organization name") <br />
+                @Html.TextBox("OrganizationName", (string)organizer.OrganizationName, new { required = true, @class = "form-control" })<br />
+            </div>
+
+            <div class="form-group mb-0">
+                @Html.Label("Phonenumber") <br />
+                @Html.TextBox("Phonenumber", (string)organizer.PhoneNumber, new { required = true, @class = "form-control", @type = "number" })<br />
+
+            </div>
+
+            <div class="form-group mb-0">
+                @Html.Label("Email Address") <br />
+                @Html.TextBox("Email", (string)organizer.Email, new { required = true, @class = "form-control" })<br />
+
+            </div>
+
+            <div class="form-group mb-0">
+                @Html.Label("Password") <br />
+                @Html.Password("Password", (string)organizer.Password, new { required = true, @class = "form-control", @type = "password" })<br />
+            </div>
+
+
+
         </div>
+        <div class="col-6 text-right">
+            <div class="avatar-container d-block">
+                <img src="https://i.pravatar.cc/50" class=" = align-self-center rounded-circle d-inline" />
+                <h4 class="d-inline align-middle mt-3 ml-2"> @organizer.ContactPerson</h4>
 
-        <div class="form-group mb-0">
-            @Html.Label("Organization name") <br />
-            @Html.TextBox("OrganizationName", (string)organizer.OrganizationName, new { required = true, @class = "form-control" })<br />
-        </div>
-
-        <div class="form-group mb-0">
-            @Html.Label("Phonenumber") <br />
-            @Html.TextBox("Phonenumber", (string)organizer.PhoneNumber, new { required = true, @class = "form-control", @type = "number" })<br />
+            </div>
+            <a class="btn btn-sm btn-danger  text-white mt-2" data-toggle="modal" data-target="#ModalWindow"> <i class="fas fa-trash-alt"></i> Delete Organizer Account</a>
 
         </div>
-
-        <div class="form-group mb-0">
-            @Html.Label("Email Address") <br />
-            @Html.TextBox("Email", (string)organizer.Email, new { required = true, @class = "form-control" })<br />
-
-        </div>
-
-        <div class="form-group mb-0">
-            @Html.Label("Password") <br />
-            @Html.Password("Password", (string)organizer.Password, new { required = true, @class = "form-control", @type = "password" })<br />
-        </div>
-
-
-
     </div>
-    <div class="col-6 text-right">
-        <div class="avatar-container d-block">
-            <img src="https://i.pravatar.cc/50" class=" = align-self-center rounded-circle d-inline" />
-            <h4 class="d-inline align-middle mt-3 ml-2"> @organizer.ContactPerson</h4>
+    <div class="row">
+        <div class="col-4">
+            <a class="btn btn-primary" asp-controller="Organizer" asp-action="OrganizerLandingPage" asp-route-id="@organizer.OrganizerID"><i class="fas fa-angle-left"></i> Back</a>
         </div>
+        <div class="col-8 text-right">
 
-    </div>
-</div>
-<div class="row">
-    <div class="col-4">
-        <a class="btn btn-primary" asp-controller="Organizer" asp-action="OrganizerLandingPage" asp-route-id="@organizer.OrganizerID" ><i class="fas fa-angle-left"></i> Back</a>
-    </div>
-    <div class="col-8 text-right">
 
-            <a class="btn btn-danger  text-white " data-toggle="modal" data-target="#ModalWindow"> <i class="fas fa-trash-alt"></i> Delete Organizer Account</a>
 
-        <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Save changes</button>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Save changes</button>
+        </div>
     </div>
-</div>
-   
-       
-    
+
+
+
 
     <div class="modal" tabindex="-1" role="dialog" id="ModalWindow">
         <div class="modal-dialog" role="document">
@@ -77,7 +85,8 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                    Deleting the account will also cause all information connected to this account to be deleted. <br /> <b><i class="fas fa-exclamation-circle"></i> All events that is created by this organizer will be deleted</b> </p>
+                        Deleting the account will also cause all information connected to this account to be deleted. <br /> <b><i class="fas fa-exclamation-circle"></i> All events that is created by this organizer will be deleted</b>
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-angle-left"></i> Back</button>

@@ -62,7 +62,13 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid)
             {
                 dbhelper.InsertQueryToDB($"INSERT INTO organizers(contact_person, password, phone_number, email_address,organization_name) VALUES ('{name}','{password}','{phonenumber}','{email}','{organizationName}')");
-                return RedirectToAction("Login", "Organizer");           //skal laves om til organizer home
+                string queryString = $"SELECT * FROM organizers WHERE email_address='{email}' AND password='{password}'";
+                var result = dbhelper.SelectQuery(queryString);
+                foreach (DataRow row in result.Rows)
+                {
+                    return RedirectToAction("OrganizerLandingPage", new { id = (int)row["id"] });
+                }
+                //return RedirectToAction("OrganizerLandingPage", "Organizer");           //skal laves om til organizer home
             }
 
             return View();
@@ -187,6 +193,7 @@ namespace TicketSystem.Controllers
 
                 ViewBag.Event = eventt;
                 ViewBag.Organizer = dbhelper.CreateOrganizerObject(eventt.OrganizerID);
+                ViewBag.success = "Changes saved succesfully!";
             }
 
             return View();
@@ -291,7 +298,7 @@ namespace TicketSystem.Controllers
                 dbhelper.InsertQueryToDB($"UPDATE organizers SET organization_name='{OrganizationName}',contact_person='{ContactPerson}', phone_number={Phonenumber}, email_address='{Email}', password='{Password}' WHERE id={id}");
             }
             ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
-
+            ViewBag.success = "Changes saved succesfully!";
             return View();
         }
 

@@ -3,11 +3,16 @@
     ViewData["Title"] = "EditEvent";
     var eventt = ViewBag.Event;
     var org = ViewBag.Organizer;
-
+    var success = ViewBag.success;
 }
 
 <h3 id="Createevent" class="text-left">Edit Event</h3>
-
+@if (success != null)
+{
+<div class="alert alert-success" role="alert">
+    <i class="fas fa-check-circle"></i> @success
+</div>
+}
 @using (Html.BeginForm())
 {
     <div class="row">
@@ -49,11 +54,11 @@
                 @Html.Label("Description *")
                 <small id="deschelp" class="form-text text-muted">This description will appear on the event-page</small>
                 @Html.TextArea("Description", (string)eventt.Description, new
-            {
-                required = true,
-                @class = "form-control",
-                @style = "height:450px;"
-            })
+                {
+                    required = true,
+                    @class = "form-control",
+                    @style = "height:450px;"
+                })
 
             </div>
             <div class="form-group mb-0">
