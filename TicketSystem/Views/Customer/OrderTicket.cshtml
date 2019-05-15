@@ -18,7 +18,7 @@
                         <ul class="eventdata">
                             <div class="float-left mr-5">
                                 <li><b><i class="fas fa-map-marked-alt"></i> Location: @eventt.Location</b></li>
-                                <li><i class="fas fa-calendar-day mt-3"></i> Date: @eventt.Date.Day/@eventt.Date.Month/@eventt.Date.Year at  @eventt.Time.Hours:@eventt.Time.Minutes</li>
+                                <li><i class="fas fa-calendar-day mt-3"></i> Date: @eventt.Date.Day/@eventt.Date.Month/@eventt.Date.Year at @eventt.Time.ToString("hh"):@eventt.Time.ToString("mm")</li>
                                 <li><i class="fas fa-money-bill-alt mt-3"></i> Price: @eventt.Price kr.</li>
                             </div>
                         </ul>
