@@ -2,9 +2,14 @@
     var Organizer = ViewBag.Organizer;
     Event eventt = ViewBag.Event;
     var tickets = ViewBag.Tickets;
-    var error = ViewBag.error;
+    var success = ViewBag.Success;
 }
-<p>@error</p>
+@if (success != null)
+{
+<div class="alert alert-success" role="alert">
+    <i class="fas fa-check-circle"></i> @success
+</div>
+}
 
 <div class="card w-100 mt-3 border-0">
     <div class="card-body pb-0">

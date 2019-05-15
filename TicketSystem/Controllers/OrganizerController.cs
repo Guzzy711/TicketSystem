@@ -272,6 +272,8 @@ namespace TicketSystem.Controllers
             ViewBag.Event = eventt;
             ViewBag.Tickets = dbhelper.CreateTicketObjectsFromQuery($"SELECT * FROM tickets WHERE event_id={ID}");
             var ticket = dbhelper.CreateOneTicketObject(ticketid);
+            ticket.CustomerEmail = Email;
+            ViewBag.Success = "The email has been successfully sent to " + ticket.CustomerEmail;
             ticket.CustomerEmail = Email; 
             _=tick.SendTicketAsync(ticket);
             return View();
