@@ -41,8 +41,6 @@ namespace TicketSystem.Controllers
                         return RedirectToAction("OrganizerLandingPage", new { id = (int)row["id"] });
                     }
 
-
-
                 }
                 else
                 {
