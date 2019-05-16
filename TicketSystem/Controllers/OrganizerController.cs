@@ -148,6 +148,7 @@ namespace TicketSystem.Controllers
             {
                 var ticket = dbhelper.CreateOneTicketObject(id);
                 var eventt = dbhelper.CreateOneEventObject(ticket.EventID);
+                ViewBag.Organizer = dbhelper.CreateOrganizerObject(eventt.OrganizerID);
                 dbhelper.InsertQueryToDB($"UPDATE tickets SET ticket_used='{1}' WHERE id={id}");
                 TempData["success"]= $"Ticket (ID #{ticket.TicketID}) succesfully checked";
                 return RedirectToAction("CheckTickets", new { id = eventt.EventID });
@@ -308,7 +309,8 @@ namespace TicketSystem.Controllers
             if (ModelState.IsValid) {
 
                 var ticket = dbhelper.CheckTicket(value,id); //eventID + ticketid
-
+                var eventt = dbhelper.CreateOneEventObject(id);
+                ViewBag.Organizer = dbhelper.CreateOrganizerObject(eventt.OrganizerID);
                 ViewBag.Ticket = ticket; 
 
             }
@@ -323,7 +325,8 @@ namespace TicketSystem.Controllers
             {
 
                 var ticket = dbhelper.CheckTicket(ticket_id,id);
-
+                var eventt = dbhelper.CreateOneEventObject(id);
+                ViewBag.Organizer = dbhelper.CreateOrganizerObject(eventt.OrganizerID);
                 ViewBag.Ticket = ticket;
 
             }
