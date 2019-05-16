@@ -45,7 +45,7 @@
             <div class="form-group mb-0">
                 @Html.Label("Price *")
                 <small id="pricehelp" class="form-text text-muted">Please enter a price in DKK</small>
-                @Html.TextBox("Price", (float)eventt.Price, new { required = true, @class = "form-control", @type = "float" })<br />
+                @Html.TextBox("Price", (float)eventt.Price, new { required = true, @class = "form-control", @type = "number" })<br />
             </div>
         </div>
 
