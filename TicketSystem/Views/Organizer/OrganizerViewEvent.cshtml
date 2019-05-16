@@ -56,17 +56,25 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>ID</th>
+                    <th>Ticket state</th>
                     <th>Resend tickets</th>
                     </tr>
             </thead>
             <tbody>
-            @foreach (var ticket in tickets)
+            @foreach (Ticket ticket in tickets)
             {
                
                 <tr>
                     <td>@ticket.CustomerFirstname @ticket.CustomerSurname</td>
                     <td>@ticket.CustomerEmail</td>
                     <td>@ticket.TicketID</td>
+                    <td>
+                        @if(ticket.TicketUsed){
+                            <p>Ticket used</p>
+                        } else {
+                            <p>Ticket not used</p>
+                        }
+                    </td>
                     <td class="text-center"><a class="btn btn-primary " asp-controller="organizer" asp-action="resendticket" asp-route-id="@ticket.TicketID"><i class="far fa-paper-plane"></i> Resend ticket</a></td>
 
                 </tr>
