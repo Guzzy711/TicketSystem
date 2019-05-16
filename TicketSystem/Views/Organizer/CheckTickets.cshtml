@@ -2,12 +2,17 @@
 @{
     Ticket ticket = ViewBag.Ticket;
     var eventt = ViewBag.Event;
+    var success = TempData["success"];
 }
+@if(success != null){
 
-    <h2 class="mb-4">Check Tickets</h2>
-    <br />
-    @using (Html.BeginForm("checktickets", "organizer", null, FormMethod.Post))
-    {
+<div class="alert alert-success" role="alert">
+    <i class="fas fa-check-circle"></i> @success
+</div>}
+<h2 class="mb-4">Check Tickets</h2>
+<br />
+@using (Html.BeginForm("checktickets", "organizer", null, FormMethod.Post))
+{
     <div class="row">
         <div class="col-4 mt-4">
             <p>Please type ticket ID to validate the ticket:</p><br />
@@ -43,7 +48,7 @@
                             <p class="card-text"><b>Ticket ID:</b> @ticket.TicketID</p>
                             <p class="card-text"><b>Name:</b> @ticket.CustomerFirstname @ticket.CustomerSurname</p>
                             <p class="card-text"><b>Email:</b> @ticket.CustomerEmail</p>
-                           <a class="btn btn-secondary float-right" disabled style="cursor: not-allowed;"><i class="fas fa-check"></i> Use ticket </a>
+                            <a class="btn btn-secondary float-right" disabled style="cursor: not-allowed;"><i class="fas fa-check"></i> Use ticket </a>
                             <p class="card-text"><b>Phonenumber:</b> @ticket.CustomerPhoneNumber</p>
                         </div>
                     </div>
@@ -52,17 +57,17 @@
         }
         else
         {
-                <div class="col-8">
-                    <div class="card text-muted" style="width: 35rem;">
-                        <div class="card-body">
-                            <p class="btn btn-danger disabled" ><i class="fas fa-info-circle"></i> Ticket ID does not exist </p>
-                        </div>
+            <div class="col-8">
+                <div class="card text-muted" style="width: 35rem;">
+                    <div class="card-body">
+                        <p class="btn btn-danger disabled"><i class="fas fa-info-circle"></i> Ticket ID does not exist </p>
                     </div>
-
                 </div>
+
+            </div>
         }
     </div>
-            }
+}
 
 
 

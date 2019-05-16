@@ -149,6 +149,7 @@ namespace TicketSystem.Controllers
                 var ticket = dbhelper.CreateOneTicketObject(id);
                 var eventt = dbhelper.CreateOneEventObject(ticket.EventID);
                 dbhelper.InsertQueryToDB($"UPDATE tickets SET ticket_used='{1}' WHERE id={id}");
+                TempData["success"]= "Ticket succesfully checked";
                 return RedirectToAction("CheckTickets", new { id = eventt.EventID });
             }
 
