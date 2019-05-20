@@ -150,7 +150,7 @@ namespace TicketSystem.Controllers
                 var eventt = dbhelper.CreateOneEventObject(ticket.EventID);
                 ViewBag.Organizer = dbhelper.CreateOrganizerObject(eventt.OrganizerID);
                 dbhelper.InsertQueryToDB($"UPDATE tickets SET ticket_used='{1}' WHERE id={id}");
-                TempData["success"]= $"Ticket (ID #{ticket.TicketID}) succesfully checked";
+                TempData["success"]= $"Ticket (ID #{ticket.TicketID}) successfully checked";
                 return RedirectToAction("CheckTickets", new { id = eventt.EventID });
             }
 
@@ -193,7 +193,7 @@ namespace TicketSystem.Controllers
 
                 ViewBag.Event = eventt;
                 ViewBag.Organizer = dbhelper.CreateOrganizerObject(eventt.OrganizerID);
-                ViewBag.success = "Changes saved succesfully!";
+                ViewBag.success = "Changes saved successfully!";
             }
 
             return View();
@@ -300,7 +300,7 @@ namespace TicketSystem.Controllers
                 dbhelper.InsertQueryToDB($"UPDATE organizers SET organization_name='{OrganizationName}',contact_person='{ContactPerson}', phone_number={Phonenumber}, email_address='{Email}', password='{Password}' WHERE id={id}");
             }
             ViewBag.Organizer = dbhelper.CreateOrganizerObject(id);
-            ViewBag.success = "Changes saved succesfully!";
+            ViewBag.success = "Changes saved successfully!";
             return View();
         }
 
