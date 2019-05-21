@@ -178,10 +178,6 @@ namespace TicketSystem.Controllers
             return View();
         }
 
-
-
-
-
         [HttpPost]
         public IActionResult EditEvent(int id, string name, string location, string date, string time, int ticketamount, int price, string image, string description)
         {
