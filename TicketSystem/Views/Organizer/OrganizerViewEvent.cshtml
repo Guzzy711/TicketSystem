@@ -56,9 +56,10 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>ID</th>
+                    <th>Date of purchase</th>
                     <th>Ticket state</th>
                     <th>Resend tickets</th>
-                    </tr>
+                </tr>
             </thead>
             <tbody>
             @foreach (Ticket ticket in tickets)
@@ -68,6 +69,7 @@
                     <td>@ticket.CustomerFirstname @ticket.CustomerSurname</td>
                     <td>@ticket.CustomerEmail</td>
                     <td>@ticket.TicketID</td>
+                    <td>@ticket.DateOfPurchase.Day/@ticket.DateOfPurchase.Month/@ticket.DateOfPurchase.Year @ticket.DateOfPurchase.ToString("t")</td>
                     <td>
                         @if(ticket.TicketUsed){
                             <p>Ticket used</p>

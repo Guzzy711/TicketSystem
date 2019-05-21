@@ -221,8 +221,9 @@ namespace TicketSystem.Helpers
                 var CustomerEmail = (string)row["customer_email"];
                 var CustomerPhone = (int)row["customer_phone_number"];
                 var TicketUsed = (bool)row["ticket_used"];
+                var DateOfPurchase = (DateTime)row["date_of_purchase"];
 
-                tickets[counter] = new Ticket(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhone, TicketID, EventID, TicketUsed);
+                tickets[counter] = new Ticket(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhone, TicketID, EventID, TicketUsed, DateOfPurchase);
 
                 counter++; 
             }
@@ -246,8 +247,9 @@ namespace TicketSystem.Helpers
                 var CustomerEmail = (string)row["customer_email"];
                 var CustomerPhone = (int)row["customer_phone_number"];
                 var TicketUsed = (bool)row["ticket_used"];
+                var DateOfPurchase = (DateTime)row["date_of_purchase"];
 
-                ticket = new Ticket(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhone, TicketID, EventID, TicketUsed);
+                ticket = new Ticket(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerPhone, TicketID, EventID, TicketUsed, DateOfPurchase);
             }
 
             return ticket; 

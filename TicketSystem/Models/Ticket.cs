@@ -18,13 +18,14 @@ namespace TicketSystem.Models
         public int TicketID { get; set; }
         public int EventID { get; set; }
         public bool TicketUsed { get; set; }
+        public DateTime DateOfPurchase { get; set; }
 
         Random rand = new Random();
         DBhelper db = new DBhelper();
 
         public Ticket() { }
 
-        public Ticket(string Firstname, string Surname, string Email, int PhoneNumber, int TicketID, int EventID, bool TicketUsed)
+        public Ticket(string Firstname, string Surname, string Email, int PhoneNumber, int TicketID, int EventID, bool TicketUsed, DateTime DateOfPurchase)
         {
             CustomerFirstname = Firstname;
             CustomerSurname = Surname;
@@ -32,7 +33,8 @@ namespace TicketSystem.Models
             CustomerPhoneNumber = PhoneNumber;
             this.TicketID = TicketID;
             this.EventID = EventID;
-            this.TicketUsed = TicketUsed; 
+            this.TicketUsed = TicketUsed;
+            this.DateOfPurchase = DateOfPurchase; 
         }
 
 
@@ -71,10 +73,11 @@ namespace TicketSystem.Models
             message.From = new MailAddress("info@guzzy.dk");  // replace with valid value
             message.Subject = $"Ticket Confirmation #{ticket.TicketID}";
             message.Body = string.Format(body, ticket.CustomerFirstname, $"Your recent order for {eventt.EventName} has been completed. " +
-            	"Your order details are shown below for reference:", $"Your TicketID: #{ticket.TicketID}",
-                $"Your name: {ticket.CustomerFirstname} {ticket.CustomerSurname}",$"Ticket price: {eventt.Price},-",
+                "Your order details are shown below for reference:", $"Your TicketID: #{ticket.TicketID} (Date of Purchase:  { ticket.DateOfPurchase})",
+                $"Your name: {ticket.CustomerFirstname} {ticket.CustomerSurname}", $"Ticket price: {eventt.Price},-",
                 $"Event Location: {eventt.Location}",
                 $"Event day: {eventt.Date} Time: {eventt.Time}");
+
             message.IsBodyHtml = true;
 
             using (var smtp = new SmtpClient())
