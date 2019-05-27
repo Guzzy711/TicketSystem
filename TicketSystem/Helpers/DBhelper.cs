@@ -10,10 +10,10 @@ namespace TicketSystem.Helpers
 
         public DBhelper()
         {
-            string server = "mysql6.unoeuro.com";
-            string dataBase = "guzzy_dk_db2";
-            string username = "guzzy_dk";
-            string password = "pvnzxc123456";
+            string server = "xx.xxx.com";
+            string dataBase = "xx";
+            string username = "xx";
+            string password = "xxxx";
 
 
 
